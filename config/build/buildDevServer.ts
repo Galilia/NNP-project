@@ -8,5 +8,6 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
         open: true,
         // Fixing of error cannot get
         historyApiFallback: true,
+        hot: true
     }
 }
