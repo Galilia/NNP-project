@@ -2,5 +2,9 @@
     "key": "Test translate",
     "translate": "Translate",
     "main_page": "Main Page",
-    "language": "English"
+    "language": "English",
+    "page_not_found": "Page not found",
+    "error_happened": "Error happened",
+    "update_page": "Update page",
+    "throw_error": "throw_error"
 }

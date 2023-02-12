@@ -2,5 +2,9 @@
     "key": "Тестовый перевод",
     "translate": "Перевод",
     "main_page": "Главная страница",
-    "language": "Русский"
+    "language": "Русский",
+    "page_not_found": "Страница не найдена",
+    "error_happened": "Произошла ошибка",
+    "update_page": "Обновите страницу",
+    "throw_error": "throw_error"
 }
