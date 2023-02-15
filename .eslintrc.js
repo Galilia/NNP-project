@@ -39,12 +39,15 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'i18next/no-literal-string': ['warn', { markupOnly: true }],
-        'max-len': ['warn', { ignoreComments: true }],
+        'max-len': ['error', { ignoreComments: true, code: 100 }],
         'no-console': 'warn',
         quotes: ['error', 'single'],
         'jsx-quotes': ['error', 'prefer-double'],
         semi: ['warn', 'always'],
-        'import/order': ['error', { groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'] }],
+        'import/order': ['error', {
+            groups: ['builtin', 'external',
+                'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+        }],
     },
     globals: {
         __IS_DEV__: true,
