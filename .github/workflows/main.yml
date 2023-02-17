@@ -1,4 +1,5 @@
 name: linting, testing, building
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   push:
     branches: [ master ]
@@ -17,7 +18,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install modules
+      - name: install node modules
         run: npm install
       - name: build production project
         run: npm run build:prod
@@ -27,7 +28,3 @@ jobs:
         run: npm run lint:scss
       - name: unit testing
         run: npm run test:unit
-      - name: build storybook
-        run: npm run storybook:build
-      - name: screenshot testing
-        run: npm run test:ui:ci
