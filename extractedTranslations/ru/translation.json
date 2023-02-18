@@ -1,10 +1,18 @@
 {
-  "Throw Error": "Throw Error",
   "about_page": "about_page",
   "error_happened": "error_happened",
-  "language": "language",
   "main_page": "main_page",
   "page_not_found": "page_not_found",
+  "throw error": "throw error",
   "throw_error": "throw_error",
-  "update_page": "update_page"
+  "update_page": "update_page",
+  "Главная": "Главная",
+  "Главная страница": "Главная страница",
+  "О сайте": "О сайте",
+  "О сайте123123": "О сайте123123",
+  "Обновить страницу": "Обновить страницу",
+  "Переключить": "Переключить",
+  "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка",
+  "Страница не найдена": "Страница не найдена",
+  "Язык": "Язык"
 }

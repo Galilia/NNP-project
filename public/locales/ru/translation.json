@@ -7,5 +7,7 @@
     "error_happened": "Произошла ошибка",
     "update_page": "Обновите страницу",
     "throw_error": "throw_error",
-    "toggle": "toggle"
+    "toggle": "toggle",
+    "short_language": "RU",
+    "about_page": "О сайте"
 }

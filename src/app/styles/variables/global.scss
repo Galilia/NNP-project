@@ -6,9 +6,23 @@
     --font-size-l: 24px;
     --font-line-l: 32px;
     --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+    --font-size-xl: 32px;
+    --font-line-xl: 40px;
+    --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
 
-    // Размеры
+    // Size
     --navbar-height: 50px;
     --sidebar-width: 300px;
     --sidebar-width-collapsed: 80px;
+
+    // Button size
+    --btn-size-m: 16px;
+    --btn-line-m: 24px;
+    --btn-m: var(--btn-size-m) / var(--btn-line-m) var(--font-family-main);
+    --btn-size-l: 24px;
+    --btn-line-l: 32px;
+    --btn-l: var(--btn-size-l) / var(--btn-line-l) var(--font-family-main);
+    --btn-size-xl: 32px;
+    --btn-line-xl: 40px;
+    --btn-xl: var(--btn-size-xl) / var(--btn-line-xl) var(--font-family-main);
 }
