@@ -20,5 +20,4 @@ describe('counterSelectors', () => {
             expect(getCounterValue(state as StateSchema)).toEqual(10);
         });
     });
-
-})
+});
