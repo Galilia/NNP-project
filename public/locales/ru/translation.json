@@ -10,5 +10,7 @@
     "toggle": "toggle",
     "short_language": "RU",
     "about_page": "О сайте",
-    "lorem_test": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab architecto asperiores commodi consequatur dolorem facilis incidunt itaque libero mollitia optio quasi, qui repellendus tenetur voluptates. Commodi fugiat hic officiis?\n"
+    "lorem_test": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab architecto asperiores commodi consequatur dolorem facilis incidunt itaque libero mollitia optio quasi, qui repellendus tenetur voluptates. Commodi fugiat hic officiis?\n",
+    "increment": "increment",
+    "decrement": "decrement"
 }
