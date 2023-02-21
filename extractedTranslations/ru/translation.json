@@ -1,6 +1,8 @@
 {
+  "Enter": "Enter",
   "about_page": "about_page",
   "error_happened": "error_happened",
+  "lorem_test": "lorem_test",
   "main_page": "main_page",
   "page_not_found": "page_not_found",
   "throw error": "throw error",

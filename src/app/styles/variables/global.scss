@@ -25,4 +25,11 @@
     --btn-size-xl: 32px;
     --btn-line-xl: 40px;
     --btn-xl: var(--btn-size-xl) / var(--btn-line-xl) var(--font-family-main);
+
+    // Indexes
+    --modal-z-index: 10;
+    --modal-z-index-off: -1;
+
+    // Colors
+    --overlay-color: rgba(0 0 0 / 60%);
 }

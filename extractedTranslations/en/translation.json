@@ -1,8 +1,10 @@
 {
+  "Enter": "Enter",
   "Throw Error": "Throw Error",
   "about_page": "about_page",
   "error_happened": "error_happened",
   "language": "language",
+  "lorem_test": "",
   "main_page": "main_page",
   "page_not_found": "page_not_found",
   "throw_error": "throw_error",
