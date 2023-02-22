@@ -1,9 +1,13 @@
 {
+  "": "",
   "Enter": "Enter",
+  "Enter password": "Enter password",
+  "Enter username": "Enter username",
   "about_page": "about_page",
   "decrement": "decrement",
   "error_happened": "error_happened",
   "increment": "increment",
+  "login": "login",
   "lorem_test": "lorem_test",
   "main_page": "main_page",
   "page_not_found": "page_not_found",
