@@ -1,49 +1,30 @@
 .InputWrapper {
     display: flex;
-}
+    flex-direction: column;
+    margin-bottom: 1rem;
 
-.placeholder {
-    margin-right: 5px;
+    &.full-width {
+        width: 100%;
+    }
 }
 
 .input {
-    background: transparent;
+    padding: 1rem;
     border: none;
-    outline: none;
-    width: 100%;
-    color: transparent;
-    text-shadow: 0 0 0 var(--primary-color);
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #333;
+    background-color: #f6f6f6;
 
     &:focus {
         outline: none;
+        box-shadow: 0 0 0 3px rgb(66 153 225 / 50%);
     }
 }
 
-.caretWrapper {
-    flex-grow: 1;
-    position: relative;
-}
-
-.caret {
-    height: 3px;
-    width: 9px;
-    background: var(--primary-color);
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    animation: blink 0.7s forwards infinite;
-}
-
-@keyframes blink {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 0.01;
-    }
-
-    100% {
-        opacity: 1;
-    }
+.input-label {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
 }
