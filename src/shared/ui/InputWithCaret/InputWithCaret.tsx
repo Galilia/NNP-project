@@ -47,7 +47,7 @@ export const InputWithCaret = memo((props: InputWithCaretProps) => {
         setIsFocused(true);
     };
 
-    const onSelect = (e: any) => {
+    const onSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCaretPosition(e?.target?.selectionStart || 0);
     };
 
