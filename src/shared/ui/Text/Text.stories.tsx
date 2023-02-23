@@ -24,7 +24,7 @@ export const Error = Template.bind({});
 Error.args = {
     title: 'Title lorem ipsun',
     text: 'Description Description',
-    theme: 'error',
+    theme: TextTheme.ERROR,
 };
 
 export const OnlyTitle = Template.bind({});

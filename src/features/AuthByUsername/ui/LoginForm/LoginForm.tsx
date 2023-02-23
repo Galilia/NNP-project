@@ -40,8 +40,7 @@ export const LoginForm = memo(({ className, withCaret }: LoginFormProps) => {
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
             <Text title={t('Authorization from')} />
-            {/* eslint-disable-next-line i18next/no-literal-string */}
-            {error && <Text text={error} theme="error" />}
+            {error && <Text text={error} theme={TextTheme.ERROR} />}
             {!withCaret ? (
                 <>
                     <Input

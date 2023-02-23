@@ -1,7 +1,10 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Text.module.scss';
 
-export type TextTheme = 'primary' | 'error';
+export enum TextTheme {
+    PRIMARY = 'primary',
+    ERROR = 'error'
+}
 
 interface TextProps {
     className?: string;
