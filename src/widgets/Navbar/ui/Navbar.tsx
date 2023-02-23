@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useCallback, useState } from 'react';
 import { Modal } from 'shared/ui/Modal/Modal';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { LoginModal } from 'app/providers/StoreProvider/config/AuthByUsername';
+import { LoginModal } from 'features/AuthByUsername';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {

@@ -1,8 +1,11 @@
 {
   "": "",
+  "Authorization form": "Authorization form",
+  "Authorization from": "Authorization from",
   "Enter": "Enter",
   "Enter password": "Enter password",
   "Enter username": "Enter username",
+  "Login or password is not correct": "Login or password is not correct",
   "about_page": "about_page",
   "decrement": "decrement",
   "error_happened": "error_happened",
