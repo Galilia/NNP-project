@@ -2,13 +2,11 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { InputWithCaret } from 'shared/ui/InputWithCaret/InputWithCaret';
 import { useDispatch, useSelector } from 'react-redux';
-import { memo, useCallback } from 'react';
-import {
-    loginByUsername,
-} from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
+import { memo, useCallback, useState } from 'react';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { signUpByEmail } from '../../model/services/signUpByEmail/signUpByEmail';
+import { loginByEmail } from '../../model/services/loginByEmail/loginByEmail';
 import { loginSelectors } from '../../model/selectors/loginSelectors';
 import { loginActions } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
@@ -16,77 +14,79 @@ import cls from './LoginForm.module.scss';
 interface LoginFormProps {
     className?: string;
     withCaret?: boolean;
+    withFirebase?: boolean;
 }
 
-export const LoginForm = memo(({ className, withCaret }: LoginFormProps) => {
+export const LoginForm = memo(({ className, withCaret, withFirebase }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const {
-        username, password, error, isLoading,
+        email, password, error, isLoading,
     } = useSelector(loginSelectors);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const onChangeUsername = useCallback((value: string) => {
-        dispatch(loginActions.setUsername(value));
+    const onChangeEmail = useCallback((value: string) => {
+        dispatch(loginActions.setEmail(value));
     }, [dispatch]);
 
     const onChangePassword = useCallback((value: string) => {
         dispatch(loginActions.setPassword(value));
     }, [dispatch]);
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByUsername({ username, password }));
-    }, [dispatch, password, username]);
+    const onSignUpClick = useCallback(() => {
+        dispatch(signUpByEmail({ email, password }));
+    }, [dispatch, email, password]);
+
+    const onLoginByEmailClick = useCallback(() => {
+        dispatch(loginByEmail({ email, password }));
+    }, [dispatch, email, password]);
 
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
-            <Text title={t('Authorization from')} />
+            { !isLoggedIn ? <Text title={t('Register')} /> : <Text title={t('Login')} /> }
             {error && <Text text={t('Login or password is not correct')} theme={TextTheme.ERROR} />}
-            {!withCaret ? (
-                <>
-                    <Input
-                        type="text"
-                        className={cls.input}
-                        placeholder={t('Enter username')}
-                        label={t('Enter username')}
-                        autofocus
-                        onChange={onChangeUsername}
-                        value={username}
-                    />
-                    <Input
-                        type="text"
-                        className={cls.input}
-                        placeholder={t('Enter password')}
-                        label={t('Enter password')}
-                        onChange={onChangePassword}
-                        value={password}
-                    />
-                </>
+            <Input
+                type="text"
+                className={cls.input}
+                placeholder={t('Enter email')}
+                label={t('Enter email')}
+                onChange={onChangeEmail}
+                value={email}
+            />
+            <Input
+                type="text"
+                className={cls.input}
+                placeholder={t('Enter password')}
+                label={t('Enter password')}
+                onChange={onChangePassword}
+                value={password}
+            />
+
+            { !isLoggedIn ? (
+                <Button
+                    theme={ButtonTheme.OUTLINE}
+                    onClick={onSignUpClick}
+                    className={cls.loginBtn}
+                    disabled={isLoading}
+                >
+                    {t('Sign Up')}
+                </Button>
             ) : (
-                <>
-                    <InputWithCaret
-                        type="text"
-                        className={cls.input}
-                        placeholder={t('Enter username')}
-                        autofocus
-                        onChange={onChangeUsername}
-                        value={username}
-                    />
-                    <InputWithCaret
-                        type="text"
-                        className={cls.input}
-                        placeholder={t('Enter password')}
-                        onChange={onChangePassword}
-                        value={password}
-                    />
-                </>
+                <Button
+                    theme={ButtonTheme.OUTLINE}
+                    onClick={onLoginByEmailClick}
+                    className={cls.loginBtn}
+                    disabled={isLoading}
+                >
+                    {t('Login')}
+                </Button>
             )}
             <Button
-                theme={ButtonTheme.OUTLINE}
-                onClick={onLoginClick}
-                className={cls.loginBtn}
+                theme={ButtonTheme.CLEAR}
+                onClick={() => setIsLoggedIn((prev) => !prev)}
                 disabled={isLoading}
             >
-                {t('login')}
+                {!isLoggedIn ? t('already registered? please, login!') : t('dont have login, please, sign up!')}
             </Button>
         </div>
     );
