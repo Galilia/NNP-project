@@ -9,7 +9,7 @@ interface LoginModalProps {
     className?: string;
     isOpen: boolean;
     onClose: () => void;
-    withCaret?: boolean;
+    withCaret?: boolean; // with flag as addition defines to use firebase or dev server
 }
 
 export const LoginModal = ({
