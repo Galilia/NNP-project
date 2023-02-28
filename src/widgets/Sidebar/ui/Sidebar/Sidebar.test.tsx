@@ -6,7 +6,7 @@ describe('Sidebar', () => {
     test('with only first param', () => {
         componentRender(<Sidebar />);
         expect(screen.queryByTestId('sidebar')).toBeInTheDocument();
-        screen.debug();
+        // screen.debug();
     });
 
     test('test toggle', () => {
