@@ -1,9 +1,11 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Modal } from 'shared/ui/Modal/Modal';
+import React, { Suspense } from 'react';
+import { Loader } from 'shared/ui/Loader/Loader';
+import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 import {
-    LoginFormWithCaret,
-} from 'features/AuthByUsername/ui/LoginFormWithCaret/LoginFormWithCaret';
-import { LoginForm } from '../LoginForm/LoginForm';
+    LoginFormWithCaretAsync,
+} from '../LoginFormWithCaret/LoginFormWithCaret.async';
 
 interface LoginModalProps {
     className?: string;
@@ -21,6 +23,8 @@ export const LoginModal = ({
         onClose={onClose}
         lazy
     >
-        {!withCaret ? <LoginForm /> : <LoginFormWithCaret />}
+        <Suspense fallback={<Loader />}>
+            {!withCaret ? <LoginFormAsync /> : <LoginFormWithCaretAsync />}
+        </Suspense>
     </Modal>
 );

@@ -6,22 +6,33 @@ import { useDispatch, useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
     loginByUsername,
 } from '../../model/services/loginByUsername/loginByUsername';
-import { loginSelectors } from '../../model/selectors/loginSelectors';
-import { loginActions } from '../../model/slice/loginSlice';
+import {
+    getLoginError, getLoginIsLoading, getLoginPassword, getLoginUsername,
+} from '../../model/selectors/loginSelectors';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginFormWithCaret.module.scss';
 
-interface LoginFormWithCaretProps {
+export interface LoginFormWithCaretProps {
     className?: string;
 }
 
-export const LoginFormWithCaret = memo(({ className }: LoginFormWithCaretProps) => {
+const initialReducers: ReducersList = {
+    loginForm: loginReducer,
+};
+
+const LoginFormWithCaret = memo(({ className }: LoginFormWithCaretProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const {
-        username, email, password, error, isLoading,
-    } = useSelector(loginSelectors);
+    const username = useSelector(getLoginUsername);
+    const password = useSelector(getLoginPassword);
+    const error = useSelector(getLoginError);
+    const isLoading = useSelector(getLoginIsLoading);
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value));
@@ -40,32 +51,36 @@ export const LoginFormWithCaret = memo(({ className }: LoginFormWithCaretProps) 
     }, [dispatch, password, username]);
 
     return (
-        <div className={classNames(cls.LoginForm, {}, [className])}>
-            <Text title={t('Authorization')} />
-            {error && <Text text={t('Login or password is not correct')} theme={TextTheme.ERROR} />}
-            <InputWithCaret
-                type="text"
-                className={cls.input}
-                placeholder={t('Enter username')}
-                autofocus
-                onChange={onChangeUsername}
-                value={username}
-            />
-            <InputWithCaret
-                type="text"
-                className={cls.input}
-                placeholder={t('Enter password')}
-                onChange={onChangePassword}
-                value={password}
-            />
-            <Button
-                theme={ButtonTheme.OUTLINE}
-                onClick={onLoginClick}
-                className={cls.loginBtn}
-                disabled={isLoading}
-            >
-                {t('login')}
-            </Button>
-        </div>
+        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
+            <div className={classNames(cls.LoginForm, {}, [className])}>
+                <Text title={t('Authorization')} />
+                {error && <Text text={t('Login or password is not correct')} theme={TextTheme.ERROR} />}
+                <InputWithCaret
+                    type="text"
+                    className={cls.input}
+                    placeholder={t('Enter username')}
+                    autofocus
+                    onChange={onChangeUsername}
+                    value={username}
+                />
+                <InputWithCaret
+                    type="text"
+                    className={cls.input}
+                    placeholder={t('Enter password')}
+                    onChange={onChangePassword}
+                    value={password}
+                />
+                <Button
+                    theme={ButtonTheme.OUTLINE}
+                    onClick={onLoginClick}
+                    className={cls.loginBtn}
+                    disabled={isLoading}
+                >
+                    {t('login')}
+                </Button>
+            </div>
+        </DynamicModuleLoader>
     );
 });
+
+export default LoginFormWithCaret;

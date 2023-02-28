@@ -3,26 +3,37 @@ import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { useDispatch, useSelector } from 'react-redux';
-import { memo, useCallback, useState } from 'react';
+import {
+    memo, useCallback, useState,
+} from 'react';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { signUpByEmail } from '../../model/services/signUpByEmail/signUpByEmail';
 import { loginByEmail } from '../../model/services/loginByEmail/loginByEmail';
-import { loginSelectors } from '../../model/selectors/loginSelectors';
-import { loginActions } from '../../model/slice/loginSlice';
+import {
+    getLoginEmail, getLoginError, getLoginIsLoading, getLoginPassword,
+} from '../../model/selectors/loginSelectors';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
 
-interface LoginFormProps {
+export interface LoginFormProps {
     className?: string;
-    withCaret?: boolean;
-    withFirebase?: boolean;
 }
 
-export const LoginForm = memo(({ className, withCaret, withFirebase }: LoginFormProps) => {
+const initialReducers: ReducersList = {
+    loginForm: loginReducer,
+};
+
+const LoginForm = memo(({ className }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const {
-        email, password, error, isLoading,
-    } = useSelector(loginSelectors);
+    const email = useSelector(getLoginEmail);
+    const password = useSelector(getLoginPassword);
+    const error = useSelector(getLoginError);
+    const isLoading = useSelector(getLoginIsLoading);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const onChangeEmail = useCallback((value: string) => {
@@ -42,52 +53,56 @@ export const LoginForm = memo(({ className, withCaret, withFirebase }: LoginForm
     }, [dispatch, email, password]);
 
     return (
-        <div className={classNames(cls.LoginForm, {}, [className])}>
-            { !isLoggedIn ? <Text title={t('Register')} /> : <Text title={t('Login')} /> }
-            {error && <Text text={t('Login or password is not correct')} theme={TextTheme.ERROR} />}
-            <Input
-                type="text"
-                className={cls.input}
-                placeholder={t('Enter email')}
-                label={t('Enter email')}
-                onChange={onChangeEmail}
-                value={email}
-            />
-            <Input
-                type="text"
-                className={cls.input}
-                placeholder={t('Enter password')}
-                label={t('Enter password')}
-                onChange={onChangePassword}
-                value={password}
-            />
+        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
+            <div className={classNames(cls.LoginForm, {}, [className])}>
+                { !isLoggedIn ? <Text title={t('Register')} /> : <Text title={t('Login')} /> }
+                {error && <Text text={t('Login or password is not correct')} theme={TextTheme.ERROR} />}
+                <Input
+                    type="text"
+                    className={cls.input}
+                    placeholder={t('Enter email')}
+                    label={t('Enter email')}
+                    onChange={onChangeEmail}
+                    value={email}
+                />
+                <Input
+                    type="text"
+                    className={cls.input}
+                    placeholder={t('Enter password')}
+                    label={t('Enter password')}
+                    onChange={onChangePassword}
+                    value={password}
+                />
 
-            { !isLoggedIn ? (
+                { !isLoggedIn ? (
+                    <Button
+                        theme={ButtonTheme.OUTLINE}
+                        onClick={onSignUpClick}
+                        className={cls.loginBtn}
+                        disabled={isLoading}
+                    >
+                        {t('Sign Up')}
+                    </Button>
+                ) : (
+                    <Button
+                        theme={ButtonTheme.OUTLINE}
+                        onClick={onLoginByEmailClick}
+                        className={cls.loginBtn}
+                        disabled={isLoading}
+                    >
+                        {t('Login')}
+                    </Button>
+                )}
                 <Button
-                    theme={ButtonTheme.OUTLINE}
-                    onClick={onSignUpClick}
-                    className={cls.loginBtn}
+                    theme={ButtonTheme.CLEAR}
+                    onClick={() => setIsLoggedIn((prev) => !prev)}
                     disabled={isLoading}
                 >
-                    {t('Sign Up')}
+                    {!isLoggedIn ? t('already registered? please, login!') : t('dont have login, please, sign up!')}
                 </Button>
-            ) : (
-                <Button
-                    theme={ButtonTheme.OUTLINE}
-                    onClick={onLoginByEmailClick}
-                    className={cls.loginBtn}
-                    disabled={isLoading}
-                >
-                    {t('Login')}
-                </Button>
-            )}
-            <Button
-                theme={ButtonTheme.CLEAR}
-                onClick={() => setIsLoggedIn((prev) => !prev)}
-                disabled={isLoading}
-            >
-                {!isLoggedIn ? t('already registered? please, login!') : t('dont have login, please, sign up!')}
-            </Button>
-        </div>
+            </div>
+        </DynamicModuleLoader>
     );
 });
+
+export default LoginForm;
