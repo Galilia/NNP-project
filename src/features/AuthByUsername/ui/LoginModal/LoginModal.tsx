@@ -24,7 +24,7 @@ export const LoginModal = ({
         lazy
     >
         <Suspense fallback={<Loader />}>
-            {!withCaret ? <LoginFormAsync /> : <LoginFormWithCaretAsync />}
+            {!withCaret ? <LoginFormAsync onSuccess={onClose} /> : <LoginFormWithCaretAsync onSuccess={onClose} />}
         </Suspense>
     </Modal>
 );

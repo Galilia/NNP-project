@@ -1,9 +1,7 @@
 import { FC, lazy } from 'react';
-import {
-    LoginFormWithCaretProps,
-} from '../LoginFormWithCaret/LoginFormWithCaret';
+import { LoginFormProps } from '../../lib/utils/LoginForm.utils';
 
-export const LoginFormWithCaretAsync = lazy<FC<LoginFormWithCaretProps>>(() => new Promise((resolve) => {
+export const LoginFormWithCaretAsync = lazy<FC<LoginFormProps>>(() => new Promise((resolve) => {
     // @ts-ignore
     // ТАК В РЕАЛЬНЫХ ПРОЕКТАХ НЕ ДЕЛАТЬ!!!!! ДЕЛАЕМ ДЛЯ КУРСА!
     setTimeout(() => resolve(import('./LoginFormWithCaret')), 1500);
