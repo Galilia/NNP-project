@@ -1,5 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
+import { ButtonTheme } from 'shared/ui/Button/Button';
 import cls from './Text.module.scss';
 
 export enum TextTheme {
@@ -16,7 +17,7 @@ interface TextProps {
 
 export const Text = memo((props: TextProps) => {
     const {
-        className, text, title, theme,
+        className, text, title, theme = ButtonTheme.OUTLINE,
     } = props;
 
     return (

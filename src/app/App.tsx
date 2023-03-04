@@ -13,6 +13,7 @@ function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        // @ts-ignore
         dispatch(userActions.initAuthData());
     }, [dispatch]);
 

@@ -32,9 +32,7 @@ WithLoading.decorators = [StoreDecorator({
 })];
 
 export const WithCaret = Template.bind({});
-WithCaret.args = {
-    withCaret: true,
-};
+WithCaret.args = {};
 WithCaret.decorators = [StoreDecorator({
     loginForm: { username: '123', password: 'asd' },
 })];

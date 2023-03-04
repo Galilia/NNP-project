@@ -22,7 +22,7 @@ export const loginByEmail = createAsyncThunk<User, LoginByEmailProps>(
             }
 
             const data = {
-                email: response.user.email,
+                email: response.user.email ?? '',
                 id: response.user.uid,
                 token: response.user.refreshToken,
             };
