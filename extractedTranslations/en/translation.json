@@ -3,6 +3,7 @@
   "Authorization": "Authorization",
   "Authorization form": "",
   "Authorization from": "",
+  "Edit": "Edit",
   "Enter": "Enter",
   "Enter email": "Enter email",
   "Enter password": "Enter password",
@@ -10,6 +11,7 @@
   "Exit": "Exit",
   "Login": "Login",
   "Login or password is not correct": "",
+  "Profile": "Profile",
   "Register": "Register",
   "Sign Up": "Sign Up",
   "Sign up": "Sign up",
@@ -34,5 +36,7 @@
   "toggle": "",
   "update_page": "update_page",
   "you already signed up": "you already signed up",
-  "you have already signed up": "you have already signed up"
+  "you have already signed up": "you have already signed up",
+  "your_name": "your_name",
+  "your_surname": "your_surname"
 }
