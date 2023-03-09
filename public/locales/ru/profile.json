@@ -1,5 +1,11 @@
 {
   "profile": "Профиль:",
   "your_name": "Имя:",
-  "your_surname": "Фамилия:"
+  "your_surname": "Фамилия:",
+  "your_age": "Возраст:",
+  "your_city": "Город:",
+  "your_username": "Фамилия:",
+  "your_avatar": "Ссылка на аватар:",
+  "pick_currency": "Выберите валюту:",
+  "pick_country": "Выберите страну:"
 }

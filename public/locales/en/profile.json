@@ -1,5 +1,11 @@
 {
   "profile": "Profile",
   "your_name": "Name:",
-  "your_surname": "Surname:"
+  "your_surname": "Surname:",
+  "your_age": "Age:",
+  "your_city": "City:",
+  "your_username": "Username:",
+  "your_avatar": "Avatar link:",
+  "pick_currency": "Pick currency:",
+  "pick_country": "Pick country:"
 }

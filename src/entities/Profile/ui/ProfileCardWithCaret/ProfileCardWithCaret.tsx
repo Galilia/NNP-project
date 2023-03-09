@@ -1,53 +1,60 @@
 import { useTranslation } from 'react-i18next';
 import { InputWithCaret } from 'shared/ui/InputWithCaret/InputWithCaret';
+import { Currency, CurrencySelect } from 'entities/Currency';
+import { Profile } from 'entities/Profile';
+import { Country } from 'entities/Country/model/types/country';
+import { CountrySelect } from 'entities/Country';
 import cls from './ProfileCardWithCaret.module.scss';
 
 interface ProfileCardWithInputProps {
     className?: string;
-    first?: string;
-    lastname?: string;
-    age?: string | number;
-    city?: string;
-    onChangeFirstname: (value?: string) => void;
-    onChangeLastname: (value?: string) => void;
-    onChangeAge: (value?: string) => void;
-    onChangeCity: (value?: string) => void;
+    data?: Profile;
+    onChangeFirstname?: (value?: string) => void;
+    onChangeLastname?: (value?: string) => void;
+    onChangeAge?: (value?: string) => void;
+    onChangeCity?: (value?: string) => void;
+    onChangeUsername?: (value?: string) => void;
+    onChangeAvatar?: (value?: string) => void;
+    onChangeCurrency?: (currency: Currency) => void;
+    onChangeCountry?: (country: Country) => void;
     readonly?: boolean;
 }
 
 export const ProfileCardWithCaret = (props: ProfileCardWithInputProps) => {
     const {
-        first,
-        lastname,
-        age,
-        city,
+        data,
         onChangeFirstname,
         onChangeLastname,
         readonly,
         className,
         onChangeAge,
         onChangeCity,
+        onChangeUsername,
+        onChangeAvatar,
+        onChangeCurrency,
+        onChangeCountry,
     } = props;
-    const { t } = useTranslation();
+
+    const { t } = useTranslation('profile');
 
     return (
         <>
             <InputWithCaret
-                value={first}
+                value={data?.first}
                 placeholder={t('your_name')}
                 className={cls.input}
                 onChange={onChangeFirstname}
                 readonly={readonly}
             />
             <InputWithCaret
-                value={lastname}
+                value={data?.lastname}
                 placeholder={t('your_surname')}
                 className={cls.input}
                 onChange={onChangeLastname}
                 readonly={readonly}
             />
             <InputWithCaret
-                value={age}
+                value={data?.age}
                 placeholder={t('your_age')}
                 className={cls.input}
                 onChange={onChangeAge}
@@ -55,10 +62,36 @@ export const ProfileCardWithCaret = (props: ProfileCardWithInputProps) => {
                 onlyNumbers
             />
             <InputWithCaret
-                value={city}
+                value={data?.city}
                 placeholder={t('your_city')}
                 className={cls.input}
                 onChange={onChangeCity}
+                readonly={readonly}
+            />
+            <InputWithCaret
+                value={data?.username}
+                placeholder={t('your_username')}
+                className={cls.input}
+                onChange={onChangeUsername}
+                readonly={readonly}
+            />
+            <InputWithCaret
+                value={data?.avatar}
+                placeholder={t('your_avatar')}
+                className={cls.input}
+                onChange={onChangeAvatar}
+                readonly={readonly}
+            />
+            <CurrencySelect
+                className={cls.input}
+                value={data?.currency}
+                onChange={onChangeCurrency}
+                readonly={readonly}
+            />
+            <CountrySelect
+                className={cls.input}
+                value={data?.country}
+                onChange={onChangeCountry}
                 readonly={readonly}
             />
         </>

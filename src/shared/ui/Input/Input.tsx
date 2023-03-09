@@ -52,7 +52,7 @@ export const Input = memo((props: InputProps) => {
 
     return (
         <div className={classNames(cls.InputWrapper, mods, [className])}>
-            {label && <label htmlFor="input-label" className="input-label">{label}</label>}
+            {label && <label htmlFor="input-label" className={cls.inputLabel}>{label}</label>}
             <input
                 ref={ref}
                 type={type}
