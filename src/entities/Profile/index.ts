@@ -1,10 +1,13 @@
+export { ValidateProfileError } from '../Profile/model/types/profile';
+
 export {
     getProfileData,
     getProfileError,
     getProfileIsLoading,
     getProfileReadonly,
     getProfileForm,
-} from 'entities/Profile/model/selectors/profileSelectors';
+    getProfileValidateErrors,
+} from '../Profile/model/selectors/profileSelectors';
 
 export { ProfileCard } from './ui/ProfileCard/ProfileCard';
 

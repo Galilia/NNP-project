@@ -7,5 +7,10 @@
   "your_username": "Фамилия:",
   "your_avatar": "Ссылка на аватар:",
   "pick_currency": "Выберите валюту:",
-  "pick_country": "Выберите страну:"
+  "pick_country": "Выберите страну:",
+  "server_error": "Ошибка сервера при сохранении",
+  "incorrect_country": "Некорректная страна",
+  "invalid_user_data": "Имя и фамилия обязательны",
+  "no_data": "Данные не указаны",
+  "invalid_age": "Некорректный возраст"
 }
