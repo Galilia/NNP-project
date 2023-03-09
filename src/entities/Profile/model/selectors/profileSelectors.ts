@@ -6,4 +6,6 @@ export const getProfileIsLoading = (state: StateSchema) => state.profile?.isLoad
 
 export const getProfileData = (state: StateSchema) => state.profile?.data;
 
-export const getProfileFirstname = (state: StateSchema) => state?.profile?.data?.first || '';
+export const getProfileForm = (state: StateSchema) => state.profile?.form;
+
+export const getProfileReadonly = (state: StateSchema) => state.profile?.readonly;

@@ -1,17 +1,19 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import React, {
-    InputHTMLAttributes, memo, useEffect, useRef,
+    InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
 interface InputProps extends HTMLInputProps {
     className?: string;
-    value?: string;
+    value?: string | number;
     onChange?: (value: string) => void;
     autofocus?: boolean;
     label?: string;
+    readonly?: boolean;
+    onlyNumbers?: boolean;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -22,6 +24,8 @@ export const Input = memo((props: InputProps) => {
         placeholder,
         autofocus,
         label,
+        readonly,
+        onlyNumbers,
         ...otherProps
     } = props;
     const ref = useRef<HTMLInputElement>(null);
@@ -33,11 +37,21 @@ export const Input = memo((props: InputProps) => {
     }, [autofocus]);
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e.target.value);
+        if (onlyNumbers) {
+            if (/^\d*$/.test(e.target.value)) {
+                onChange?.(e.target.value);
+            }
+        } else {
+            onChange?.(e.target.value);
+        }
+    };
+
+    const mods: Mods = {
+        [cls.readonly]: readonly,
     };
 
     return (
-        <div className={classNames(cls.InputWrapper, {}, [className])}>
+        <div className={classNames(cls.InputWrapper, mods, [className])}>
             {label && <label htmlFor="input-label" className="input-label">{label}</label>}
             <input
                 ref={ref}
@@ -45,6 +59,7 @@ export const Input = memo((props: InputProps) => {
                 value={value}
                 onChange={onChangeHandler}
                 className={cls.input}
+                readOnly={readonly}
                 {...otherProps}
             />
         </div>
