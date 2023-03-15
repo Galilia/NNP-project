@@ -1,5 +1,6 @@
 {
   "": "",
+  "Article not found": "Article not found",
   "Authorization": "Authorization",
   "Authorization form": "",
   "Authorization from": "",
@@ -10,6 +11,7 @@
   "Enter password": "Enter password",
   "Enter username": "Enter username",
   "Error happened": "Error happened",
+  "Error happened during Article loading": "Error happened during Article loading",
   "Exit": "Exit",
   "Login": "Login",
   "Login or password is not correct": "",
