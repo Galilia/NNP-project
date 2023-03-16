@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { Text, TextTheme } from './Text';
+import { Text, TextSize, TextTheme } from './Text';
 
 export default {
     title: 'shared/Text',
@@ -35,6 +35,13 @@ OnlyTitle.args = {
 export const OnlyText = Template.bind({});
 OnlyText.args = {
     text: 'Description Description',
+};
+
+export const SizeL = Template.bind({});
+SizeL.args = {
+    title: 'Title lorem ipsun',
+    text: 'Description Description',
+    size: TextSize.L,
 };
 
 export const PrimaryDark = Template.bind({});
