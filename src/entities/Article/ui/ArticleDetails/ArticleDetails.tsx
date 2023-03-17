@@ -4,7 +4,7 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { memo, useCallback, useEffect } from 'react';
+import { memo } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
@@ -22,6 +22,7 @@ import {
 import {
     ArticleTextBlockComponent,
 } from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import {
     getArticleDetailsData,
@@ -41,6 +42,19 @@ const reducers: ReducersList = {
     articleDetails: articleDetailsReducer,
 };
 
+const renderBlock = (block: ArticleBlock) => {
+    switch (block.type) {
+    case ArticleBlockType.CODE:
+        return <ArticleCodeBlockComponent key={block.id} block={block} className={cls.block} />;
+    case ArticleBlockType.IMAGE:
+        return <ArticleImageBlockComponent key={block.id} block={block} className={cls.block} />;
+    case ArticleBlockType.TEXT:
+        return <ArticleTextBlockComponent key={block.id} block={block} className={cls.block} />;
+    default:
+        return null;
+    }
+};
+
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const { className, id } = props;
     const { t } = useTranslation('article-details');
@@ -50,24 +64,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const error = useSelector(getArticleDetailsError);
     const article = useSelector(getArticleDetailsData);
 
-    const renderBlock = useCallback((block: ArticleBlock) => {
-        switch (block.type) {
-        case ArticleBlockType.CODE:
-            return <ArticleCodeBlockComponent key={block.id} block={block} className={cls.block} />;
-        case ArticleBlockType.IMAGE:
-            return <ArticleImageBlockComponent key={block.id} block={block} className={cls.block} />;
-        case ArticleBlockType.TEXT:
-            return <ArticleTextBlockComponent key={block.id} block={block} className={cls.block} />;
-        default:
-            return null;
-        }
-    }, []);
-
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchArticleById(id));
-        }
-    }, [dispatch, id]);
+    useInitialEffect(() => {
+        dispatch(fetchArticleById(id));
+    });
 
     let content;
 
