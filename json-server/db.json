@@ -19,7 +19,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -100,6 +102,30 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "Shit article",
+      "id": "mRhl_RJ"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "hello moto!",
+      "id": "s514GYw"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "check 1",
+      "id": "kpNukUU"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "check 2",
+      "id": "qqfU2uq"
     }
   ],
   "users": [
@@ -118,14 +144,28 @@
       "avatar": "https://ru-static.z-dn.net/files/dad/95eafff2bc1bbd5963d3b41a0e7586c9.jpg"
     }
   ],
-  "profile": {
-    "first": "Ilia",
-    "lastname": "Tsvetkov",
-    "age": 34,
-    "currency": "EUR",
-    "country": "Israel",
-    "city": "Netanya",
-    "username": "admin3",
-    "avatar": "https://mir-s3-cdn-cf.behance.net/project_modules/fs/818606114124305.60354e9639250.jpg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "first": "Ilia",
+      "lastname": "Tsvetkov",
+      "age": 34,
+      "currency": "EUR",
+      "country": "Israel",
+      "city": "Netanya",
+      "username": "admin3",
+      "avatar": "https://mir-s3-cdn-cf.behance.net/project_modules/fs/818606114124305.60354e9639250.jpg"
+    },
+    {
+      "id": "2",
+      "first": "Alina3",
+      "lastname": "Kucher",
+      "age": 29,
+      "currency": "EUR",
+      "country": "Ukraine",
+      "city": "Netanya",
+      "username": "admin4",
+      "avatar": "https://w7.pngwing.com/pngs/805/207/png-transparent-account-avatar-profile-user-avatars-icon.png"
+    }
+  ]
 }

@@ -3,6 +3,5 @@ import { LoginFormProps } from '../../lib/utils/LoginForm.utils';
 
 export const LoginFormWithCaretAsync = lazy<FC<LoginFormProps>>(() => new Promise((resolve) => {
     // @ts-ignore
-    // ТАК В РЕАЛЬНЫХ ПРОЕКТАХ НЕ ДЕЛАТЬ!!!!!
     setTimeout(() => resolve(import('./LoginFormWithCaret')), 1500);
 }));
