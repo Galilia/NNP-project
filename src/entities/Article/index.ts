@@ -1,3 +1,5 @@
+export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
+
 export { articleData } from '../Article/mocks/data';
 
 export {
