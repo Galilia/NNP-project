@@ -5,6 +5,7 @@
   "Authorization": "Authorization",
   "Authorization form": "Authorization form",
   "Authorization from": "Authorization from",
+  "Back to List": "Back to List",
   "Cancel": "Cancel",
   "Comments": "Comments",
   "Edit": "Edit",
@@ -20,6 +21,13 @@
   "No comments": "No comments",
   "Please, update page": "Please, update page",
   "Profile": "Profile",
+  "Read next": {
+    "": {
+      "": {
+        "": ""
+      }
+    }
+  },
   "Register": "Register",
   "Save": "Save",
   "Send": "Send",
