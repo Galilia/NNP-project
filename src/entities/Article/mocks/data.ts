@@ -1,5 +1,6 @@
 import { Article } from '../model/types/article';
 
+/* eslint-disable */
 export const articleData = {
     id: '1',
     title: 'Javascript news asfasjf asfjkask f',
