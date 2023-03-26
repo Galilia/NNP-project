@@ -1,0 +1,87 @@
+.Autocomplete {
+    position: relative;
+    width: 480px;
+
+    .searchBox {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #fff;
+    }
+
+    .searchBox:focus-within {
+        border-color: blue;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        height: 40px;
+        padding: 8px;
+        border-radius: 4px;
+        font-size: 16px;
+        flex: 1;
+        border: none;
+        outline: none;
+    }
+
+    .searchIcon,
+    .clearIcon {
+        display: block;
+        width: 16px;
+        height: 16px;
+    }
+
+    .searchIcon {
+        color: #bebebe;
+        font-size: 27px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    .clearIcon {
+        color: #bebebe;
+        font-size: 23px;
+        vertical-align: middle;
+        transition: all 200ms ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            color: #dfdfdf;
+        }
+    }
+
+    .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+        z-index: 1;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            padding: 8px;
+            font-size: 16px;
+            cursor: pointer;
+
+            &:hover,
+            &:focus {
+                background-color: #f3f3f3;
+                outline: none;
+            }
+
+            &:focus {
+                box-shadow: inset 0 0 0 2px blue;
+            }
+        }
+    }
+}

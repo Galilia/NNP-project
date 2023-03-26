@@ -1,5 +1,5 @@
 import {
-    memo, MutableRefObject, ReactNode, useRef,
+    MutableRefObject, ReactNode, useRef,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
@@ -11,7 +11,7 @@ interface PageProps {
     onScrollEnd?: () => void;
 }
 
-export const Page = memo((props: PageProps) => {
+export const Page = (props: PageProps) => {
     const { className, children, onScrollEnd } = props;
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerEndOfPageRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -30,4 +30,4 @@ export const Page = memo((props: PageProps) => {
             <div ref={triggerEndOfPageRef} />
         </section>
     );
-});
+};
