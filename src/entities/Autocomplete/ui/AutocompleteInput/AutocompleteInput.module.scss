@@ -1,0 +1,51 @@
+.AutocompleteInput {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.AutocompleteInput:focus-within {
+    border-color: blue;
+}
+
+.textarea {
+    width: 100%;
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    outline: none;
+    resize: none;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.searchIcon,
+.clearIcon {
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+.searchIcon {
+    color: #bebebe;
+    font-size: 27px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.clearIcon {
+    color: #bebebe;
+    font-size: 23px;
+    vertical-align: middle;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        color: #dfdfdf;
+    }
+}
