@@ -1,4 +1,5 @@
 import {
+    ChangeEvent,
     memo, useEffect, useRef, useState,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -11,64 +12,77 @@ interface AutocompleteProps {
     className?: string;
 }
 
-interface Country {
+interface Data {
     id: number;
     name: string;
 }
 
-const simulateTextInput = (text: string) => {
-    // Simulate text input
-    const input = document.createElement('input');
-    document.body.appendChild(input);
-    input.focus();
-    input.value = text;
-    input.dispatchEvent(new Event('input'));
-    document.body.removeChild(input);
-};
-
-const getCountryNames = async (query: string): Promise<Country[]> => {
+const getDataNames = async (query: string): Promise<Data[]> => {
     const response = await fetch(`https://restcountries.com/v2/name/${query}`);
     const data = await response.json();
 
-    return data.map((country: any) => ({
-        id: country.numericCode,
-        name: country.name,
+    if (!Array.isArray(data)) {
+        throw new Error('Unexpected response format');
+    }
+
+    return data.map((item: any) => ({
+        id: item.name,
+        name: item.name,
     }));
 };
 
 export const Autocomplete = memo((props: AutocompleteProps) => {
     const { className } = props;
     const [query, setQuery] = useState('');
-    const [countries, setCountries] = useState<Country[]>([]);
+    const [shouldLoadData, setShouldLoadData] = useState(true);
+    const [searchArr, setSearchArr] = useState<Data[]>([]);
     const triggerRef = useRef<HTMLInputElement>(null);
 
-    useEffect(() => {
-        const loadCountries = async () => {
-            const queryMatch = query.match(/@(\w+)/);
-            if (queryMatch) {
-                const searchTerm = queryMatch[1];
-                const countr = await getCountryNames(searchTerm);
-                setCountries(countr);
-            } else {
-                setCountries([]);
-            }
-        };
-
-        loadCountries();
-    }, [query]);
-
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setQuery(event.target.value);
+    const extractSearchTerms = (input: string): string[] => {
+        const regex = /@\w+/g;
+        return (input.match(regex) || []).map((term) => term.slice(1));
     };
 
-    const handleTriggerClick = (country: Country) => {
-        const newQuery = `${query.replace(/@\w+/, `@${country.name}`)} `;
-        simulateTextInput(newQuery);
-        setQuery(newQuery);
-        setCountries([]);
-        if (triggerRef.current) {
-            triggerRef.current.blur();
+    const loadData = async () => {
+        const searchTerms = extractSearchTerms(query);
+        const searchResults = await Promise.all(
+            searchTerms.map(async (searchTerm) => {
+                const data = await getDataNames(searchTerm);
+                return data;
+            }),
+        );
+        setSearchArr(searchResults.flat());
+    };
+
+    useEffect(() => {
+        if (shouldLoadData) {
+            loadData();
+            setShouldLoadData(false);
         }
+        /* eslint-disable */
+    }, [query]);
+
+    const handleInputChange = async (event: ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.target;
+        setQuery(value);
+        setShouldLoadData(true);
+    };
+
+    const handleTriggerClick = (item: Data) => {
+        const searchTermToReplace = query.match(/@\w*$/)?.[0] || '';
+        const newQuery = `${query.replace(searchTermToReplace, `@${item.name}`)} `;
+        setQuery(newQuery);
+        setSearchArr([]);
+        setShouldLoadData(false);
+        console.log('newQuery', newQuery);
+        console.log('searchArr', searchArr);
+        if (triggerRef.current) {
+            triggerRef.current.focus();
+        }
+    };
+
+    const handleInputClear = () => {
+        setQuery('');
     };
 
     return (
@@ -82,19 +96,27 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
                     ref={triggerRef}
                 />
                 {query && (
-                    <Icon Svg={CloseIcon} className={cls.clearIcon} />)}
+                    <Icon
+                        Svg={CloseIcon}
+                        className={cls.clearIcon}
+                        onClick={handleInputClear}
+                    />
+                )}
             </div>
 
-            {countries.length > 0 && (
-                <ul className={cls.dropdown}>
-                    {countries.map((country) => (
-                    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-                        <li key={country.id} onClick={() => handleTriggerClick(country)}>
-                            {country.name}
-                        </li>
-                    ))}
-                </ul>
-            )}
+            <ul className={cls.dropdown}>
+                {searchArr.map((item) => (
+                    <li key={item.id}>
+                        <button
+                            type="button"
+                            className={cls.dropdownButton}
+                            onClick={() => handleTriggerClick(item)}
+                        >
+                            {item.name}
+                        </button>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 });
