@@ -153,7 +153,7 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
                 && (
                     <AutocompleteDropdown
                         dropdownRef={dropdownRef}
-                        searchArr={searchArr}
+                        items={searchArr}
                         handleTriggerClick={handleTriggerClick}
                     />
                 )}

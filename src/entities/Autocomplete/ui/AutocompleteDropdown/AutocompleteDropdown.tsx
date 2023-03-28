@@ -6,18 +6,18 @@ import cls from './AutocompleteDropdown.module.scss';
 interface AutocompleteDropdownProps {
     className?: string;
     dropdownRef: LegacyRef<HTMLUListElement> | undefined,
-    searchArr: AutocompleteSchema[],
+    items: AutocompleteSchema[],
     handleTriggerClick: (item: AutocompleteSchema) => void;
 }
 
 export const AutocompleteDropdown = memo((props: AutocompleteDropdownProps) => {
     const {
-        className, dropdownRef, searchArr, handleTriggerClick,
+        className, dropdownRef, items, handleTriggerClick,
     } = props;
 
     return (
         <ul className={classNames(cls.AutocompleteDropdown, {}, [className])} ref={dropdownRef}>
-            {searchArr.map((item: AutocompleteSchema) => (
+            {items.map((item: AutocompleteSchema) => (
                 <li key={item.id}>
                     <button
                         type="button"

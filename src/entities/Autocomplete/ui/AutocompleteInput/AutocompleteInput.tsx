@@ -33,6 +33,7 @@ export const AutocompleteInput = memo((props: AutocompleteInputProps) => {
             <Icon Svg={SearchIcon} className={cls.searchIcon} />
             <textarea
                 className={cls.textarea}
+                placeholder="Search for country pressing <"
                 value={query}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
