@@ -17,3 +17,18 @@ body {
 .content-page {
     display: flex;
 }
+
+*::-webkit-scrollbar {
+    width: 12px;               /* the width of the entire scrollbar */
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--card-bg);        /* tracking area color */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--inverted-primary-color);    /* slider color */
+    border-radius: 20px;       /* rounded runner */
+    border: 3px solid var(--primary-color);  /* margin around slider */
+}

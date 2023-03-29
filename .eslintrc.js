@@ -40,7 +40,7 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'i18next/no-literal-string':
-            ['error', { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'alt', 'placeholder'] }],
+            ['error', { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'alt', 'placeholder', 'target'] }],
         'max-len': ['error', { ignoreComments: true, code: 120 }],
         'no-console': 'warn',
         quotes: ['error', 'single'],
@@ -57,6 +57,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
+        'arrow-body-style': 'off',
     },
     globals: {
         __IS_DEV__: true,

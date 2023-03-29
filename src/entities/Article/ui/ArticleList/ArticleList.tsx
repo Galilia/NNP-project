@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
     ArticleListItemSkeleton,
@@ -14,6 +14,7 @@ interface ArticleListProps {
     articles: Article[];
     isLoading?: boolean;
     view?: ArticleView;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 const getSkeletons = (view: ArticleView) => new Array(view === 'GRID' ? 9 : 3)
@@ -27,12 +28,19 @@ export const ArticleList = memo((props: ArticleListProps) => {
         className,
         articles,
         isLoading,
+        target,
         view = 'GRID',
     } = props;
     const { t } = useTranslation();
 
     const renderArticle = (article: Article) => (
-        <ArticleListItem article={article} view={view} className={cls.card} key={article.id} />
+        <ArticleListItem
+            article={article}
+            view={view}
+            className={cls.card}
+            key={article.id}
+            target={target}
+        />
     );
 
     if (!isLoading && !articles.length) {

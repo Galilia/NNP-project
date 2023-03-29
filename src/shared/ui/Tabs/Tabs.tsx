@@ -20,8 +20,7 @@ export const Tabs = memo((props: TabsProps) => {
         className, tabs, value, onTabClick,
     } = props;
 
-    const clickHandle = useCallback((tab: TabItem) => (event: any) => {
-        event.preventDefault();
+    const clickHandle = useCallback((tab: TabItem) => () => {
         onTabClick(tab);
     }, [onTabClick]);
 

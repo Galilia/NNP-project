@@ -23,7 +23,7 @@ export const initArticlesPage = createAsyncThunk<void, URLSearchParams, ThunkCon
                 articlesPageActions.setSearch(searchParams.get('search') ?? ''),
             );
             dispatch(
-                articlesPageActions.setType(searchParams.get('type') as ArticleType ?? ''),
+                articlesPageActions.setType(searchParams.get('type') as ArticleType ?? ArticleType.ALL),
             );
 
             dispatch(articlesPageActions.initState());
