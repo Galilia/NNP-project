@@ -3,6 +3,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import {
     ArticleListItemSkeleton,
 } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
+import { Text, TextSize } from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { Article, ArticleView } from '../../model/types/article';
 import cls from './ArticleList.module.scss';
@@ -27,10 +29,19 @@ export const ArticleList = memo((props: ArticleListProps) => {
         isLoading,
         view = 'GRID',
     } = props;
+    const { t } = useTranslation();
 
     const renderArticle = (article: Article) => (
         <ArticleListItem article={article} view={view} className={cls.card} key={article.id} />
     );
+
+    if (!isLoading && !articles.length) {
+        return (
+            <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+                <Text size={TextSize.L} title={t('No articles found')} />
+            </div>
+        );
+    }
 
     return (
         <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
