@@ -1,3 +1,5 @@
+import { getArticleDetailsData } from 'entities/Article/model/selectors/articleDetailsSelectors';
+
 export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs';
 
 export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
@@ -17,3 +19,5 @@ export { Article, ArticleType, ArticleSortField } from './model/types/article';
 export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
 
 export { ArticleList } from './ui/ArticleList/ArticleList';
+
+export { getArticleDetailsData } from './model/selectors/articleDetailsSelectors';
