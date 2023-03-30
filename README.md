@@ -60,3 +60,58 @@ Also, for strict control of the chapters of architectural principles, we use our
 - `npm run lint:ts:fix` - ts file linter fix
 - `npm run lint:scss` - scss file linter check
 - `npm run lint:scss:fix` - scss file linter fix
+
+## Storybook
+
+The project describes story cases for each component. Requests to the server mocks with the help of an addon storybook-addon-mock.
+
+We create story files next to the component files with the extension .stories.tsx.
+
+- `npm run storybook` - Storybook run
+
+Learn more about Storybook: https://storybook.js.org/tutorials/intro-to-storybook/react/en/get-started/
+
+Example:
+
+```js
+import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from 'app/providers/ThemeProvider';
+import { Button, ButtonSize, ButtonTheme } from './Button';
+
+export default {
+    title: 'shared/Button',
+    component: Button,
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
+} as ComponentMeta<typeof Button>;
+
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = {
+    children: 'Text',
+};
+
+export const Clear = Template.bind({});
+Clear.args = {
+    children: 'Text',
+    theme: ButtonTheme.CLEAR,
+};
+```
+
+## Project configuration
+
+For development, the project contains 1 config:
+1. Webpack - ./config/build
+
+Webpack adapted to the main features of the application.
+All configuration is stored in /config
+
+- /config/babel - babel]
+- /config/build - webpack config
+- /config/jest - tests config
+- /config/storybook - storybook config
