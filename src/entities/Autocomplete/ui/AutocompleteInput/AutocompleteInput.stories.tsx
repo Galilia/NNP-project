@@ -4,7 +4,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { AutocompleteInput } from './AutocompleteInput';
 
 export default {
-    title: 'shared/AutocompleteInput',
+    title: 'entities/Autocomplete/AutocompleteInput',
     component: AutocompleteInput,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -14,4 +14,6 @@ export default {
 const Template: ComponentStory<typeof AutocompleteInput> = (args) => <AutocompleteInput {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    query: 'Node JS',
+};
