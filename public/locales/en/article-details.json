@@ -3,5 +3,7 @@
   "Error happened during Article loading": "Error happened during Article loading",
   "Comments": "Comments",
   "No comments": "No comments",
-  "Recommendations": "Recommendations"
+  "Recommendations": "Recommendations",
+  "Edit article with ID = ": "Edit article with ID = ",
+  "Create article": "Create article"
 }

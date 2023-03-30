@@ -2,9 +2,9 @@ import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Page } from 'widgets/Page/Page';
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls
-    from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader.module.scss';
 import { useParams } from 'react-router-dom';
+import cls
+    from './ArticleEditPage.module.scss';
 
 interface ArticleEditPageProps {
     className?: string;
@@ -12,7 +12,7 @@ interface ArticleEditPageProps {
 
 const ArticleEditPage = memo((props: ArticleEditPageProps) => {
     const { className } = props;
-    const { t } = useTranslation('about');
+    const { t } = useTranslation('article-details');
     const { id } = useParams<{id: string}>();
     const isEdit = Boolean(id);
 
