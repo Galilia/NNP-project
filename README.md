@@ -105,8 +105,8 @@ Clear.args = {
 
 ## Project configuration
 
-For development, the project contains 1 config:
-1. Webpack - ./config/build
+For development, the project contains config:
+- Webpack - ./config/build
 
 Webpack adapted to the main features of the application.
 All configuration is stored in /config
@@ -115,3 +115,23 @@ All configuration is stored in /config
 - /config/build - webpack config
 - /config/jest - tests config
 - /config/storybook - storybook config
+
+The scripts folder contains various scripts for refactoring / simplifying coding / generating reports, etc.
+
+## CI pipeline and pre commit hooks
+
+The github actions config is in /github/workflows. In CI, all types of tests are run, project and storybook assembly, linting.
+
+In precommit hooks, we check the project with linters, config in /.husky.
+
+## Working with data
+
+Interaction with data is carried out with the help of the Redux toolkit. 
+If possible, reusable entities should be normalized using the EntityAdapter.
+
+Requests to the server sends using axios library.
+
+For asynchronous reducers connection (not to pull them into a general bundle), the [DynamicModuleLoader](https://redux-dynamic-modules.js.org/#/) is used.
+
+## Working with feature-flag *** 
+*** - in development
