@@ -1,0 +1,26 @@
+h1,
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h2 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+ul {
+    list-style: none;
+    margin-left: 16px;
+
+    li {
+        margin-bottom: 8px;
+        font-size: 18px;
+        color: var(--primary-color);
+
+        &:hover {
+            color: #07f;
+            cursor: pointer;
+        }
+    }
+}
