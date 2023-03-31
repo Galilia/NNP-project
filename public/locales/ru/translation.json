@@ -26,7 +26,10 @@
     "ascending": "возрастанию",
     "descending": "убыванию",
     "creation date": "дата создания",
-    "views": "вид",
     "names": "имя",
-    "Search": "Поиск"
+    "Search": "Поиск",
+    "Main": "Главная",
+    "About": "О проекте",
+    "Profile": "Профиль",
+    "Articles": "Статьи"
 }

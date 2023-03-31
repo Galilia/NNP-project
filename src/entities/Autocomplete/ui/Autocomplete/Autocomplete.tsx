@@ -12,6 +12,8 @@ import {
     AutocompleteDropdown,
 } from 'entities/Autocomplete/ui/AutocompleteDropdown/AutocompleteDropdown';
 import { AutocompleteInput } from 'entities/Autocomplete/ui/AutocompleteInput/AutocompleteInput';
+import { $api } from 'shared/api/api';
+import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { AutocompleteSchema } from '../../model/types/autocompleteSchema';
 import cls from './Autocomplete.module.scss';
 
@@ -19,24 +21,11 @@ interface AutocompleteProps {
     className?: string;
 }
 
-const getDataNames = async (query: string): Promise<AutocompleteSchema[]> => {
-    const response = await fetch(`https://restcountries.com/v2/name/${query}`);
-    const data = await response.json();
-
-    if (!Array.isArray(data)) {
-        throw new Error('Unexpected response format');
-    }
-
-    return data.map((item: any) => ({
-        id: item.name,
-        name: item.name,
-    }));
-};
-
 export const Autocomplete = memo((props: AutocompleteProps) => {
     const { className } = props;
     const [query, setQuery] = useState('');
     const [shouldLoadData, setShouldLoadData] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [searchArr, setSearchArr] = useState<AutocompleteSchema[]>([]);
     const triggerRef = useRef<HTMLTextAreaElement>(null);
     const dropdownRef = useRef<HTMLUListElement>(null);
@@ -55,16 +44,40 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
         return (input.match(regex) || []).map((term) => term.slice(1));
     };
 
+    const getData = async (query: string): Promise<AutocompleteSchema[]> => {
+        const response = await $api.get(`https://restcountries.com/v2/name/${query}`);
+
+        if (!Array.isArray(response.data)) {
+            throw new Error('Unexpected response format');
+        }
+
+        return response.data.map((item: any) => ({
+            id: item.name,
+            name: item.name,
+        }));
+    };
+
     const loadData = async () => {
         const searchTerms = extractSearchTerms(query);
         if (searchTerms.length > 0) {
-            const searchResults = await Promise.all(
-                searchTerms.map(async (searchTerm) => {
-                    const data = await getDataNames(searchTerm);
-                    return data;
-                }),
-            );
-            setSearchArr(searchResults.flat());
+            setIsLoading(true);
+            try {
+                const searchResults = await Promise.all(
+                    searchTerms.map(async (searchTerm) => {
+                        const data = await getData(searchTerm);
+                        return data;
+                    }),
+                );
+                setSearchArr(searchResults.flat());
+                setIsLoading(false);
+            } catch (error: any) {
+                setIsLoading(false);
+                if (error.response && error.response.status === 404) {
+                    console.error('Error 404: Page not found');
+                } else {
+                    console.error('Error loading data:', error);
+                }
+            }
         }
     };
 
@@ -74,13 +87,17 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
         }
     };
 
+    const debouncedFetchData = useDebounce(() => {
+        setShouldLoadData(true);
+    }, 500);
+
     useEffect(() => {
         if (shouldLoadData) {
             loadData();
             setShouldLoadData(false);
         }
         /* eslint-disable-next-line  */
-    }, [query]);
+    }, [debouncedFetchData]);
 
     useEffect(() => {
         document.addEventListener('mousedown', handleOutsideClick);
@@ -111,10 +128,10 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
         setSelectionEnd(selectionEnd ?? 0);
     };
 
-    const handleInputChange = async (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         const { value } = event.target;
         setQuery(value);
-        setShouldLoadData(true);
+        debouncedFetchData(value);
         textareaAutoResize(event.target);
     };
 
@@ -148,13 +165,13 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
                 triggerRef={triggerRef}
                 handleInputClear={handleInputClear}
             />
-
             {searchArr.length > 0
                 && (
                     <AutocompleteDropdown
                         dropdownRef={dropdownRef}
                         items={searchArr}
                         handleTriggerClick={handleTriggerClick}
+                        isLoading={isLoading}
                     />
                 )}
         </div>
