@@ -2,7 +2,7 @@ import {
     ChangeEvent,
     KeyboardEventHandler,
     memo,
-    ReactEventHandler,
+    ReactEventHandler, useCallback,
     useEffect,
     useRef,
     useState,
@@ -14,7 +14,8 @@ import {
 import { AutocompleteInput } from 'entities/Autocomplete/ui/AutocompleteInput/AutocompleteInput';
 import { $api } from 'shared/api/api';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
-import { AutocompleteSchema } from '../../model/types/autocompleteSchema';
+import { useClickOutside } from 'shared/lib/hooks/useClickOutside/useClickOutside';
+import { AutocompleteData } from '../../model/types/autocompleteSchema';
 import cls from './Autocomplete.module.scss';
 
 interface AutocompleteProps {
@@ -26,12 +27,14 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
     const [query, setQuery] = useState('');
     const [shouldLoadData, setShouldLoadData] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
-    const [searchArr, setSearchArr] = useState<AutocompleteSchema[]>([]);
+    const [searchArr, setSearchArr] = useState<AutocompleteData[]>([]);
     const triggerRef = useRef<HTMLTextAreaElement>(null);
     const dropdownRef = useRef<HTMLUListElement>(null);
 
     const [selectionStart, setSelectionStart] = useState(0);
     const [selectionEnd, setSelectionEnd] = useState(0);
+
+    useClickOutside(() => setSearchArr([]), dropdownRef);
 
     const textareaAutoResize = (element: HTMLTextAreaElement) => {
         element.style.height = 'auto';
@@ -44,17 +47,30 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
         return (input.match(regex) || []).map((term) => term.slice(1));
     };
 
-    const getData = async (query: string): Promise<AutocompleteSchema[]> => {
-        const response = await $api.get(`https://restcountries.com/v2/name/${query}`);
+    const getData = async (query: string): Promise<AutocompleteData[]> => {
+        try {
+            const response = await $api.get(`https://restcountries.com/v2/name/${query}`);
 
-        if (!Array.isArray(response.data)) {
-            throw new Error('Unexpected response format');
+            if (!Array.isArray(response.data)) {
+                throw new Error('Unexpected response format');
+            }
+
+            return response.data.map((item: any) => ({
+                id: item.name,
+                name: item.name,
+            }));
+        } catch (error: unknown) {
+            throw new Error(`Error loading data: ${error}`);
         }
+    };
 
-        return response.data.map((item: any) => ({
-            id: item.name,
-            name: item.name,
-        }));
+    const handleDataError = (error: any) => {
+        setIsLoading(false);
+        if (error.response && error.response.status === 404) {
+            console.error('Error 404: Page not found');
+        } else {
+            console.error('Error loading data:', error);
+        }
     };
 
     const loadData = async () => {
@@ -71,19 +87,8 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
                 setSearchArr(searchResults.flat());
                 setIsLoading(false);
             } catch (error: any) {
-                setIsLoading(false);
-                if (error.response && error.response.status === 404) {
-                    console.error('Error 404: Page not found');
-                } else {
-                    console.error('Error loading data:', error);
-                }
+                handleDataError(error);
             }
-        }
-    };
-
-    const handleOutsideClick = (event: MouseEvent) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-            setSearchArr([]);
         }
     };
 
@@ -98,14 +103,6 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
         }
         /* eslint-disable-next-line  */
     }, [debouncedFetchData]);
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleOutsideClick);
-
-        return () => {
-            document.removeEventListener('mousedown', handleOutsideClick);
-        };
-    }, []);
 
     const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (event) => {
         if (event.key === 'Backspace') {
@@ -128,14 +125,14 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
         setSelectionEnd(selectionEnd ?? 0);
     };
 
-    const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const handleInputChange = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
         const { value } = event.target;
         setQuery(value);
         debouncedFetchData(value);
         textareaAutoResize(event.target);
-    };
+    }, [debouncedFetchData]);
 
-    const handleTriggerClick = (item: AutocompleteSchema) => {
+    const handleTriggerClick = useCallback((item: AutocompleteData) => {
         const searchTermToReplace = query.match(/<\w*$/)?.[0] || '';
         const newQuery = `${query.replace(searchTermToReplace, `<${item.name}>`)} `;
         setQuery(newQuery);
@@ -144,16 +141,16 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
         if (triggerRef.current) {
             triggerRef.current.focus();
         }
-    };
+    }, [query]);
 
-    const handleInputClear = () => {
+    const handleInputClear = useCallback(() => {
         setQuery('');
 
         if (triggerRef.current) {
             const textareaElement = triggerRef.current as HTMLTextAreaElement;
             textareaElement.style.height = 'auto';
         }
-    };
+    }, []);
 
     return (
         <div className={classNames(cls.Autocomplete, {}, [className])}>
