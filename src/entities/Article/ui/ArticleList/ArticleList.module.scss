@@ -1,11 +1,22 @@
 .LIST {
     .card {
-        margin-bottom: 30px;
+        margin: 30px 30px 0;
     }
 }
 
 .GRID {
+    .card {
+        margin: 30px;
+    }
+}
+
+.ArticlesPageFilters {
+    margin: 30px;
+}
+
+.grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    justify-content: space-between;
+    margin: 0 30px;
 }
