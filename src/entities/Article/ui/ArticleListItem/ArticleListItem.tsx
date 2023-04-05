@@ -26,11 +26,12 @@ interface ArticleListItemProps {
     article: Article;
     view: ArticleView;
     target?: HTMLAttributeAnchorTarget;
+    index: number;
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
     const {
-        className, article, view, target,
+        className, article, view, target, index,
     } = props;
     const { t } = useTranslation();
     const types = <Text text={article.type.join(', ')} className={cls.types} />;
@@ -40,6 +41,10 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             <Icon Svg={EyeIcon} />
         </>
     );
+
+    const handleButtonClick = () => {
+        sessionStorage.setItem('PAGE', JSON.stringify(index));
+    };
 
     if (view === 'LIST') {
         const textBlock = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
@@ -60,7 +65,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     )}
                     <div className={cls.footer}>
                         <AppLink target={target} to={RoutePath.article_details + article.id}>
-                            <Button theme={ButtonTheme.OUTLINE}>
+                            <Button theme={ButtonTheme.OUTLINE} onClick={handleButtonClick}>
                                 {t('Read next...')}
                             </Button>
                         </AppLink>

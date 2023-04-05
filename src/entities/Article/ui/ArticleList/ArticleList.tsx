@@ -1,4 +1,6 @@
-import { HTMLAttributeAnchorTarget, memo } from 'react';
+import {
+    HTMLAttributeAnchorTarget, memo, useEffect, useState,
+} from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
     ArticleListItemSkeleton,
@@ -36,6 +38,12 @@ export const ArticleList = memo((props: ArticleListProps) => {
         onLoadNextPart,
     } = props;
     const { t } = useTranslation();
+    const [selectedArticleId, setSelectedArticleId] = useState(1);
+
+    useEffect(() => {
+        const paged = sessionStorage.getItem('PAGE') || 1;
+        setSelectedArticleId(+paged);
+    }, []);
 
     const renderArticle = (index: number, article: Article) => (
         <ArticleListItem
@@ -44,6 +52,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
             className={cls.card}
             key={article.id}
             target={target}
+            index={index}
         />
     );
 
@@ -72,6 +81,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
                     data={articles}
                     itemContent={renderArticle}
                     endReached={onLoadNextPart}
+                    initialTopMostItemIndex={selectedArticleId}
                     components={{
                         Header: header,
                         Footer: footer,
