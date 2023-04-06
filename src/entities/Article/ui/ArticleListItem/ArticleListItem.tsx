@@ -10,6 +10,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from 'shared/const/localstorage';
 import {
     ArticleTextBlockComponent,
 } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
@@ -43,7 +44,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     );
 
     const handleButtonClick = () => {
-        sessionStorage.setItem('PAGE', JSON.stringify(index));
+        sessionStorage.setItem(ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX, JSON.stringify(index));
     };
 
     if (view === 'LIST') {
@@ -81,6 +82,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             target={target}
             to={RoutePath.article_details + article.id}
             className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
+            onClick={handleButtonClick}
         >
             <Card className={cls.card}>
                 <div className={cls.imageWrapper}>

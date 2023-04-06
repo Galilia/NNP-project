@@ -1,5 +1,5 @@
 import {
-    HTMLAttributeAnchorTarget, memo, useEffect, useState,
+    HTMLAttributeAnchorTarget, memo, useEffect, useRef, useState,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
@@ -7,8 +7,9 @@ import {
 } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
-import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
+import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
+import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from 'shared/const/localstorage';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { Article, ArticleView } from '../../model/types/article';
 import cls from './ArticleList.module.scss';
@@ -39,11 +40,25 @@ export const ArticleList = memo((props: ArticleListProps) => {
     } = props;
     const { t } = useTranslation();
     const [selectedArticleId, setSelectedArticleId] = useState(1);
+    const virtuosoGridRef = useRef<VirtuosoGridHandle>(null);
 
     useEffect(() => {
-        const paged = sessionStorage.getItem('PAGE') || 1;
+        const paged = sessionStorage.getItem(ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX) || 1;
         setSelectedArticleId(+paged);
     }, []);
+
+    useEffect(() => {
+        let timeoutId: NodeJS.Timeout;
+        if (view === 'GRID') {
+            timeoutId = setTimeout(() => {
+                if (virtuosoGridRef.current) {
+                    virtuosoGridRef.current.scrollToIndex(selectedArticleId);
+                }
+            }, 100);
+        }
+
+        return () => clearTimeout(timeoutId);
+    }, [selectedArticleId, view]);
 
     const renderArticle = (index: number, article: Article) => (
         <ArticleListItem
@@ -89,6 +104,8 @@ export const ArticleList = memo((props: ArticleListProps) => {
                 />
             ) : (
                 <VirtuosoGrid
+                    ref={virtuosoGridRef}
+                    totalCount={articles.length}
                     components={{
                         Header: header,
                         Footer: footer,
