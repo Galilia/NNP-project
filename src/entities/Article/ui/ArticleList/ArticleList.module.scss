@@ -10,13 +10,13 @@
     }
 }
 
-.ArticlesPageFilters {
-    margin: 30px;
+.grid {
+    margin: 0 30px;
 }
 
-.grid {
+.grid,
+.skeleton {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 30px;
+    gap: 8px;
 }

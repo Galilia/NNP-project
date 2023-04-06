@@ -45,6 +45,8 @@ export const ArticleList = memo((props: ArticleListProps) => {
     useEffect(() => {
         const paged = sessionStorage.getItem(ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX) || 1;
         setSelectedArticleId(+paged);
+
+        return () => sessionStorage.removeItem(ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX);
     }, []);
 
     useEffect(() => {
@@ -73,12 +75,12 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     const footer = () => {
         if (isLoading) {
-            return <div>{getSkeletons(view)}</div>;
+            return <div className={cls.skeleton}>{getSkeletons(view)}</div>;
         }
         return null;
     };
 
-    const header = () => <ArticlesPageFilters className={cls.ArticlesPageFilters} />;
+    const header = () => <ArticlesPageFilters />;
 
     if (!isLoading && !articles.length) {
         return (
