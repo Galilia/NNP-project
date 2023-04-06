@@ -15,10 +15,10 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/addCommentForm';
 import { Page } from 'widgets/Page/Page';
+import { VStack } from 'shared/ui/Stack';
 import {
     ArticleDetailsPageHeader,
-} from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
-import { VStack } from 'shared/ui/Stack';
+} from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { getArticleRecommend } from '../../model/slices/articleDetailsRecommendSlice';
 import {
     addCommentForArticle,

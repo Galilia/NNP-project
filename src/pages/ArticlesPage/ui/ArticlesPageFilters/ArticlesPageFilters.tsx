@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
-    ArticleSortField,
+    ArticleSortField, ArticleType,
     ArticleTypeTabs,
     ArticleView,
     ArticleViewSelector,
@@ -16,8 +16,7 @@ import { ArticleSortSelector } from 'entities/Article/ui/ArticleSortSelector/Art
 import { SortOrder } from 'shared/types';
 import {
     fetchArticlesList,
-} from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
-import { ArticleType } from 'entities/Article/model/types/article';
+} from '../../model/services/fetchArticlesList/fetchArticlesList';
 import {
     getArticlesPageOrder,
     getArticlesPageSearch,

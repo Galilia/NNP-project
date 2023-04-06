@@ -1,7 +1,7 @@
 import { LegacyRef, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { AutocompleteSchema } from 'entities/Autocomplete/model/types/autocompleteSchema';
 import { Loader } from 'shared/ui/Loader/Loader';
+import { AutocompleteSchema } from '../../model/types/autocompleteSchema';
 import cls from './AutocompleteDropdown.module.scss';
 
 interface AutocompleteDropdownProps {

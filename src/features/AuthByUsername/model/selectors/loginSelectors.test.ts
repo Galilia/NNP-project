@@ -3,7 +3,7 @@ import {
     getLoginEmail,
     getLoginError,
     getLoginIsLoading, getLoginPassword, getLoginUsername,
-} from 'features/AuthByUsername/model/selectors/loginSelectors';
+} from '../../model/selectors/loginSelectors';
 
 describe('loginSelectors.test', () => {
     describe('getLoginError', () => {

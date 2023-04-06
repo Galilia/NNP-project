@@ -1,6 +1,6 @@
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
-import { ButtonTheme } from 'shared/ui/Button/Button';
+import { ButtonTheme } from '../Button/Button';
 import cls from './Text.module.scss';
 
 export enum TextTheme {

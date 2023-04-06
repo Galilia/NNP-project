@@ -1,4 +1,4 @@
-import { getArticleDetailsData } from 'entities/Article/model/selectors/articleDetailsSelectors';
+import { getArticleDetailsData } from './model/selectors/articleDetailsSelectors';
 
 export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs';
 

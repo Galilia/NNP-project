@@ -8,12 +8,12 @@ import {
     useState,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import {
-    AutocompleteDropdown,
-} from 'entities/Autocomplete/ui/AutocompleteDropdown/AutocompleteDropdown';
-import { AutocompleteInput } from 'entities/Autocomplete/ui/AutocompleteInput/AutocompleteInput';
 import { $api } from 'shared/api/api';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
+import {
+    AutocompleteDropdown,
+} from '../../ui/AutocompleteDropdown/AutocompleteDropdown';
+import { AutocompleteInput } from '../../ui/AutocompleteInput/AutocompleteInput';
 import { AutocompleteSchema } from '../../model/types/autocompleteSchema';
 import cls from './Autocomplete.module.scss';
 
