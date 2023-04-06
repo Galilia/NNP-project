@@ -4,6 +4,7 @@
 
 .placeholder {
     margin-right: 5px;
+    color: var(--primary-color);
 }
 
 .input {
@@ -12,7 +13,7 @@
     outline: none;
     width: 100%;
     color: transparent;
-    text-shadow: 0 0 0 var(--primary-color);
+    text-shadow: 0 0 0 var(--secondary-color);
 
     &:focus {
         outline: none;

@@ -1,7 +1,7 @@
 .app_dark_theme {
     --bg-color: #090949;
     --inverted-bg-color: #e8e8ea;
-    --primary-color: #049604;
+    --primary-color: #2ffc2f;
     --secondary-color: #04ff04;
     --inverted-primary-color: #0452ff;
     --inverted-secondary-color: #0232c2;
@@ -15,4 +15,7 @@
 
     // card
     --card-bg: #141473;
+
+    // listbox
+    --listbox-bg: #141473;
 }
