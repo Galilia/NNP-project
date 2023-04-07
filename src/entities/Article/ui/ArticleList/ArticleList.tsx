@@ -1,4 +1,5 @@
 import {
+    FC,
     HTMLAttributeAnchorTarget, memo, useEffect, useRef, useState,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -7,9 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
 import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from 'shared/const/localstorage';
-import {
-    ArticleListItemSkeleton,
-} from '../../ui/ArticleListItem/ArticleListItemSkeleton';
+import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { Article, ArticleView } from '../../model/types/article';
 import cls from './ArticleList.module.scss';
@@ -23,10 +22,12 @@ interface ArticleListProps {
     onLoadNextPart?: () => void;
 }
 
-const getSkeletons = (view: ArticleView) => new Array(view === 'GRID' ? 9 : 3)
+const Header = () => <ArticlesPageFilters />;
+
+const getSkeletons = () => new Array(3)
     .fill(0)
-    .map((item, index) => (
-        <ArticleListItemSkeleton key={index} view={view} className={cls.card} />
+    .map((_, index) => (
+        <ArticleListItemSkeleton key={index} view="LIST" className={cls.card} />
     ));
 
 export const ArticleList = memo((props: ArticleListProps) => {
@@ -46,7 +47,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         const paged = sessionStorage.getItem(ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX) || 1;
         setSelectedArticleId(+paged);
 
-        return () => sessionStorage.removeItem(ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX);
+        // return () => sessionStorage.removeItem(ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX);
     }, []);
 
     useEffect(() => {
@@ -73,14 +74,16 @@ export const ArticleList = memo((props: ArticleListProps) => {
         />
     );
 
-    const footer = () => {
+    const Footer = memo(() => {
         if (isLoading) {
-            return <div className={cls.skeleton}>{getSkeletons(view)}</div>;
+            return (
+                <div className={cls.skeleton}>
+                    {getSkeletons()}
+                </div>
+            );
         }
         return null;
-    };
-
-    const header = () => <ArticlesPageFilters />;
+    });
 
     if (!isLoading && !articles.length) {
         return (
@@ -89,6 +92,13 @@ export const ArticleList = memo((props: ArticleListProps) => {
             </div>
         );
     }
+
+    // eslint-disable-next-line react/no-unstable-nested-components
+    const ItemContainerComp: FC<{ height: number; width: number; index: number }> = ({ height, width, index }) => (
+        <div className={cls.ItemContainer}>
+            <ArticleListItemSkeleton key={index} view={view} className={cls.card} />
+        </div>
+    );
 
     return (
         <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
@@ -100,8 +110,8 @@ export const ArticleList = memo((props: ArticleListProps) => {
                     endReached={onLoadNextPart}
                     initialTopMostItemIndex={selectedArticleId}
                     components={{
-                        Header: header,
-                        Footer: footer,
+                        Header,
+                        Footer,
                     }}
                 />
             ) : (
@@ -109,13 +119,17 @@ export const ArticleList = memo((props: ArticleListProps) => {
                     ref={virtuosoGridRef}
                     totalCount={articles.length}
                     components={{
-                        Header: header,
-                        Footer: footer,
+                        Header,
+                        ScrollSeekPlaceholder: ItemContainerComp,
                     }}
                     endReached={onLoadNextPart}
                     data={articles}
                     itemContent={renderArticle}
-                    listClassName={cls.grid}
+                    listClassName={cls.itemsWrapper}
+                    scrollSeekConfiguration={{
+                        enter: (velocity) => Math.abs(velocity) > 200,
+                        exit: (velocity) => Math.abs(velocity) < 30,
+                    }}
                 />
             )}
         </div>
