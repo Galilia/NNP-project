@@ -13,6 +13,6 @@ module.exports = async (layer, sliceName) => {
 export { ${firstCharUpperCase(schemaName)} } from './model/types/${schemaName}';`,
         );
     } catch (e) {
-        console.log('Не удалось создать PUBLIC API');
+        console.log('Failed to create PUBLIC API');
     }
 };
