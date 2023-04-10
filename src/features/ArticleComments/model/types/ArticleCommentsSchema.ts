@@ -1,4 +1,4 @@
-export interface AddCommentFormSchema {
+export interface ArticleCommentsSchema {
     text?: string;
     error?: string;
 }

@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AddCommentFormSchema } from '../types/addCommentForm';
+import { ArticleCommentsSchema } from '../types/ArticleCommentsSchema';
 
-const initialState: AddCommentFormSchema = {
+const initialState: ArticleCommentsSchema = {
     text: '',
 };
 
-export const addCommentFormSlice = createSlice({
-    name: 'addCommentForm',
+export const articleCommentsSlice = createSlice({
+    name: 'articleComments',
     initialState,
     reducers: {
         setText: (state, action: PayloadAction<string>) => {
@@ -52,5 +52,5 @@ export const addCommentFormSlice = createSlice({
     // },
 });
 
-export const { actions: addCommentFormActions } = addCommentFormSlice;
-export const { reducer: addCommentFormReducer } = addCommentFormSlice;
+export const { actions: articleCommentsActions } = articleCommentsSlice;
+export const { reducer: articleCommentsReducer } = articleCommentsSlice;

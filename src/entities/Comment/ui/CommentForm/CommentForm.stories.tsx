@@ -3,17 +3,17 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import AddCommentForm from './AddCommentForm';
+import CommentForm from './CommentForm';
 
 export default {
-    title: 'features/AddCommentForm',
-    component: AddCommentForm,
+    title: 'entities/CommentForm',
+    component: CommentForm,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof AddCommentForm>;
+} as ComponentMeta<typeof CommentForm>;
 
-const Template: ComponentStory<typeof AddCommentForm> = (args) => <AddCommentForm {...args} />;
+const Template: ComponentStory<typeof CommentForm> = (args) => <CommentForm {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {

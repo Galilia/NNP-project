@@ -11,7 +11,7 @@ import { ArticleDetailsSchema } from 'entities/Article';
 //     ArticleDetailsCommentsSchema,
 //     ArticleDetailsRecommendSchema,
 // } from 'pages/ArticleDetailsPage';
-import { AddCommentFormSchema } from 'features/addCommentForm';
+import { ArticleCommentsSchema } from 'features/ArticleComments';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { ScrollSaveSchema } from 'features/ScrollSave';
 import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
@@ -29,7 +29,7 @@ export interface StateSchema {
     articleDetails?: ArticleDetailsSchema;
     // articleDetailsComments?: ArticleDetailsCommentsSchema;
     // articleDetailsRecommend?: ArticleDetailsRecommendSchema;
-    addCommentForm?: AddCommentFormSchema;
+    addCommentForm?: ArticleCommentsSchema;
     articlesPage?: ArticlesPageSchema;
     articleDetailsPage?: ArticleDetailsPageSchema;
 }

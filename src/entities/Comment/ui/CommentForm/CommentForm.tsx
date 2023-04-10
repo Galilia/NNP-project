@@ -11,32 +11,32 @@ import {
 import { InputWithCaret } from 'shared/ui/InputWithCaret/InputWithCaret';
 import { HStack } from 'shared/ui/Stack';
 import {
-    addCommentFormActions,
-    addCommentFormReducer,
-} from '../../model/slices/addCommentFormSlice';
+    articleCommentsActions,
+    articleCommentsReducer,
+} from 'features/ArticleComments/model/slices/ArticleCommentsSlice';
 import {
     getAddCommentFormError,
     getAddCommentFormText,
-} from '../../model/selectors/addCommentFormSelectors';
-import cls from './AddCommentForm.module.scss';
+} from 'features/ArticleComments/model/selectors/ArticleCommentsSelectors';
+import cls from './CommentForm.module.scss';
 
-export interface AddCommentFormProps {
+export interface CommentFormProps {
     className?: string;
     onSendComment: (text: string) => void;
 }
 
 const reducers: ReducersList = {
-    addCommentForm: addCommentFormReducer,
+    addCommentForm: articleCommentsReducer,
 };
 
-const AddCommentForm = memo(({ className, onSendComment }: AddCommentFormProps) => {
+const CommentForm = memo(({ className, onSendComment }: CommentFormProps) => {
     const { t } = useTranslation();
     const text = useSelector(getAddCommentFormText);
     const error = useSelector(getAddCommentFormError);
     const dispatch = useAppDispatch();
 
     const onCommentTextChange = useCallback((value: string) => {
-        dispatch(addCommentFormActions.setText(value));
+        dispatch(articleCommentsActions.setText(value));
     }, [dispatch]);
 
     const onSendHandler = useCallback(() => {
@@ -46,7 +46,7 @@ const AddCommentForm = memo(({ className, onSendComment }: AddCommentFormProps) 
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <HStack justify="between" max className={classNames(cls.AddCommentForm, {}, [className])}>
+            <HStack justify="between" max className={classNames(cls.CommentForm, {}, [className])}>
                 <InputWithCaret
                     placeholder={t('Add comment')}
                     value={text}
@@ -64,4 +64,4 @@ const AddCommentForm = memo(({ className, onSendComment }: AddCommentFormProps) 
     );
 });
 
-export default AddCommentForm;
+export default CommentForm;
