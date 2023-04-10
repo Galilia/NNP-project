@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
 import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from 'shared/const/localstorage';
+import { HStack } from 'shared/ui/Stack';
 import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { Article, ArticleView } from '../../model/types/article';
@@ -20,6 +21,7 @@ interface ArticleListProps {
     view?: ArticleView;
     target?: HTMLAttributeAnchorTarget;
     onLoadNextPart?: () => void;
+    isRecommendation?: boolean;
 }
 
 const Header = () => <ArticlesPageFilters />;
@@ -38,6 +40,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         target,
         view = 'GRID',
         onLoadNextPart,
+        isRecommendation,
     } = props;
     const { t } = useTranslation();
     const [selectedArticleId, setSelectedArticleId] = useState(1);
@@ -73,6 +76,17 @@ export const ArticleList = memo((props: ArticleListProps) => {
             index={index}
         />
     );
+
+    if (isRecommendation) {
+        return (
+            <HStack wrap="wrap" gap="16">
+                {articles.length > 0
+                    ? articles.map((article, index) => renderArticle(index, article))
+                    : null}
+                {isLoading && getSkeletons()}
+            </HStack>
+        );
+    }
 
     const Footer = memo(() => {
         if (isLoading) {
