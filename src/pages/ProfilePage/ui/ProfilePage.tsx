@@ -1,63 +1,26 @@
 import {
-    DynamicModuleLoader,
-    ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import {
-    profileReducer,
-    fetchProfileData, getProfileValidateErrors, ValidateProfileError,
-} from 'entities/Profile';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useSelector } from 'react-redux';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { useTranslation } from 'react-i18next';
-import { EditableProfileCard } from 'widgets/EditableProfileCard/EditableProfileCard';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { useParams } from 'react-router-dom';
+    EditableProfileCard,
+} from 'widgets/EditableProfileCard/ui/EditableProfileCard/EditableProfileCard';
 import { Page } from 'widgets/Page/Page';
 import { VStack } from 'shared/ui/Stack';
-import { ProfilePageHeader } from '../ui/ProfilePageHeader/ProfilePageHeader';
-
-const reducers: ReducersList = {
-    profile: profileReducer,
-};
+import { useParams } from 'react-router-dom';
+import { Text } from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
 
 const ProfilePage = () => {
-    const dispatch = useAppDispatch();
-    const validateErrors = useSelector(getProfileValidateErrors);
     const { t } = useTranslation('profile');
     const { id } = useParams<{id: string}>();
 
-    const validateErrorTranslates = {
-        [ValidateProfileError.SERVER_ERROR]: t('server_error'),
-        [ValidateProfileError.INCORRECT_COUNTRY]: t('incorrect_country'),
-        [ValidateProfileError.INCORRECT_USER_DATA]: t('invalid_user_data'),
-        [ValidateProfileError.NO_DATA]: t('no_data'),
-        [ValidateProfileError.INCORRECT_AGE]: t('invalid_age'),
-    };
-
-    useInitialEffect(() => {
-        if (id) {
-            dispatch(fetchProfileData(id));
-        }
-    });
+    if (!id) {
+        return <Text text={t('Profile not found')} />;
+    }
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <Page>
-                <VStack gap="16" max>
-                    <ProfilePageHeader />
-                    {validateErrors?.length && validateErrors.map((err) => (
-                        <Text
-                            key={err}
-                            theme={TextTheme.ERROR}
-                            text={validateErrorTranslates[err]}
-                        />
-                    ))}
-                    <EditableProfileCard />
-                </VStack>
-
-            </Page>
-        </DynamicModuleLoader>
+        <Page>
+            <VStack gap="16" max>
+                <EditableProfileCard id={id} />
+            </VStack>
+        </Page>
     );
 };
 

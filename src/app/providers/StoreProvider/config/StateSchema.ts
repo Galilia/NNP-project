@@ -4,7 +4,6 @@ import {
 import { CounterSchema } from 'entities/Counter';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
-import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
 import { ArticleDetailsSchema } from 'entities/Article';
 // import {
@@ -16,6 +15,7 @@ import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { ScrollSaveSchema } from 'features/ScrollSave';
 import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { rtkApi } from 'shared/api/rtkApi';
+import { ProfileSchema } from 'widgets/EditableProfileCard';
 
 export interface StateSchema {
     counter: CounterSchema,

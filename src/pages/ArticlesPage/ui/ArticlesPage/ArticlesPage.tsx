@@ -1,23 +1,17 @@
 import { memo, useCallback } from 'react';
-import { ArticleList } from 'entities/Article';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
+import { ArticleInfiniteList } from '../../ui/ArticleInfiniteList/ArticleInfiniteList';
 import {
     fetchNextArticlesPage,
 } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
-import { articlesPageReducer, getArticles } from '../../model/slices/articlesPageSlice';
-import {
-    getArticlesPageError,
-    getArticlesPageIsLoading,
-    getArticlesPageView,
-} from '../../model/selectors/articlesPageSelectors';
+import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -30,10 +24,6 @@ const reducers: ReducersList = {
 
 const ArticlesPage = ({ className }: ArticlesPageProps) => {
     const dispatch = useAppDispatch();
-    const articles = useSelector(getArticles.selectAll);
-    const isLoading = useSelector(getArticlesPageIsLoading);
-    const error = useSelector(getArticlesPageError);
-    const view = useSelector(getArticlesPageView);
     const [searchParams] = useSearchParams();
 
     const onLoadNextPart = useCallback(() => {
@@ -46,12 +36,9 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <ArticleList
-                isLoading={isLoading}
-                view={view}
-                articles={articles}
-                className={cls.list}
+            <ArticleInfiniteList
                 onLoadNextPart={onLoadNextPart}
+                className={cls.list}
             />
         </DynamicModuleLoader>
     );

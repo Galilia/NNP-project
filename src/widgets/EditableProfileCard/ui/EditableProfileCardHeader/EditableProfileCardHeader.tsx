@@ -3,21 +3,25 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import {
-    getProfileReadonly,
-    profileActions,
-    updateProfileData,
-} from 'entities/Profile';
+
 import { useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { canUserEdit } from 'entities/Profile/model/selectors/profileSelectors';
 import { HStack } from 'shared/ui/Stack';
+import {
+    profileActions,
+} from '../../model/slice/profileSlice';
+import {
+    canUserEdit, getProfileReadonly,
+} from '../../model/selectors/profileSelectors';
+import {
+    updateProfileData,
+} from '../../model/services/updateProfileData/updateProfileData';
 
-interface ProfilePageHeaderProps {
+interface EditableProfileCardHeaderProps {
     className?: string;
 }
 
-export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
+export const EditableProfileCardHeader = ({ className }: EditableProfileCardHeaderProps) => {
     const { t } = useTranslation('profile');
     const readonly = useSelector(getProfileReadonly);
     const dispatch = useAppDispatch();
