@@ -50,9 +50,7 @@ The project uses 3 types of tests:
 
 The project uses eslint to check TypeScript code and stylelint to check styles.
 
-Also, for strict control of the chapters of architectural principles, we use our own eslint plugin ***
-
-*** - in development
+Also, for strict control of the chapters of architectural principles, we use our own [eslint plugin](https://www.npmjs.com/package/eslint-plugin-galilia-plugin).
 
 ### Linters run
 
