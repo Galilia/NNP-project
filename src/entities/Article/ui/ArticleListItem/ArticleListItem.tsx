@@ -16,10 +16,10 @@ import {
 } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import {
     Article,
-    ArticleBlockType,
     ArticleTextBlock,
     ArticleView,
 } from '../../model/types/article';
+import { ArticleBlockType } from '../../model/consts/articleConsts';
 import cls from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {

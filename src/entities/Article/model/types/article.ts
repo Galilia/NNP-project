@@ -1,11 +1,5 @@
 import { User } from 'entities/User';
-import { ArticleType } from '../consts/articleConsts';
-
-export enum ArticleBlockType {
-    CODE = 'CODE',
-    IMAGE = 'IMAGE',
-    TEXT = 'TEXT'
-}
+import { ArticleBlockType, ArticleType } from '../consts/articleConsts';
 
 export type ArticleView = 'LIST' | 'GRID';
 

@@ -24,7 +24,8 @@ import {
 import {
     ArticleTextBlockComponent,
 } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
+import { ArticleBlock } from '../../model/types/article';
+import { ArticleBlockType } from '../../model/consts/articleConsts';
 import {
     getArticleDetailsData,
     getArticleDetailsError,
