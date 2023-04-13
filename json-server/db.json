@@ -712,13 +712,13 @@
   "profile": [
     {
       "id": "1",
-      "first": "Ilia",
+      "first": "Ilia new",
       "lastname": "Galperin",
       "age": 34,
-      "currency": "RUB",
-      "country": "Belarus",
+      "currency": "EUR",
+      "country": "Israel",
       "city": "Netanya",
-      "username": "admin3",
+      "username": "admin",
       "avatar": "https://mir-s3-cdn-cf.behance.net/project_modules/fs/818606114124305.60354e9639250.jpg"
     },
     {
