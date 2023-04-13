@@ -40,8 +40,9 @@ export const Page = (props: PageProps) => {
     });
 
     const onScroll: UIEventHandler<HTMLElement> = useThrottle((e) => {
+        const target = e.currentTarget;
         dispatch(scrollSaveActions.setScrollPosition({
-            position: e.currentTarget.scrollTop,
+            position: target.scrollTop,
             path: pathname,
         }));
     }, 500);

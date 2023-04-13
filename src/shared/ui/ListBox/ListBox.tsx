@@ -16,11 +16,11 @@ interface ListBoxProps {
     items?: ListBoxItem[];
     className?: string;
     value?: string;
-    defaultValue?: string;
+    defaultValue?: string | null | undefined;
     onChange?: (value: string) => void;
     readonly?: boolean;
     direction?: DropdownDirection;
-    label?: string;
+    label?: string | null | undefined;
 }
 
 const mapDirectionClass: Record<DropdownDirection, string> = {

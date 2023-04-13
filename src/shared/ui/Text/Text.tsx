@@ -23,8 +23,8 @@ export enum TextSize {
 
 interface TextProps {
     className?: string;
-    title?: string;
-    text?: string;
+    title?: string | null | undefined;
+    text?: string | null | undefined;
     theme?: TextTheme;
     align?: TextAlign;
     size?: TextSize;

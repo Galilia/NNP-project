@@ -13,6 +13,7 @@ interface InputWithCaretProps extends HTMLInputProps {
     autofocus?: boolean;
     readonly?: boolean;
     onlyNumbers?: boolean;
+    placeholder: string;
 }
 
 export const InputWithCaret = memo((props: InputWithCaretProps) => {
