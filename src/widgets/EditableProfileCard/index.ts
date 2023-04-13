@@ -1,6 +1,6 @@
 export { EditableProfileCard } from './ui/EditableProfileCard/EditableProfileCard';
 export { EditableProfileCardHeader } from './ui/EditableProfileCardHeader/EditableProfileCardHeader';
-export { ProfileSchema } from './model/types/profile';
+export type { ProfileSchema } from './model/types/profile';
 
 export {
     getProfileData,
