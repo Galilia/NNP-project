@@ -21,4 +21,4 @@ export {
     profileReducer,
 } from './model/slice/profileSlice';
 
-export { ValidateProfileError } from './model/types/profile';
+export { ValidateProfileError } from './model/consts/profileConsts';
