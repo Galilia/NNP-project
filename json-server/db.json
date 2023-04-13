@@ -692,14 +692,21 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN",
+      "roles": ["ADMIN"],
       "avatar": "https://www.meme-arsenal.com/memes/e7967c87c80b0949cd3696fe9147ba56.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER",
+      "roles": ["USER"],
+      "avatar": "https://ru-static.z-dn.net/files/dad/95eafff2bc1bbd5963d3b41a0e7586c9.jpg"
+    },
+    {
+      "id": "3",
+      "username": "manager",
+      "password": "123",
+      "roles": ["MANAGER"],
       "avatar": "https://ru-static.z-dn.net/files/dad/95eafff2bc1bbd5963d3b41a0e7586c9.jpg"
     }
   ],

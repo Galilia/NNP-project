@@ -40,6 +40,10 @@
     // Indexes
     --modal-z-index: 10;
     --modal-z-index-off: -1;
+    --sidebar-btn-z-index: 999;
+    --listbox-options-z-index: 90;
+    --menu-z-index: 100;
+    --autocomlete-z-index: 99;
 
     // Colors
     --overlay-color: rgba(0 0 0 / 60%);

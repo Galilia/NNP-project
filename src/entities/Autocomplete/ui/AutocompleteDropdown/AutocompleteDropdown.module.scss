@@ -9,7 +9,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
-    z-index: 1;
+    z-index: var(--autocomlete-z-index);
     list-style: none;
     padding: 0;
     margin: 0;
