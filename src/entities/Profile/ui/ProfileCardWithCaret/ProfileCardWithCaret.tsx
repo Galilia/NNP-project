@@ -45,6 +45,7 @@ export const ProfileCardWithCaret = (props: ProfileCardWithInputProps) => {
                 className={cls.input}
                 onChange={onChangeFirstname}
                 readonly={readonly}
+                data-testid="ProfileCard.firstname"
             />
             <InputWithCaret
                 value={data?.lastname}
@@ -52,6 +53,7 @@ export const ProfileCardWithCaret = (props: ProfileCardWithInputProps) => {
                 className={cls.input}
                 onChange={onChangeLastname}
                 readonly={readonly}
+                data-testid="ProfileCard.lastname"
             />
             <InputWithCaret
                 value={data?.age}
