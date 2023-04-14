@@ -1,12 +1,10 @@
 import {
-    FC,
-    HTMLAttributeAnchorTarget, memo, useEffect, useRef, useState,
+    FC, HTMLAttributeAnchorTarget, memo, useEffect, useRef, useState,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
-import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
 import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from 'shared/const/localstorage';
 import { HStack } from 'shared/ui/Stack';
 import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSkeleton';
@@ -22,9 +20,8 @@ interface ArticleListProps {
     target?: HTMLAttributeAnchorTarget;
     onLoadNextPart?: () => void;
     isRecommendation?: boolean;
+    Header?: () => JSX.Element;
 }
-
-const Header = () => <ArticlesPageFilters />;
 
 const getSkeletons = () => new Array(3)
     .fill(0)
@@ -41,6 +38,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         view = 'GRID',
         onLoadNextPart,
         isRecommendation,
+        Header,
     } = props;
     const { t } = useTranslation();
     const [selectedArticleId, setSelectedArticleId] = useState(1);

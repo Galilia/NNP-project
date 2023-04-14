@@ -3,6 +3,7 @@ import { memo } from 'react';
 import { ArticleList } from 'entities/Article';
 import { Text } from 'shared/ui/Text/Text';
 import { useSelector } from 'react-redux';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { getArticles } from '../../model/slices/articlesPageSlice';
 import {
     getArticlesPageError,
@@ -14,6 +15,8 @@ interface ArticleInfiniteListProps {
     className?: string;
     onLoadNextPart?: () => void;
 }
+
+const Header = () => <ArticlesPageFilters />;
 
 export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
     const { className, onLoadNextPart } = props;
@@ -34,6 +37,7 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
             articles={articles}
             className={className}
             onLoadNextPart={onLoadNextPart}
+            Header={Header}
         />
     );
 });
