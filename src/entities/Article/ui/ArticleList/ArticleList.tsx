@@ -1,11 +1,10 @@
 import {
-    FC, HTMLAttributeAnchorTarget, memo, useEffect, useRef, useState,
+    FC, HTMLAttributeAnchorTarget, memo, useEffect, useRef,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
-import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from 'shared/const/localstorage';
 import { HStack } from 'shared/ui/Stack';
 import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
@@ -19,8 +18,10 @@ interface ArticleListProps {
     view?: ArticleView;
     target?: HTMLAttributeAnchorTarget;
     onLoadNextPart?: () => void;
-    isRecommendation?: boolean;
+    virtualized?: boolean;
     Header?: () => JSX.Element;
+    scrollIdx?: number;
+    handleScrollIndexClick?: (index: number) => void;
 }
 
 const getSkeletons = () => new Array(3)
@@ -37,32 +38,26 @@ export const ArticleList = memo((props: ArticleListProps) => {
         target,
         view = 'GRID',
         onLoadNextPart,
-        isRecommendation,
+        virtualized = true,
         Header,
+        scrollIdx,
+        handleScrollIndexClick,
     } = props;
     const { t } = useTranslation();
-    const [selectedArticleId, setSelectedArticleId] = useState(1);
     const virtuosoGridRef = useRef<VirtuosoGridHandle>(null);
-
-    useEffect(() => {
-        const paged = sessionStorage.getItem(ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX) || 1;
-        setSelectedArticleId(+paged);
-
-        // return () => sessionStorage.removeItem(ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX);
-    }, []);
 
     useEffect(() => {
         let timeoutId: NodeJS.Timeout;
         if (view === 'GRID') {
             timeoutId = setTimeout(() => {
                 if (virtuosoGridRef.current) {
-                    virtuosoGridRef.current.scrollToIndex(selectedArticleId);
+                    virtuosoGridRef.current.scrollToIndex(scrollIdx as number);
                 }
             }, 100);
         }
 
         return () => clearTimeout(timeoutId);
-    }, [selectedArticleId, view]);
+    }, [scrollIdx, view]);
 
     const renderArticle = (index: number, article: Article) => (
         <ArticleListItem
@@ -71,11 +66,11 @@ export const ArticleList = memo((props: ArticleListProps) => {
             className={cls.card}
             key={article.id}
             target={target}
-            index={index}
+            handleButtonClick={handleScrollIndexClick ? () => handleScrollIndexClick(index) : undefined}
         />
     );
 
-    if (isRecommendation) {
+    if (!virtualized) {
         return (
             <HStack wrap="wrap" gap="16">
                 {articles.length > 0
@@ -120,7 +115,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
                     data={articles}
                     itemContent={renderArticle}
                     endReached={onLoadNextPart}
-                    initialTopMostItemIndex={selectedArticleId}
+                    initialTopMostItemIndex={scrollIdx}
                     components={{
                         Header,
                         Footer,

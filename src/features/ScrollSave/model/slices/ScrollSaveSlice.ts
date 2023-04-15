@@ -3,6 +3,7 @@ import { ScrollSaveSchema } from '../types/scrollSaveSchema';
 
 const initialState: ScrollSaveSchema = {
     scroll: {},
+    idx: 0,
 };
 
 export const scrollSaveSlice = createSlice({
@@ -12,8 +13,8 @@ export const scrollSaveSlice = createSlice({
         setScrollPosition: (state, { payload }: PayloadAction<{path: string, position: number}>) => {
             state.scroll[payload.path] = payload.position;
         },
-        setScrollArticleListItemId: (state, { payload }: PayloadAction<{path: string, id: number}>) => {
-            state.scroll[payload.path] = payload.id;
+        setScrollIndex: (state, action: PayloadAction<number>) => {
+            state.idx = action.payload;
         },
     },
 });

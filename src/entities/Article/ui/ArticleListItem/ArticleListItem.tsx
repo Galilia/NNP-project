@@ -10,15 +10,10 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from 'shared/const/localstorage';
 import {
     ArticleTextBlockComponent,
 } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
-import {
-    Article,
-    ArticleTextBlock,
-    ArticleView,
-} from '../../model/types/article';
+import { Article, ArticleTextBlock, ArticleView } from '../../model/types/article';
 import { ArticleBlockType } from '../../model/consts/articleConsts';
 import cls from './ArticleListItem.module.scss';
 
@@ -27,12 +22,12 @@ interface ArticleListItemProps {
     article: Article;
     view: ArticleView;
     target?: HTMLAttributeAnchorTarget;
-    index: number;
+    handleButtonClick?: () => void;
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
     const {
-        className, article, view, target, index,
+        className, article, view, target, handleButtonClick,
     } = props;
     const { t } = useTranslation();
     const types = <Text text={article.type.join(', ')} className={cls.types} />;
@@ -42,10 +37,6 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             <Icon Svg={EyeIcon} />
         </>
     );
-
-    const handleButtonClick = () => {
-        sessionStorage.setItem(ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX, JSON.stringify(index));
-    };
 
     if (view === 'LIST') {
         const textBlock = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
