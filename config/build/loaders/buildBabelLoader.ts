@@ -25,7 +25,7 @@ export function buildBabelLoader({ isDev, isTsx }: buildBabelLoaderProps) {
                         },
                     ],
                     ['@babel/plugin-transform-runtime'],
-                    isTsx && [
+                    isTsx && !isDev && [
                         babelRemovePropsPlugin,
                         { props: ['data-testid'] },
                     ],
