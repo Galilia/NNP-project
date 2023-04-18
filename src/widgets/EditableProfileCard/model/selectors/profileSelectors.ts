@@ -1,6 +1,6 @@
-import { StateSchema } from 'app/providers/StoreProvider';
 import { createSelector } from '@reduxjs/toolkit';
-import { getUserAuthData } from 'entities/User';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { getUserAuthData } from '@/entities/User';
 
 export const getProfileError = (state: StateSchema) => state.profile?.error;
 

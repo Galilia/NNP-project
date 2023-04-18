@@ -1,11 +1,11 @@
 import {
     ChangeEvent, KeyboardEventHandler, LegacyRef, memo,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Icon } from 'shared/ui/Icon/Icon';
-import SearchIcon from 'shared/assets/icons/search.svg';
-import CloseIcon from 'shared/assets/icons/close-24-24.svg';
 import cls from './AutocompleteInput.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Icon } from '@/shared/ui/Icon/Icon';
+import SearchIcon from '@/shared/assets/icons/search.svg';
+import CloseIcon from '@/shared/assets/icons/close-24-24.svg';
 
 interface AutocompleteInputProps {
     className?: string;

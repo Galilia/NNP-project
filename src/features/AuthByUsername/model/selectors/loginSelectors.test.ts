@@ -1,9 +1,9 @@
-import { StateSchema } from 'app/providers/StoreProvider';
 import {
     getLoginEmail,
     getLoginError,
     getLoginIsLoading, getLoginPassword, getLoginUsername,
 } from '../../model/selectors/loginSelectors';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('loginSelectors.test', () => {
     describe('getLoginError', () => {

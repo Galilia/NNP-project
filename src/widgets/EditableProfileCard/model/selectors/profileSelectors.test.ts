@@ -1,6 +1,3 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
 import { ValidateProfileError } from '../../model/consts/profileConsts';
 import {
     getProfileData,
@@ -10,6 +7,9 @@ import {
     getProfileReadonly,
     getProfileValidateErrors,
 } from './profileSelectors';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
 
 const data = {
     username: 'admin',

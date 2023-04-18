@@ -1,6 +1,6 @@
-import { StateSchema } from 'app/providers/StoreProvider';
 import { createSelector } from '@reduxjs/toolkit';
 import { CounterSchema } from '../types/counterSchema';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 export const getCounter = (state: StateSchema) => state.counter;
 

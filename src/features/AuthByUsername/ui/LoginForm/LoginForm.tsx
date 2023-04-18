@@ -1,17 +1,8 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Input } from 'shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
 import {
     memo, useCallback, useState,
 } from 'react';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { signUpByEmail } from '../../model/services/signUpByEmail/signUpByEmail';
 import { loginByEmail } from '../../model/services/loginByEmail/loginByEmail';
 import {
@@ -20,6 +11,15 @@ import {
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { LoginFormProps } from '../../lib/utils/LoginForm.utils';
 import cls from './LoginForm.module.scss';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Text, TextTheme } from '@/shared/ui/Text/Text';
+import { Input } from '@/shared/ui/Input/Input';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 const initialReducers: ReducersList = {
     loginForm: loginReducer,

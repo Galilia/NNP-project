@@ -1,24 +1,24 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import cls from './CommentForm.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { InputWithCaret } from 'shared/ui/InputWithCaret/InputWithCaret';
-import { HStack } from 'shared/ui/Stack';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { InputWithCaret } from '@/shared/ui/InputWithCaret/InputWithCaret';
+import { HStack } from '@/shared/ui/Stack';
 import {
     articleCommentsActions,
     articleCommentsReducer,
-} from 'features/ArticleComments/model/slices/ArticleCommentsSlice';
+} from '@/features/ArticleComments/model/slices/ArticleCommentsSlice';
 import {
     getAddCommentFormError,
     getAddCommentFormText,
-} from 'features/ArticleComments/model/selectors/ArticleCommentsSelectors';
-import cls from './CommentForm.module.scss';
+} from '@/features/ArticleComments/model/selectors/ArticleCommentsSelectors';
 
 export interface CommentFormProps {
     className?: string;

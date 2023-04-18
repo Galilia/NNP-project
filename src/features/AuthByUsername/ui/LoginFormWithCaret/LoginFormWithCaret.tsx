@@ -1,15 +1,6 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { InputWithCaret } from 'shared/ui/InputWithCaret/InputWithCaret';
 import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { LoginFormProps } from '../../lib/utils/LoginForm.utils';
 import {
     loginByUsername,
@@ -19,6 +10,15 @@ import {
 } from '../../model/selectors/loginSelectors';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginFormWithCaret.module.scss';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Text, TextTheme } from '@/shared/ui/Text/Text';
+import { InputWithCaret } from '@/shared/ui/InputWithCaret/InputWithCaret';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 const initialReducers: ReducersList = {
     loginForm: loginReducer,

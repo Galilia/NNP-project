@@ -1,4 +1,3 @@
-import path from 'path';
 import webpack from 'webpack';
 import { buildResolvers } from './buildResolvers';
 import { buildLoaders } from './buildLoaders';

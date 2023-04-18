@@ -1,15 +1,15 @@
 import {
     FC, HTMLAttributeAnchorTarget, memo, useEffect, useRef,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Text, TextSize } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
-import { HStack } from 'shared/ui/Stack';
 import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { Article, ArticleView } from '../../model/types/article';
 import cls from './ArticleList.module.scss';
+import { HStack } from '@/shared/ui/Stack';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface ArticleListProps {
     className?: string;

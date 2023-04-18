@@ -5,6 +5,15 @@
 
 import path from 'path';
 
+const aliases = {
+    '^@/shared(.*)$': '<rootDir>/src/shared$1',
+    '^@/entities(.*)$': '<rootDir>/src/entities$1',
+    '^@/features(.*)$': '<rootDir>/src/features$1',
+    '^@/widgets(.*)$': '<rootDir>/src/widgets$1',
+    '^@/pages(.*)$': '<rootDir>/src/pages$1',
+    '^@/app(.*)$': '<rootDir>/src/app$1',
+};
+
 export default {
     clearMocks: true,
     testEnvironment: 'jsdom',
@@ -34,6 +43,7 @@ export default {
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        ...aliases,
     },
     globals: {
         __IS_DEV__: true,

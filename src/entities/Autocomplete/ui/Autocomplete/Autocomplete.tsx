@@ -7,15 +7,15 @@ import {
     useRef,
     useState,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { $api } from 'shared/api/api';
-import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import {
     AutocompleteDropdown,
 } from '../../ui/AutocompleteDropdown/AutocompleteDropdown';
 import { AutocompleteInput } from '../../ui/AutocompleteInput/AutocompleteInput';
 import { AutocompleteSchema } from '../../model/types/autocompleteSchema';
 import cls from './Autocomplete.module.scss';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
+import { $api } from '@/shared/api/api';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface AutocompleteProps {
     className?: string;

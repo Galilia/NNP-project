@@ -1,11 +1,11 @@
 import { Menu } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
-import { DropdownDirection } from 'shared/types/ui';
 import { AppLink } from '../../../AppLink/AppLink';
 import { classNames } from '../../../../lib/classNames/classNames';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popup.module.scss';
 import cls from './Menu.module.scss';
+import { DropdownDirection } from '@/shared/types/ui';
 
 export interface DropdownItem {
     disabled?: boolean;
