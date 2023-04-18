@@ -38,12 +38,13 @@
     --btn-xl: var(--btn-size-xl) / var(--btn-line-xl) var(--font-family-main);
 
     // Indexes
-    --modal-z-index: 10;
+    --modal-z-index: 100;
     --modal-z-index-off: -1;
-    --sidebar-btn-z-index: 999;
+    --sidebar-btn-z-index: 10;
     --listbox-options-z-index: 90;
     --menu-z-index: 100;
     --autocomlete-z-index: 99;
+    --drawer-z-index: 100;
 
     // Colors
     --overlay-color: rgba(0 0 0 / 60%);
