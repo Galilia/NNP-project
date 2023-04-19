@@ -1,9 +1,8 @@
-import { useTranslation } from 'react-i18next';
 import { memo, useState } from 'react';
 import { Icon } from '../Icon/Icon';
 import StarIcon from '../../assets/icons/star.svg';
 import cls from './StarRating.module.scss';
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface StarRatingProps {
     className?: string;
@@ -18,8 +17,7 @@ export const StarRating = memo((props: StarRatingProps) => {
     const {
         className, onSelect, size = 30, selectedStars = 0,
     } = props;
-    const { t } = useTranslation();
-    const [currentStartsCount, setCurrentStartsCount] = useState(0);
+    const [currentStartsCount, setCurrentStartsCount] = useState(selectedStars);
     const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
 
     const onHover = (starsCount: number) => () => {

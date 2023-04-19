@@ -763,5 +763,76 @@
       "username": "admin4",
       "avatar": "https://w7.pngwing.com/pngs/805/207/png-transparent-account-avatar-profile-user-avatars-icon.png"
     }
+  ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Good article",
+      "userId": "1",
+      "articleId": "1"
+    },
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Good article",
+      "userId": "1",
+      "articleId": "7"
+    },
+    {
+      "id": "2",
+      "rate": 2,
+      "feedback": "Good article",
+      "userId": "1",
+      "articleId": "2"
+    },
+    {
+      "userId": "1",
+      "articleId": "3",
+      "rate": 5,
+      "feedback": "First 5",
+      "id": "w16LILD"
+    },
+    {
+      "userId": "1",
+      "articleId": "4",
+      "rate": 1,
+      "feedback": "",
+      "id": "xUSaAhT"
+    },
+    {
+      "userId": "1",
+      "articleId": "13",
+      "rate": 1,
+      "id": "6CpeIV6"
+    },
+    {
+      "userId": "1",
+      "articleId": "14",
+      "rate": 2,
+      "id": "TaMCEk4"
+    },
+    {
+      "userId": "1",
+      "articleId": "6",
+      "rate": 2,
+      "id": "fxVuyGZ"
+    }
+  ],
+  "profile-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Good article",
+      "userId": "1",
+      "profileId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 2,
+      "feedback": "Good article",
+      "userId": "1",
+      "profileId": "2"
+    }
   ]
 }

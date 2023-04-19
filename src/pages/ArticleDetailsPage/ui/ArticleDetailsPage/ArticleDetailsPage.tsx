@@ -13,6 +13,7 @@ import { Page } from '@/widgets/Page/Page';
 import { VStack } from '@/shared/ui/Stack';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { ArticleComments } from '@/features/ArticleComments';
+import { ArticleRating } from '@/features/ArticleRating';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -23,7 +24,11 @@ const reducers: ReducersList = {
 };
 
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
-    const { id = '1' } = useParams<{id: string}>();
+    const { id } = useParams<{id: string}>();
+
+    if (!id) {
+        return null;
+    }
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -31,6 +36,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
                 <VStack gap="16" max>
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
+                    <ArticleRating articleId={id} />
                     <ArticleRecommendationsList />
                     <ArticleComments id={id} />
                 </VStack>

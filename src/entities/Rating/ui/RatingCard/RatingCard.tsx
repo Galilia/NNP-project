@@ -13,20 +13,21 @@ import { Drawer } from '@/shared/ui/Drawer/Drawer';
 
 interface RatingCardProps {
     className?: string;
-    title?: string;
-    feedbackTitle?: string;
+    title?: string | null | undefined;
+    feedbackTitle?: string | null | undefined;
     hasFeedback: boolean;
     onCancel?: (starsCount: number) => void;
     onAccept?: (starsCount: number, feedback?: string) => void;
+    rate?: number;
 }
 
 export const RatingCard = memo((props: RatingCardProps) => {
     const {
-        className, title, feedbackTitle, hasFeedback, onCancel, onAccept,
+        className, title, feedbackTitle, hasFeedback, onCancel, onAccept, rate = 0,
     } = props;
     const { t } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [starsCount, setStarsCount] = useState(0);
+    const [starsCount, setStarsCount] = useState(rate);
     const [feedback, setFeedback] = useState('');
     const isMobile = useDevice();
 
@@ -61,10 +62,10 @@ export const RatingCard = memo((props: RatingCardProps) => {
     );
 
     return (
-        <Card className={classNames('', {}, [className])}>
+        <Card className={classNames('', {}, [className])} fullWidth>
             <VStack align="center" gap="8">
-                <Text title={title} />
-                <StarRating size={40} onSelect={onSelectStars} />
+                <Text title={starsCount ? t('Thanks for feedback!') : title} />
+                <StarRating selectedStars={rate} size={40} onSelect={onSelectStars} />
             </VStack>
             {isMobile
                 ? (
