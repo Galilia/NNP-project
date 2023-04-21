@@ -1,10 +1,10 @@
-import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useArticleRating, useRateArticle } from '../../api/articleRatingApi';
+import { useGetArticleRating, useRateArticle } from '../../api/articleRatingApi';
 import { RatingCard } from '@/entities/Rating';
 import { getUserAuthData } from '@/entities/User';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { useTranslationProps } from '@/shared/lib/hooks/useTranslationProps/useTranslationProps';
 
 export interface ArticleRatingProps {
     className?: string;
@@ -13,15 +13,16 @@ export interface ArticleRatingProps {
 
 const ArticleRating = memo((props: ArticleRatingProps) => {
     const { className, articleId } = props;
-    const { t } = useTranslation();
     const userData = useSelector(getUserAuthData);
     const userId = userData?.id ?? '';
     const [rateArticleMutation] = useRateArticle();
-    const { data, isLoading } = useArticleRating({
+    const { data, isLoading } = useGetArticleRating({
         userId,
         articleId,
     });
     const rating = data?.[0];
+    const _rateTheArticle = useTranslationProps('Rate the article');
+    const _leaveYourFeedback = useTranslationProps('Leave your feedback, please');
 
     const handleRateArticle = useCallback((starsCount: number, feedback?: string) => {
         try {
@@ -54,8 +55,8 @@ const ArticleRating = memo((props: ArticleRatingProps) => {
             onCancel={onCancel}
             rate={rating?.rate}
             className={className}
-            title={t('Rate the article')}
-            feedbackTitle={t('Leave your feedback, please')}
+            title={_rateTheArticle}
+            feedbackTitle={_leaveYourFeedback}
             hasFeedback
         />
     );

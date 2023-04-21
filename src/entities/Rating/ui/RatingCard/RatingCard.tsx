@@ -13,8 +13,8 @@ import { Drawer } from '@/shared/ui/Drawer/Drawer';
 
 interface RatingCardProps {
     className?: string;
-    title?: string | null | undefined;
-    feedbackTitle?: string | null | undefined;
+    title?: string;
+    feedbackTitle?: string;
     hasFeedback: boolean;
     onCancel?: (starsCount: number) => void;
     onAccept?: (starsCount: number, feedback?: string) => void;
