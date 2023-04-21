@@ -1,7 +1,11 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useGetProfileRating, useUpdateRateProfile } from '../../api/profileRatingApi';
+import {
+    useGetProfileRating,
+    useUpdateNotificationProfile,
+    useUpdateRateProfile,
+} from '../../api/profileRatingApi';
 import { RatingCard } from '@/entities/Rating';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { getUserAuthData } from '@/entities/User';
@@ -12,12 +16,20 @@ export interface ProfileRatingProps {
 }
 
 const ProfileRating = memo((props: ProfileRatingProps) => {
-    const { className, profileId } = props;
+    const {
+        className,
+        profileId,
+    } = props;
     const { t } = useTranslation();
     const userData = useSelector(getUserAuthData);
     const userId = userData?.id ?? '';
+    const username = userData?.username ?? '';
     const [rateProfileMutation] = useUpdateRateProfile();
-    const { data, isLoading } = useGetProfileRating({
+    const [notificationProfileMutation] = useUpdateNotificationProfile();
+    const {
+        data,
+        isLoading,
+    } = useGetProfileRating({
         userId,
         profileId,
     });
@@ -38,13 +50,29 @@ const ProfileRating = memo((props: ProfileRatingProps) => {
         }
     }, [profileId, rateProfileMutation, userId]);
 
+    const handleNotifyProfile = useCallback(() => {
+        try {
+            notificationProfileMutation({
+                userId,
+                profileId,
+                title: `User ${username} liked you!`,
+                description: 'You\'ve been Liked!',
+                date: (new Date()).toString(),
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }, [notificationProfileMutation, profileId, userId, username]);
+
     const onAccept = useCallback((starsCount: number, feedback?: string) => {
         handleRateProfile(starsCount, feedback);
-    }, [handleRateProfile]);
+        handleNotifyProfile();
+    }, [handleNotifyProfile, handleRateProfile]);
 
     const onCancel = useCallback((starsCount: number) => {
         handleRateProfile(starsCount);
-    }, [handleRateProfile]);
+        handleNotifyProfile();
+    }, [handleNotifyProfile, handleRateProfile]);
 
     if (userId === profileId) {
         return null;

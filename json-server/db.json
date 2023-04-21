@@ -1,36 +1,28 @@
 {
   "notifications": [
     {
-      "id": "1",
-      "title": "Уведомление 1",
-      "description": "Произошло какое-то событие",
-      "userId": "1"
-    },
-    {
-      "id": "2",
-      "title": "Уведомление 2",
-      "description": "Произошло какое-то событие",
       "userId": "1",
-      "href": "http://localhost:3000/admin"
+      "profileId": "2",
+      "title": "User admin liked you!",
+      "description": "You've been Liked!",
+      "date": "Fri Apr 21 2023 16:29:51 GMT+0300 (Израиль, летнее время)",
+      "id": 1
     },
     {
-      "id": "3",
-      "title": "Уведомление 3",
-      "description": "Произошло какое-то событие",
       "userId": "1",
-      "href": "http://localhost:3000/admin"
+      "profileId": "3",
+      "title": "User admin liked you!",
+      "description": "You've been Liked!",
+      "date": "Fri Apr 21 2023 16:34:13 GMT+0300 (Израиль, летнее время)",
+      "id": 2
     },
     {
-      "id": "4",
-      "title": "Уведомление 4",
-      "description": "Произошло какое-то событие",
-      "userId": "1"
-    },
-    {
-      "id": "5",
-      "title": "Уведомление 1",
-      "description": "Произошло какое-то событие",
-      "userId": "2"
+      "userId": "3",
+      "profileId": "2",
+      "title": "User manager liked you!",
+      "description": "You've been Liked!",
+      "date": "Fri Apr 21 2023 16:58:24 GMT+0300 (Израиль, летнее время)",
+      "id": 3
     }
   ],
   "articles": [
@@ -828,6 +820,12 @@
       "articleId": "6",
       "rate": 2,
       "id": "fxVuyGZ"
+    },
+    {
+      "userId": "3",
+      "articleId": "6",
+      "rate": 2,
+      "id": "-GVvkEx"
     }
   ],
   "profile-ratings": [
@@ -835,29 +833,20 @@
       "userId": "1",
       "profileId": "2",
       "rate": 5,
-      "feedback": "5",
-      "id": "-xfgg4P"
+      "feedback": "2",
+      "id": 1
     },
     {
       "userId": "1",
       "profileId": "3",
       "rate": 1,
-      "feedback": "",
-      "id": "BV9omPk"
+      "id": 2
     },
     {
       "userId": "3",
       "profileId": "2",
-      "rate": 2,
-      "feedback": "",
-      "id": "DfBcj0A"
-    },
-    {
-      "userId": "3",
-      "profileId": "1",
-      "rate": 2,
-      "feedback": "222",
-      "id": "hks6gCk"
+      "rate": 5,
+      "id": 3
     }
   ]
 }

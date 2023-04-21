@@ -1,5 +1,6 @@
 import { rtkApi } from '@/shared/api/rtkApi';
 import { Rating } from '@/entities/Rating';
+import { NotificationList } from '@/entities/Notification';
 
 interface ProfileRatingArg {
     userId: string;
@@ -11,6 +12,15 @@ interface RateProfileArg {
     profileId: string;
     rate: number;
     feedback?: string;
+}
+
+interface NotificationProfileArg {
+    userId: string;
+    profileId: string;
+    title: string;
+    description: string;
+    notificationId?: string;
+    date: string;
 }
 
 const profileRatingApi = rtkApi.injectEndpoints({
@@ -31,8 +41,16 @@ const profileRatingApi = rtkApi.injectEndpoints({
                 body: arg,
             }),
         }),
+        notificationProfile: build.mutation<void, NotificationProfileArg>({
+            query: (arg) => ({
+                url: '/notifications',
+                method: 'POST',
+                body: arg,
+            }),
+        }),
     }),
 });
 
 export const useGetProfileRating = profileRatingApi.useGetProfileRatingQuery;
 export const useUpdateRateProfile = profileRatingApi.useRateProfileMutation;
+export const useUpdateNotificationProfile = profileRatingApi.useNotificationProfileMutation;
