@@ -1,4 +1,4 @@
-import { Notification } from '../model/types/notifications';
+import { Notification } from '@/entities/Notification';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 interface NotificationArg {

@@ -58,6 +58,7 @@ const ProfileRating = memo((props: ProfileRatingProps) => {
                 title: `User ${username} liked you!`,
                 description: 'You\'ve been Liked!',
                 date: (new Date()).toString(),
+                isNew: true,
             });
         } catch (e) {
             console.log(e);

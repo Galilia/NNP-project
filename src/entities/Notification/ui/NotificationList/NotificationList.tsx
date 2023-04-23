@@ -1,30 +1,28 @@
 import { memo } from 'react';
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useGetNotifications } from '../../api/notificationApi';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { VStack } from '@/shared/ui/Stack';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
-import { getUserAuthData } from '@/entities/User';
 import { Text } from '@/shared/ui/Text/Text';
+import { Notification } from '@/entities/Notification';
 
 interface NotificationListProps {
     className?: string;
+    onRead?: (notificationId: string, isRead: boolean) => void;
+    unreadMessagesCount?: number;
+    onUpdate?: (newUnreadMessagesCount: number) => void;
+    notifications?: Notification[];
+    isLoading?: boolean;
 }
 
 export const NotificationList = memo((props: NotificationListProps) => {
-    const { className } = props;
+    const {
+        className, onRead, unreadMessagesCount, onUpdate, notifications, isLoading,
+    } = props;
     const { t } = useTranslation();
-    const userData = useSelector(getUserAuthData);
-    const userId = userData?.id ?? '';
-    const { data, isLoading } = useGetNotifications({
-        profileId: userId,
-    }, {
-        pollingInterval: 5000,
-    });
 
-    if (data?.length === 0) {
+    if (notifications?.length === 0) {
         return (
             <div style={{ minWidth: '200px' }}>
                 <Text text={t('Notifications not found')} />
@@ -52,7 +50,7 @@ export const NotificationList = memo((props: NotificationListProps) => {
             max
             className={classNames('', {}, [className])}
         >
-            {data?.map((item) => <NotificationItem key={item.id} item={item} />)}
+            {notifications?.map((item) => <NotificationItem key={item.id} item={item} onRead={onRead} />)}
         </VStack>
     );
 });

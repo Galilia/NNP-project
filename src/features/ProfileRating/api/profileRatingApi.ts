@@ -19,8 +19,8 @@ interface NotificationProfileArg {
     profileId: string;
     title: string;
     description: string;
-    notificationId?: string;
     date: string;
+    isNew: boolean;
 }
 
 const profileRatingApi = rtkApi.injectEndpoints({

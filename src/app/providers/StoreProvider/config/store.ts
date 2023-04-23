@@ -8,6 +8,7 @@ import { userReducer } from '@/entities/User';
 import { $api } from '@/shared/api/api';
 import { scrollSaveReducer } from '@/features/ScrollSave';
 import { rtkApi } from '@/shared/api/rtkApi';
+import { notificationReducer } from '@/features/ProfileRating';
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -18,6 +19,7 @@ export function createReduxStore(
         counter: counterReducer,
         user: userReducer,
         scrollSave: scrollSaveReducer,
+        notifications: notificationReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
     };
 
