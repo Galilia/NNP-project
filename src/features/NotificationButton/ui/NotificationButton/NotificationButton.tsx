@@ -24,7 +24,10 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const userData = useSelector(getUserAuthData);
     const userId = userData?.id ?? '';
-    const { data: notifications, isLoading } = useGetNotifications({ profileId: userId }, { pollingInterval: 5000 });
+    const { data: notifications, isLoading, refetch } = useGetNotifications(
+        { profileId: userId },
+        { pollingInterval: 20000, refetchOnMountOrArgChange: true },
+    );
     const [updateNotification] = useUpdateNotification();
 
     const handleNotification = useCallback((notificationId: string) => {
@@ -36,9 +39,11 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
                 }
             } catch (e) {
                 console.log(e);
+            } finally {
+                refetch();
             }
         }
-    }, [updateNotification, notifications]);
+    }, [notifications, updateNotification, refetch]);
 
     const onOpenDrawer = useCallback(() => {
         setIsOpen(true);
