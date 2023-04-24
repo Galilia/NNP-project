@@ -5,7 +5,6 @@
 
 .NotificationItem {
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 
@@ -13,25 +12,20 @@
     display: inline-block;
 }
 
-.cardCheckbox {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 16px;
+.clearBtn {
+    width: 22px;
+    height: 22px;
 }
 
-.checkboxInput {
-    position: relative;
+.checkboxIcon {
     display: inline-block;
-    width: 20px;
-    height: 20px;
     margin-right: 10px;
-    background-color: #fff;
     border: 2px solid #d1d1d1;
     border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-.checkboxInput:hover {
+.checkboxIcon:hover {
     border-color: #888;
 }

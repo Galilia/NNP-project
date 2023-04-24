@@ -5,6 +5,7 @@
       "profileId": "2",
       "title": "User admin liked you!",
       "description": "You've been Liked!",
+      "isRead": false,
       "date": "Fri Apr 21 2023 16:29:51 GMT+0300 (Израиль, летнее время)",
       "id": 1
     },
@@ -13,6 +14,7 @@
       "profileId": "3",
       "title": "User admin liked you!",
       "description": "You've been Liked!",
+      "isRead": false,
       "date": "Fri Apr 21 2023 16:34:13 GMT+0300 (Израиль, летнее время)",
       "id": 2
     },
@@ -20,6 +22,7 @@
       "userId": "3",
       "profileId": "2",
       "title": "User manager liked you!",
+      "isRead": true,
       "description": "You've been Liked!",
       "date": "Fri Apr 21 2023 16:58:24 GMT+0300 (Израиль, летнее время)",
       "id": 3

@@ -1,6 +1,5 @@
 import { rtkApi } from '@/shared/api/rtkApi';
 import { Rating } from '@/entities/Rating';
-import { NotificationList } from '@/entities/Notification';
 
 interface ProfileRatingArg {
     userId: string;
@@ -14,13 +13,13 @@ interface RateProfileArg {
     feedback?: string;
 }
 
-interface NotificationProfileArg {
+export interface NotificationProfileArg {
     userId: string;
     profileId: string;
     title: string;
     description: string;
     date: string;
-    isNew: boolean;
+    isRead: boolean;
 }
 
 const profileRatingApi = rtkApi.injectEndpoints({

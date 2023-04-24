@@ -9,15 +9,14 @@ import { Text } from '@/shared/ui/Text/Text';
 
 interface NotificationListProps {
     className?: string;
-    unreadMessagesCount?: number;
-    onUpdate?: (newUnreadMessagesCount: number) => void;
+    handleNotification: (notificationId: string) => void;
     notifications?: Notification[];
     isLoading?: boolean;
 }
 
 export const NotificationList = memo((props: NotificationListProps) => {
     const {
-        className, unreadMessagesCount, onUpdate, notifications, isLoading,
+        className, handleNotification, notifications, isLoading,
     } = props;
     const { t } = useTranslation();
 
@@ -49,7 +48,13 @@ export const NotificationList = memo((props: NotificationListProps) => {
             max
             className={classNames('', {}, [className])}
         >
-            {notifications?.map((item) => <NotificationItem key={item.id} item={item} />)}
+            {notifications?.map((item) => (
+                <NotificationItem
+                    key={item.id}
+                    item={item}
+                    onRead={handleNotification}
+                />
+            ))}
         </VStack>
     );
 });

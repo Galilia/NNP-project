@@ -12,12 +12,21 @@ const notificationApi = rtkApi.injectEndpoints({
                 url: '/notifications',
                 params: {
                     profileId,
+                    isRead: false,
                     _sort: 'date',
                     _order: 'desc',
                 },
+            }),
+        }),
+        updateNotification: build.mutation<void, Notification>({
+            query: ({ id, ...rest }) => ({
+                url: `/notifications/${id}`,
+                method: 'PATCH',
+                body: { ...rest, isRead: true },
             }),
         }),
     }),
 });
 
 export const useGetNotifications = notificationApi.useGetNotificationsQuery;
+export const useUpdateNotification = notificationApi.useUpdateNotificationMutation;

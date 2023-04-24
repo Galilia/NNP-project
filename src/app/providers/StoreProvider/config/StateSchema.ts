@@ -16,13 +16,11 @@ import { ScrollSaveSchema } from '@/features/ScrollSave';
 import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { ProfileSchema } from '@/widgets/EditableProfileCard';
-import { NotificationSchema } from '@/features/NotificationButton';
 
 export interface StateSchema {
     counter: CounterSchema,
     user: UserSchema,
     scrollSave: ScrollSaveSchema,
-    notifications: NotificationSchema,
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>,
 
     // Async reducers

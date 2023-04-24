@@ -1,30 +1,27 @@
-import { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { Notification } from '../../model/types/notifications';
 import cls from './NotificationItem.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Text } from '@/shared/ui/Text/Text';
+import CloseIcon from '@/shared/assets/icons/close-window-icon.svg';
+import { Icon } from '@/shared/ui/Icon/Icon';
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
 
 interface NotificationItemProps {
     className?: string;
     item: Notification;
-    // onRead?: (notificationId: string, isRead: boolean) => void;
+    onRead: (notification: string) => void;
 }
 
 export const NotificationItem = memo((props: NotificationItemProps) => {
-    const { className, item } = props;
-    // const [isRead, setIsRead] = useState(item.isRead || false);
+    const { className, item, onRead } = props;
 
-    // const handleCheckboxChange = (event) => {
-    //     event.stopPropagation();
-    //     const newIsRead = event.target.checked;
-    //     setIsRead(newIsRead);
-    //     onRead(item.id, newIsRead);
-    // };
-
-    // const handleCheckboxChange = () => {
-    //     onRead?.(item.id, item.isRead);
-    // };
+    const handleCheckboxChange = () => {
+        if (!item.isRead) {
+            onRead?.(item.id);
+        }
+    };
 
     const content = (
         <Card
@@ -35,15 +32,14 @@ export const NotificationItem = memo((props: NotificationItemProps) => {
                 <Text title={item?.title} text={item?.description} />
                 <Text text={item?.date?.slice(0, 24)} />
             </div>
-            <div className={cls.cardCheckbox}>
-                <input
-                    // checked={isRead}
-                    // onChange={handleCheckboxChange}
-                    type="checkbox"
-                    id="checkbox1"
-                    className={cls.checkboxInput}
-                />
-            </div>
+            <Button
+                theme={ButtonTheme.CLEAR}
+                size={ButtonSize.L}
+                className={cls.clearBtn}
+                onClick={handleCheckboxChange}
+            >
+                <Icon Svg={CloseIcon} className={cls.checkboxIcon} />
+            </Button>
         </Card>
     );
 
