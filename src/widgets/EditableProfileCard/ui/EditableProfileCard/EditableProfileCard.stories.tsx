@@ -9,7 +9,7 @@ import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 
 export default {
-    title: 'widget/EditableProfileCard',
+    title: 'widgets/EditableProfileCard',
     component: EditableProfileCard,
     argTypes: {
         backgroundColor: { control: 'color' },
