@@ -8,12 +8,12 @@ import { Text } from '@/shared/ui/Text/Text';
 interface NotificationItemProps {
     className?: string;
     item: Notification;
-    onRead?: (notificationId: string, isRead: boolean) => void;
+    // onRead?: (notificationId: string, isRead: boolean) => void;
 }
 
 export const NotificationItem = memo((props: NotificationItemProps) => {
-    const { className, item, onRead } = props;
-    const [isRead, setIsRead] = useState(item.isRead || false);
+    const { className, item } = props;
+    // const [isRead, setIsRead] = useState(item.isRead || false);
 
     // const handleCheckboxChange = (event) => {
     //     event.stopPropagation();
@@ -22,9 +22,9 @@ export const NotificationItem = memo((props: NotificationItemProps) => {
     //     onRead(item.id, newIsRead);
     // };
 
-    const handleCheckboxChange = () => {
-        onRead?.(item.id, item.isRead);
-    };
+    // const handleCheckboxChange = () => {
+    //     onRead?.(item.id, item.isRead);
+    // };
 
     const content = (
         <Card
@@ -32,13 +32,13 @@ export const NotificationItem = memo((props: NotificationItemProps) => {
             className={classNames(cls.NotificationItem, {}, [className])}
         >
             <div className={cls.cardContent}>
-                <Text title={item.title} text={item.description} />
+                <Text title={item?.title} text={item?.description} />
                 <Text text={item?.date?.slice(0, 24)} />
             </div>
             <div className={cls.cardCheckbox}>
                 <input
-                    checked={isRead}
-                    onChange={handleCheckboxChange}
+                    // checked={isRead}
+                    // onChange={handleCheckboxChange}
                     type="checkbox"
                     id="checkbox1"
                     className={cls.checkboxInput}
@@ -47,9 +47,9 @@ export const NotificationItem = memo((props: NotificationItemProps) => {
         </Card>
     );
 
-    if (item.href) {
+    if (item?.href) {
         return (
-            <a className={cls.link} target="_blank" href={item.href} rel="noreferrer">
+            <a className={cls.link} target="_blank" href={item?.href} rel="noreferrer">
                 {content}
             </a>
         );

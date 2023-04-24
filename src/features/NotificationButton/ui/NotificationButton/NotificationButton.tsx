@@ -30,11 +30,11 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
     const userId = userData?.id ?? '';
     const { data: notifications, isLoading } = useGetNotifications({ profileId: userId }, { pollingInterval: 20000 });
 
-    const handleReadNotification = useCallback((notificationId: string, isRead: boolean) => {
-        dispatch(notificationActions.updateNotification({ id: notificationId, isRead }));
-        // send updated notification to server here
-        dispatch(notificationActions.setUnreadMessagesCount(count + (isRead ? -1 : 1)));
-    }, [dispatch, count]);
+    // const handleReadNotification = useCallback((notificationId: string, isRead: boolean) => {
+    //     dispatch(notificationActions.updateNotification({ id: notificationId, isRead }));
+    //     // send updated notification to server here
+    //     dispatch(notificationActions.setUnreadMessagesCount(count + (isRead ? -1 : 1)));
+    // }, [dispatch, count]);
 
     const onOpenDrawer = useCallback(() => {
         setIsOpen(true);
@@ -76,7 +76,7 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
                 >
                     <NotificationList
                         className={cls.notifications}
-                        onRead={handleReadNotification}
+                        // onRead={handleReadNotification}
                         notifications={notifications}
                         isLoading={isLoading}
                     />
@@ -88,7 +88,7 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
                 {trigger}
                 <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
                     <NotificationList
-                        onRead={handleReadNotification}
+                        // onRead={handleReadNotification}
                         notifications={notifications}
                         isLoading={isLoading}
                     />

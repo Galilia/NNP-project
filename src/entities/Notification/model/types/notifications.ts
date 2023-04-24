@@ -4,5 +4,5 @@ export interface Notification {
     description: string;
     href?: string;
     date?: string;
-    isRead: boolean;
+    isRead?: boolean;
 }

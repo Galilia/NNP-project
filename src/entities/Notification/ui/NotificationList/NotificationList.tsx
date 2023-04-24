@@ -9,7 +9,6 @@ import { Notification } from '@/entities/Notification';
 
 interface NotificationListProps {
     className?: string;
-    onRead?: (notificationId: string, isRead: boolean) => void;
     unreadMessagesCount?: number;
     onUpdate?: (newUnreadMessagesCount: number) => void;
     notifications?: Notification[];
@@ -18,7 +17,7 @@ interface NotificationListProps {
 
 export const NotificationList = memo((props: NotificationListProps) => {
     const {
-        className, onRead, unreadMessagesCount, onUpdate, notifications, isLoading,
+        className, unreadMessagesCount, onUpdate, notifications, isLoading,
     } = props;
     const { t } = useTranslation();
 
@@ -50,7 +49,7 @@ export const NotificationList = memo((props: NotificationListProps) => {
             max
             className={classNames('', {}, [className])}
         >
-            {notifications?.map((item) => <NotificationItem key={item.id} item={item} onRead={onRead} />)}
+            {notifications?.map((item) => <NotificationItem key={item.id} item={item} />)}
         </VStack>
     );
 });
