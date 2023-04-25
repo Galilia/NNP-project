@@ -22,7 +22,7 @@ const notificationApi = rtkApi.injectEndpoints({
             query: ({ id, ...rest }) => ({
                 url: `/notifications/${id}`,
                 method: 'PATCH',
-                body: { ...rest, isRead: true },
+                body: { ...rest },
             }),
         }),
     }),

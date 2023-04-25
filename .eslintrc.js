@@ -65,6 +65,7 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
         'galilia-plugin/path-checker': ['error', { alias: '@' }],
+        'galilia-plugin/public-api-imports': ['error', { alias: '@' }],
     },
     globals: {
         __IS_DEV__: true,

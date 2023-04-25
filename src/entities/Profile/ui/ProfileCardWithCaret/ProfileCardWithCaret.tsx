@@ -3,8 +3,7 @@ import { Profile } from '../../model/types/profile';
 import cls from './ProfileCardWithCaret.module.scss';
 import { InputWithCaret } from '@/shared/ui/InputWithCaret/InputWithCaret';
 import { Currency, CurrencySelect } from '@/entities/Currency';
-import { Country } from '@/entities/Country/model/types/country';
-import { CountrySelect } from '@/entities/Country';
+import { Country, CountrySelect } from '@/entities/Country';
 
 interface ProfileCardWithInputProps {
     className?: string;

@@ -7,9 +7,8 @@ import cls from './Page.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { scrollSaveActions } from '@/features/ScrollSave/model/slices/ScrollSaveSlice';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { getScrollByPath } from '@/features/ScrollSave';
+import { getScrollByPath, scrollSaveActions } from '@/features/ScrollSave';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 

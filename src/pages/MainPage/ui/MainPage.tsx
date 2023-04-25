@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import cls from './MainPage.module.scss';
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 
 const MainPage = () => {
     const { t } = useTranslation();

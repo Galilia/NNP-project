@@ -10,9 +10,8 @@ import {
 } from '../../model/selectors/articlesPageSelectors';
 import { ArticleList } from '@/entities/Article';
 import { Text } from '@/shared/ui/Text/Text';
-import { getScrollIndex } from '@/features/ScrollSave/model/selectors/scrollSaveSelectors';
-import { scrollSaveActions } from '@/features/ScrollSave/model/slices/ScrollSaveSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { getScrollIndex, scrollSaveActions } from '@/features/ScrollSave';
 
 interface ArticleInfiniteListProps {
     className?: string;

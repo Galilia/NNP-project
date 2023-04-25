@@ -9,11 +9,11 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Page } from '@/widgets/Page/Page';
 import { VStack } from '@/shared/ui/Stack';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { ArticleComments } from '@/features/ArticleComments';
 import { ArticleRating } from '@/features/ArticleRating';
+import { Page } from '@/widgets/Page';
 
 interface ArticleDetailsPageProps {
     className?: string;

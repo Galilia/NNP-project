@@ -15,7 +15,7 @@ import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPageFilters.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
-    ArticleSortField, ArticleType,
+    ArticleSortField, ArticleSortSelector, ArticleType,
     ArticleTypeTabs,
     ArticleView,
     ArticleViewSelector,
@@ -24,7 +24,6 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { Card } from '@/shared/ui/Card/Card';
 import { InputWithCaret } from '@/shared/ui/InputWithCaret/InputWithCaret';
-import { ArticleSortSelector } from '@/entities/Article/ui/ArticleSortSelector/ArticleSortSelector';
 import { SortOrder } from '@/shared/types';
 
 interface ArticlesPageFiltersProps {
