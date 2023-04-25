@@ -6,11 +6,11 @@ import { getSidebarItems } from '../../model/selectors/sidebarSelectors';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
 import { VStack } from '@/shared/ui/Stack';
 import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
-import { LangSwitcher } from '@/shared/ui/LangSwitcher';
+import { LangSwitcher } from '@/features/LangSwitcher';
 
 interface SidebarProps {
     className?: string;

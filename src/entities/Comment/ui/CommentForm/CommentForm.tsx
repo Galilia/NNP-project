@@ -12,12 +12,12 @@ import {
 import { InputWithCaret } from '@/shared/ui/InputWithCaret/InputWithCaret';
 import { HStack } from '@/shared/ui/Stack';
 // TODO
-// eslint-disable-next-line galilia-plugin/public-api-imports
+// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
 import {
     articleCommentsActions,
     articleCommentsReducer,
 } from '@/features/ArticleComments/model/slices/ArticleCommentsSlice';
-// eslint-disable-next-line galilia-plugin/public-api-imports
+// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
 import {
     getAddCommentFormError,
     getAddCommentFormText,

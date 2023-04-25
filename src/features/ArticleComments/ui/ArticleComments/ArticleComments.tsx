@@ -6,21 +6,21 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text, TextSize } from '@/shared/ui/Text/Text';
 import { CommentForm, CommentList } from '@/entities/Comment';
 // TODO
-// eslint-disable-next-line galilia-plugin/public-api-imports
+// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
 import {
     getArticleComments,
 } from '@/pages/ArticleDetailsPage/model/slices/articleDetailsCommentsSlice';
-// eslint-disable-next-line galilia-plugin/public-api-imports
+// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
 import {
     getArticleCommentsIsLoading,
 } from '@/pages/ArticleDetailsPage/model/selectors/commentsSelectors';
-// eslint-disable-next-line galilia-plugin/public-api-imports
+// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
 import {
     addCommentForArticle,
 } from '@/pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-// eslint-disable-next-line galilia-plugin/public-api-imports
+// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
 import {
     fetchCommentsByArticleId,
 } from '@/pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';

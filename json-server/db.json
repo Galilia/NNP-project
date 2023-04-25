@@ -755,7 +755,7 @@
     },
     {
       "id": "2",
-      "first": "Alina3",
+      "first": "Alina",
       "lastname": "Kucher",
       "age": 29,
       "currency": "EUR",
@@ -835,6 +835,13 @@
       "articleId": "6",
       "rate": 2,
       "id": "-GVvkEx"
+    },
+    {
+      "userId": "2",
+      "articleId": "6",
+      "rate": 3,
+      "feedback": "3",
+      "id": "4mBfv53"
     }
   ],
   "profile-ratings": [

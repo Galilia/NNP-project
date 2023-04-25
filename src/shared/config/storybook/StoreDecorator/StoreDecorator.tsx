@@ -1,11 +1,13 @@
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { loginReducer } from '@/features/AuthByUsername/testing';
-import '@/app/styles/index.scss';
+// import '@/app/styles/index.scss';
 import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { articleDetailsReducer } from '@/entities/Article/testing';
 import { articleCommentsReducer } from '@/features/ArticleComments/testing';
 import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/testing';
+// TODO
+// eslint-disable-next-line galilia-plugin/layer-imports
 import { profileReducer } from '@/widgets/EditableProfileCard';
 
 const defaultAsyncReducer: ReducersList = {

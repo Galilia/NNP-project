@@ -1,9 +1,9 @@
 import React, { Suspense, useEffect } from 'react';
 import './styles/index.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { AppRouter } from './providers/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useTheme } from '@/app/providers/ThemeProvider';
-import { AppRouter } from '@/app/providers/router';
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { getUserInited, userActions } from '@/entities/User';
