@@ -65,7 +65,13 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
         'galilia-plugin/path-checker': ['error', { alias: '@' }],
-        'galilia-plugin/public-api-imports': ['error', { alias: '@' }],
+        'galilia-plugin/public-api-imports': [
+            'error',
+            {
+                alias: '@',
+                testFilesPatterns: ['**/*.testing.*', '**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'],
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,
