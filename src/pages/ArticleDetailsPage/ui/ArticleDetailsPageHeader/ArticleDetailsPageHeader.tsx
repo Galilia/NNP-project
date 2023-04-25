@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getCanEditArticle } from '../../model/selectors/articleSelectors';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import { getArticleDetailsData } from '@/entities/Article';
 import { HStack } from '@/shared/ui/Stack';
+import { RoutePath } from '@/shared/const/routerConst';
 
 interface ArticleDetailsPageHeaderProps {
     className?: string;
