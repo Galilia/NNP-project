@@ -2,7 +2,7 @@ import { LegacyRef, memo } from 'react';
 import { AutocompleteSchema } from '../../model/types/autocompleteSchema';
 import cls from './AutocompleteDropdown.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Loader } from '@/shared/ui/Loader/Loader';
+import { Loader } from '@/shared/ui/Loader';
 
 interface AutocompleteDropdownProps {
     className?: string;

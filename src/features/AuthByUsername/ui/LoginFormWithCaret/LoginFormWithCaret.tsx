@@ -15,9 +15,9 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Text, TextTheme } from '@/shared/ui/Text/Text';
-import { InputWithCaret } from '@/shared/ui/InputWithCaret/InputWithCaret';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Text, TextTheme } from '@/shared/ui/Text';
+import { InputWithCaret } from '@/shared/ui/InputWithCaret';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 const initialReducers: ReducersList = {

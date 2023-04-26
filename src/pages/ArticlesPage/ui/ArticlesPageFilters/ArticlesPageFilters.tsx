@@ -22,8 +22,8 @@ import {
 } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
-import { Card } from '@/shared/ui/Card/Card';
-import { InputWithCaret } from '@/shared/ui/InputWithCaret/InputWithCaret';
+import { Card } from '@/shared/ui/Card';
+import { InputWithCaret } from '@/shared/ui/InputWithCaret';
 import { SortOrder } from '@/shared/types';
 
 interface ArticlesPageFiltersProps {

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Profile } from '../../model/types/profile';
 import cls from './ProfileCardWithCaret.module.scss';
-import { InputWithCaret } from '@/shared/ui/InputWithCaret/InputWithCaret';
+import { InputWithCaret } from '@/shared/ui/InputWithCaret';
 import { Currency, CurrencySelect } from '@/entities/Currency';
 import { Country, CountrySelect } from '@/entities/Country';
 

@@ -3,13 +3,13 @@ import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './CommentForm.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { InputWithCaret } from '@/shared/ui/InputWithCaret/InputWithCaret';
+import { InputWithCaret } from '@/shared/ui/InputWithCaret';
 import { HStack } from '@/shared/ui/Stack';
 // TODO
 // eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports

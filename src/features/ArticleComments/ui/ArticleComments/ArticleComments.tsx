@@ -3,7 +3,7 @@ import { memo, Suspense, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './ArticleComments.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { Text, TextSize } from '@/shared/ui/Text';
 import { CommentForm, CommentList } from '@/entities/Comment';
 // TODO
 // eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
@@ -25,7 +25,7 @@ import {
     fetchCommentsByArticleId,
 } from '@/pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { VStack } from '@/shared/ui/Stack';
-import { Loader } from '@/shared/ui/Loader/Loader';
+import { Loader } from '@/shared/ui/Loader';
 
 interface ArticleCommentsProps {
     className?: string;

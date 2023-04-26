@@ -2,11 +2,11 @@ import React, { memo } from 'react';
 import { Notification } from '../../model/types/notifications';
 import cls from './NotificationItem.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Card, CardTheme } from '@/shared/ui/Card/Card';
-import { Text } from '@/shared/ui/Text/Text';
+import { Card, CardTheme } from '@/shared/ui/Card';
+import { Text } from '@/shared/ui/Text';
 import CloseIcon from '@/shared/assets/icons/close-window-icon.svg';
-import { Icon } from '@/shared/ui/Icon/Icon';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Icon } from '@/shared/ui/Icon';
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 
 interface NotificationItemProps {
     className?: string;

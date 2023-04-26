@@ -2,7 +2,7 @@ import { KeyboardEventHandler, memo, useState } from 'react';
 import cls from './TagsInput.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import CloseIcon from '@/shared/assets/icons/close-24-24.svg';
-import { Icon } from '@/shared/ui/Icon/Icon';
+import { Icon } from '@/shared/ui/Icon';
 
 interface AddTagsInputProps {
     className?: string;
