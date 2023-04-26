@@ -1,5 +1,3 @@
-import { getArticleDetailsData } from './model/selectors/articleDetailsSelectors';
-
 export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs';
 
 export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';

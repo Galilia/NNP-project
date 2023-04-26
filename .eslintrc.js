@@ -23,6 +23,7 @@ module.exports = {
         'i18next',
         'react-hooks',
         'galilia-plugin',
+        'unused-imports',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -31,6 +32,7 @@ module.exports = {
         'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
+        'unused-imports/no-unused-imports': 'error',
         'no-unused-vars': 'off',
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
