@@ -1,5 +1,6 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+
 import { User, userActions } from '@/entities/User';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
 

@@ -1,15 +1,10 @@
-import { useTranslation } from 'react-i18next';
 import { memo, Suspense, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import cls from './ArticleComments.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TextSize } from '@/shared/ui/Text';
+
 import { CommentForm, CommentList } from '@/entities/Comment';
 // TODO
 // eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
-import {
-    getArticleComments,
-} from '@/pages/ArticleDetailsPage/model/slices/articleDetailsCommentsSlice';
 // eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
 import {
     getArticleCommentsIsLoading,
@@ -18,14 +13,22 @@ import {
 import {
     addCommentForArticle,
 } from '@/pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 // eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
 import {
     fetchCommentsByArticleId,
 } from '@/pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { VStack } from '@/shared/ui/Stack';
+// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
+import {
+    getArticleComments,
+} from '@/pages/ArticleDetailsPage/model/slices/articleDetailsCommentsSlice';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Loader } from '@/shared/ui/Loader';
+import { VStack } from '@/shared/ui/Stack';
+import { Text, TextSize } from '@/shared/ui/Text';
+
+import cls from './ArticleComments.module.scss';
 
 interface ArticleCommentsProps {
     className?: string;

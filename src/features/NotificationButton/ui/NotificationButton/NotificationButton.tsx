@@ -2,17 +2,20 @@ import React, {
     memo, useCallback, useMemo, useState,
 } from 'react';
 import { useSelector } from 'react-redux';
-import { useGetNotifications, useUpdateNotification } from '../../api/notificationApi';
-import cls from './NotificationButton.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Popover } from '@/shared/ui/Popups';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { Icon } from '@/shared/ui/Icon';
-import NotificationIcon from '@/shared/assets/icons/notification-20-20.svg';
+
 import { NotificationList } from '@/entities/Notification';
-import { Drawer } from '@/shared/ui/Drawer';
-import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
 import { getUserAuthData } from '@/entities/User';
+import NotificationIcon from '@/shared/assets/icons/notification-20-20.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Drawer } from '@/shared/ui/Drawer';
+import { Icon } from '@/shared/ui/Icon';
+import { Popover } from '@/shared/ui/Popups';
+
+import { useGetNotifications, useUpdateNotification } from '../../api/notificationApi';
+
+import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
     className?: string;

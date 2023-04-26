@@ -1,8 +1,9 @@
 import { useParams } from 'react-router-dom';
-import { VStack } from '@/shared/ui/Stack';
+
 import { ProfileRating } from '@/features/ProfileRating';
-import { Page } from '@/widgets/Page';
+import { VStack } from '@/shared/ui/Stack';
 import { EditableProfileCard } from '@/widgets/EditableProfileCard';
+import { Page } from '@/widgets/Page';
 
 const ProfilePage = () => {
     const { id } = useParams<{id: string}>();

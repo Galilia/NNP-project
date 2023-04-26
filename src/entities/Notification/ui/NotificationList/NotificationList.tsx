@@ -1,11 +1,13 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NotificationItem } from '../NotificationItem/NotificationItem';
-import { Notification } from '../../model/types/notifications';
+
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { VStack } from '@/shared/ui/Stack';
 import { Skeleton } from '@/shared/ui/Skeleton';
+import { VStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
+
+import { Notification } from '../../model/types/notifications';
+import { NotificationItem } from '../NotificationItem/NotificationItem';
 
 interface NotificationListProps {
     className?: string;

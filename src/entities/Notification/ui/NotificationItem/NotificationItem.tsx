@@ -1,12 +1,15 @@
 import React, { memo } from 'react';
-import { Notification } from '../../model/types/notifications';
-import cls from './NotificationItem.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Card, CardTheme } from '@/shared/ui/Card';
-import { Text } from '@/shared/ui/Text';
+
 import CloseIcon from '@/shared/assets/icons/close-window-icon.svg';
-import { Icon } from '@/shared/ui/Icon';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import { Card, CardTheme } from '@/shared/ui/Card';
+import { Icon } from '@/shared/ui/Icon';
+import { Text } from '@/shared/ui/Text';
+
+import { Notification } from '../../model/types/notifications';
+
+import cls from './NotificationItem.module.scss';
 
 interface NotificationItemProps {
     className?: string;

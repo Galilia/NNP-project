@@ -1,8 +1,10 @@
 import React, {
     InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
-import cls from './InputWithCaret.module.scss';
+
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+
+import cls from './InputWithCaret.module.scss';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 

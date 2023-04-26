@@ -1,7 +1,10 @@
 import { memo } from 'react';
-import { ButtonTheme } from '../Button/Button';
-import cls from './Text.module.scss';
+
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+
+import { ButtonTheme } from '../Button/Button';
+
+import cls from './Text.module.scss';
 
 export enum TextTheme {
     PRIMARY = 'primary',

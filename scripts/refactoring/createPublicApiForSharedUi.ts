@@ -5,6 +5,7 @@ command to run/debug -  ts-node .\scripts\updateImports.ts
 */
 
 import path from 'path';
+
 import { Project } from 'ts-morph';
 
 const project = new Project({});

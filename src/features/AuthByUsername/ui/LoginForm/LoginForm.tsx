@@ -1,25 +1,28 @@
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import {
     memo, useCallback, useState,
 } from 'react';
-import { signUpByEmail } from '../../model/services/signUpByEmail/signUpByEmail';
-import { loginByEmail } from '../../model/services/loginByEmail/loginByEmail';
-import {
-    getLoginEmail, getLoginError, getLoginIsLoading, getLoginPassword,
-} from '../../model/selectors/loginSelectors';
-import { loginActions, loginReducer } from '../../model/slice/loginSlice';
-import { LoginFormProps } from '../../lib/utils/LoginForm.utils';
-import cls from './LoginForm.module.scss';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
+import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Text, TextTheme } from '@/shared/ui/Text';
-import { Input } from '@/shared/ui/Input';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { Input } from '@/shared/ui/Input';
+import { Text, TextTheme } from '@/shared/ui/Text';
+
+import { LoginFormProps } from '../../lib/utils/LoginForm.utils';
+import {
+    getLoginEmail, getLoginError, getLoginIsLoading, getLoginPassword,
+} from '../../model/selectors/loginSelectors';
+import { loginByEmail } from '../../model/services/loginByEmail/loginByEmail';
+import { signUpByEmail } from '../../model/services/signUpByEmail/signUpByEmail';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
+
+import cls from './LoginForm.module.scss';
 
 const initialReducers: ReducersList = {
     loginForm: loginReducer,

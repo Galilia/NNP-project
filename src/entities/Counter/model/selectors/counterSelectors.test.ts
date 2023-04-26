@@ -1,6 +1,8 @@
 import { DeepPartial } from '@reduxjs/toolkit';
-import { getCounter, getCounterValue } from './counterSelectors';
+
 import { StateSchema } from '@/app/providers/StoreProvider';
+
+import { getCounter, getCounterValue } from './counterSelectors';
 
 describe('counterSelectors', () => {
     describe('getCounter', () => {

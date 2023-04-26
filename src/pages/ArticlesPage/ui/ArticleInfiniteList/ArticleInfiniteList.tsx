@@ -1,17 +1,19 @@
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
-import { getArticles } from '../../model/slices/articlesPageSlice';
+
+import { ArticleList } from '@/entities/Article';
+import { getScrollIndex, scrollSaveActions } from '@/features/ScrollSave';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Text } from '@/shared/ui/Text';
+
 import {
     getArticlesPageError,
     getArticlesPageIsLoading,
     getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
-import { ArticleList } from '@/entities/Article';
-import { Text } from '@/shared/ui/Text';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { getScrollIndex, scrollSaveActions } from '@/features/ScrollSave';
+import { getArticles } from '../../model/slices/articlesPageSlice';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 
 interface ArticleInfiniteListProps {
     className?: string;

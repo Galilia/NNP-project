@@ -1,4 +1,5 @@
 import { Story } from '@storybook/react';
+
 // import '@/app/styles/index.scss';
 // TODO @/app/styles/index.scss remove?
 // eslint-disable-next-line galilia-plugin/layer-imports

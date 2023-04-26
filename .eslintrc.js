@@ -24,6 +24,7 @@ module.exports = {
         'react-hooks',
         'galilia-plugin',
         'unused-imports',
+        'eslint-plugin-import',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -55,8 +56,33 @@ module.exports = {
         'jsx-quotes': ['error', 'prefer-double'],
         semi: ['warn', 'always'],
         'import/order': ['error', {
-            groups: ['builtin', 'external',
-                'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+            groups: [
+                'builtin',
+                'external',
+                'internal',
+                'parent',
+                'sibling',
+                'index',
+                'object',
+                'type',
+            ],
+            'newlines-between': 'always',
+            alphabetize: {
+                order: 'asc',
+                caseInsensitive: false,
+            },
+            pathGroups: [
+                {
+                    pattern: '@/**',
+                    group: 'internal',
+                    position: 'before',
+                },
+                {
+                    pattern: '*.module.scss',
+                    group: 'type',
+                    position: 'after',
+                },
+            ],
         }],
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',

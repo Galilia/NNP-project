@@ -1,27 +1,30 @@
-import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import cls from './CommentForm.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { InputWithCaret } from '@/shared/ui/InputWithCaret';
-import { HStack } from '@/shared/ui/Stack';
+
 // TODO
+// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports,import/order
+import {
+    getAddCommentFormError,
+    getAddCommentFormText,
+} from '@/features/ArticleComments/model/selectors/ArticleCommentsSelectors';
+
 // eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
 import {
     articleCommentsActions,
     articleCommentsReducer,
 } from '@/features/ArticleComments/model/slices/ArticleCommentsSlice';
-// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
+import { classNames } from '@/shared/lib/classNames/classNames';
 import {
-    getAddCommentFormError,
-    getAddCommentFormText,
-} from '@/features/ArticleComments/model/selectors/ArticleCommentsSelectors';
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { InputWithCaret } from '@/shared/ui/InputWithCaret';
+import { HStack } from '@/shared/ui/Stack';
+
+import cls from './CommentForm.module.scss';
 
 export interface CommentFormProps {
     className?: string;
