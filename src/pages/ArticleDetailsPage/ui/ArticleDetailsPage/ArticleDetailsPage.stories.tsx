@@ -6,6 +6,7 @@ import type { Article } from '@/entities/Article';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { ArticleType, ArticleBlockType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Theme } from '@/shared/const/themeConst';
 
 export default {
     title: 'pages/ArticleDetailsPage',

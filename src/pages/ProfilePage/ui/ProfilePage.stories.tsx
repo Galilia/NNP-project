@@ -6,6 +6,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
+import { Theme } from '@/shared/const/themeConst';
 
 export default {
     title: 'pages/ProfilePage',
