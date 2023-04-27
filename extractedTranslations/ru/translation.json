@@ -11,6 +11,7 @@
   "Back to List": "Back to List",
   "By": "By",
   "Cancel": "Cancel",
+  "Close": "Close",
   "Comments": "Comments",
   "Create Article": "Create Article",
   "Create article": "Create article",
@@ -26,14 +27,18 @@
   "Exit": "Exit",
   "Galilia App": "Galilia App",
   "IT": "IT",
+  "Leave your feedback, please": "Leave your feedback, please",
   "List load error": "List load error",
   "Login": "Login",
   "Login or password is not correct": "Login or password is not correct",
   "No articles found": "No articles found",
   "No comments": "No comments",
+  "Notifications not found": "Notifications not found",
   "Please, update page": "Please, update page",
   "Profile": "Profile",
   "Profile not found": "Profile not found",
+  "Rate the article": "Rate the article",
+  "Rate the profile": "Rate the profile",
   "Read next": {
     "": {
       "": {
@@ -50,7 +55,9 @@
   "Sign Up": "Sign Up",
   "Sign up": "Sign up",
   "Sort By": "Sort By",
+  "Thanks for feedback!": "Thanks for feedback!",
   "User profile": "User profile",
+  "Your feedback": "Your feedback",
   "about_page": "about_page",
   "admin_page": "admin_page",
   "already registered? please, login!": "already registered? please, login!",
@@ -102,12 +109,5 @@
   "Переключить": "Переключить",
   "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка",
   "Страница не найдена": "Страница не найдена",
-  "Язык": "Язык",
-  "Your feedback": "Your feedback",
-  "Close": "Close",
-  "Rate the article": "Rate the article",
-  "Leave your feedback, please": "Leave your feedback, please",
-  "Thanks for feedback!": "Thanks for feedback!",
-  "Rate the profile": "Rate the profile",
-  "Notifications not found": "Notifications not found"
+  "Язык": "Язык"
 }

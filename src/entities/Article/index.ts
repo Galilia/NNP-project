@@ -1,9 +1,3 @@
-export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs';
-
-export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
-
-export { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelector';
-
 export { articleData } from '../Article/mocks/data';
 
 export {
