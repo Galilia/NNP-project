@@ -714,6 +714,12 @@
       "userId": "2",
       "text": "hello",
       "id": "JSZFdeS"
+    },
+    {
+      "articleId": "8",
+      "userId": "2",
+      "text": "Zustland awesome",
+      "id": "xC3-nPM"
     }
   ],
   "users": [
@@ -756,7 +762,7 @@
     {
       "id": "2",
       "first": "Alina",
-      "lastname": "Kucher",
+      "lastname": "Galperina",
       "age": 29,
       "currency": "EUR",
       "country": "Ukraine",
@@ -842,6 +848,13 @@
       "rate": 3,
       "feedback": "3",
       "id": "4mBfv53"
+    },
+    {
+      "userId": "2",
+      "articleId": "8",
+      "rate": 5,
+      "feedback": "Zustland fire",
+      "id": "sRyhXh0"
     }
   ],
   "profile-ratings": [
