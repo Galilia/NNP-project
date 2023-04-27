@@ -10,6 +10,8 @@ npm run start:dev - server start + frontend project in development mode
 - `npm run start` - Run frontend project on webpack dev server
 - `npm run start:dev` - Run frontend project on webpack + dev server backend
 - `npm run start:dev:server` - Backend server run
+- `npm run start:vite` - Running a frontend project on vite
+- `npm run start:dev:vite` - Running a frontend project on vite + backend
 - `npm run build:prod` - Build in production mode
 - `npm run build:dev` - Build in development mode (not minimized)
 - `npm run lint:ts` -  ts file linter check
@@ -26,15 +28,16 @@ npm run start:dev - server start + frontend project in development mode
 - `npm run storybook` - Storybook run
 - `npm run storybook:build` - Storybook build
 - `npm run prepare` - precommit husky
+- `npm run generate:slice` - Script to generate FSD slices
 
 ## Project architecture
 The project was written in accordance with the methodology FEATURE SLICED DESIGN
-Link for documentation - https://feature-sliced.design/
+Link for documentation - [feature sliced design](https://feature-sliced.design/docs/get-started/tutorial)
 
 ## Translation
 The project uses the library i18next to work with translations. Translation files are stored in public/locales.
 For comfortable work, we recommend to install a plugin for webstorm/vscode.
-Documentation for i18next - https://react.i18next.com/
+Documentation for i18next - [https://react.i18next.com/](https://react.i18next.com/)
 
 ## Tests
 
@@ -44,13 +47,17 @@ The project uses 3 types of tests:
 3. Screenshot testing with Loki `npm run test:ui`
 4. e2e testing with Cypress `npm run test:e2e` ***
 
-*** - in development
+More about tests - [tests documentation](/docs/tests.md)
 
 ## Linting
 
 The project uses eslint to check TypeScript code and stylelint to check styles.
 
-Also, for strict control of the chapters of architectural principles, we use our own [eslint plugin](https://www.npmjs.com/package/eslint-plugin-galilia-plugin).
+Also, for strict control of the chapters of architectural principles, we use our own [eslint plugin](https://www.npmjs.com/package/eslint-plugin-galilia-plugin) which contains 3 rules:
+1) path-checker - prohibits the use of absolute imports within one module
+2) layer-imports - checks the correct use of layers in terms of FSD
+   (e.g. widgets cannot be used in features and entities)
+3) public-api-imports - allows import from other modules only from public api. Has auto fix
 
 ### Linters run
 
@@ -67,11 +74,11 @@ We create story files next to the component files with the extension .stories.ts
 
 - `npm run storybook` - Storybook run
 
-Learn more about Storybook: https://storybook.js.org/tutorials/intro-to-storybook/react/en/get-started/
+Learn more about [Storybook](/docs/storybook.md)
 
 Example:
 
-```js
+```tsx
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
@@ -103,8 +110,9 @@ Clear.args = {
 
 ## Project configuration
 
-For development, the project contains config:
-- Webpack - ./config/build
+For development, the project contains 2 configs:
+1. Webpack - ./config/build
+2. vite - vite.config.ts
 
 Webpack adapted to the main features of the application.
 All configuration is stored in /config
@@ -127,9 +135,36 @@ In precommit hooks, we check the project with linters, config in /.husky.
 Interaction with data is carried out with the help of the Redux toolkit. 
 If possible, reusable entities should be normalized using the EntityAdapter.
 
-Requests to the server sends using axios library.
+Requests to the server sends using axios library and RTK-Query [RTK query](/src/shared/api/rtkApi.ts)
 
-For asynchronous reducers connection (not to pull them into a general bundle), the [DynamicModuleLoader](https://redux-dynamic-modules.js.org/#/) is used.
+For asynchronous reducers connection (not to pull them into a general bundle), the [DynamicModuleLoader](/src/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader.tsx) is used.
 
 ## Working with feature-flag *** 
 *** - in development
+
+## Entities
+
+- Article
+- Comment
+- Counter
+- Country
+- Currency
+- Notification
+- Profile
+- Rating
+- User
+
+## Features
+
+- addCommentForm - Фича формы добавления комментария
+- articleEditForm - Фича формы изменения статьи
+- articleRating - Фича выставления оценки для статьи
+- articleRecommendationsList - Фича со списком рекоммендаций статей
+- AuthByUsername - Фича для авторизации по имени пользователя
+- avatarDropdown - Фича с аватаром пользователя и меню
+- editableProfileCard - Фича с формой изменения профиля
+- LangSwitcher - Фича для переключения языка
+- notificationButton - Фича с кнопкой, открывающей список уведомлений
+- profileRating - Фича выставления рейтинга профиля
+- ThemeSwitcher - Фича для переключения темы
+- UI - Фича содержащая функционал связанная с UI (scroll и тд)

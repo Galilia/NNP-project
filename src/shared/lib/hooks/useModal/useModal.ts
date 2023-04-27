@@ -8,6 +8,12 @@ interface UseModalProps {
     animationDelay: number;
 }
 
+/**
+ * Reusable hook for modal components (drawer/modal)
+ * @param animationDelay
+ * @param isOpen
+ * @param onClose
+ */
 export const useModal = (props: UseModalProps) => {
     const { onClose, isOpen, animationDelay } = props;
 
