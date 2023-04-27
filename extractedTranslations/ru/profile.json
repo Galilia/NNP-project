@@ -1,0 +1,21 @@
+{
+  "Cancel": "Cancel",
+  "Edit": "Edit",
+  "Error happened": "Error happened",
+  "Please, update page": "Please, update page",
+  "Save": "Save",
+  "incorrect_country": "incorrect_country",
+  "invalid_age": "invalid_age",
+  "invalid_user_data": "invalid_user_data",
+  "no_data": "no_data",
+  "pick_country": "pick_country",
+  "pick_currency": "pick_currency",
+  "profile": "profile",
+  "server_error": "server_error",
+  "your_age": "your_age",
+  "your_avatar": "your_avatar",
+  "your_city": "your_city",
+  "your_name": "your_name",
+  "your_surname": "your_surname",
+  "your_username": "your_username"
+}
