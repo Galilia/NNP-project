@@ -60,6 +60,7 @@
   "User profile": "",
   "Your feedback": "Your feedback",
   "about_page": "about_page",
+  "add_five": "add_five",
   "admin_page": "admin_page",
   "already registered? please, login!": "",
   "ascending": "ascending",
@@ -102,6 +103,5 @@
   "your_city": "your_city",
   "your_name": "Name:",
   "your_surname": "Surname:",
-  "your_username": "your_username",
-  "add_five": "add_five"
+  "your_username": "your_username"
 }
