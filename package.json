@@ -25,7 +25,8 @@
     "storybook:build": "build-storybook -c ./config/storybook",
     "start:dev:server": "node ./json-server/index.js",
     "prepare": "husky install",
-    "generate:slice": "node ./scripts/createSlice/index.js"
+    "generate:slice": "node ./scripts/createSlice/index.js",
+    "postinstall": "node ./scripts/clear-cache.js"
   },
   "keywords": [],
   "author": "",
@@ -64,7 +65,6 @@
     "@typescript-eslint/parser": "^5.12.1",
     "@vitejs/plugin-react": "^3.1.0",
     "babel-loader": "^8.2.3",
-    "babel-plugin-i18next-extract": "^0.8.3",
     "circular-dependency-plugin": "^5.2.2",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.6.0",

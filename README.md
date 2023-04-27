@@ -29,6 +29,7 @@ npm run start:dev - server start + frontend project in development mode
 - `npm run storybook:build` - Storybook build
 - `npm run prepare` - precommit husky
 - `npm run generate:slice` - Script to generate FSD slices
+- `postinstall` - Command to delete the .cache folder inside the node_modules folder of the project.
 
 ## Project architecture
 The project was written in accordance with the methodology FEATURE SLICED DESIGN
