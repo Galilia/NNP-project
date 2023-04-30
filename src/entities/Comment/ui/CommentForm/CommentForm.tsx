@@ -28,7 +28,6 @@ const CommentForm = memo((props: CommentFormProps) => {
     }, [onCommentTextChange, onSendComment, text]);
 
     return (
-        // <DynamicModuleLoader reducers={reducers}>
         <HStack justify="between" max className={classNames(cls.CommentForm, {}, [className])}>
             <InputWithCaret
                 placeholder={t('Add comment')}
@@ -43,7 +42,6 @@ const CommentForm = memo((props: CommentFormProps) => {
                 {t('Send')}
             </Button>
         </HStack>
-        // </DynamicModuleLoader>
     );
 });
 

@@ -4,6 +4,10 @@ import { useSelector } from 'react-redux';
 
 import { CommentForm, CommentList } from '@/entities/Comment';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Loader } from '@/shared/ui/Loader';
@@ -19,7 +23,7 @@ import { addCommentForArticle } from '../../model/services/addCommentForArticle/
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import {
     articleCommentsActions,
-    // articleCommentsReducer,
+    articleCommentsReducer,
 } from '../../model/slices/ArticleCommentsSlice';
 import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
 
@@ -30,9 +34,9 @@ interface ArticleCommentsProps {
     id?: string
 }
 
-// const reducers: ReducersList = {
-//     addCommentForm: articleCommentsReducer,
-// };
+const reducers: ReducersList = {
+    addCommentForm: articleCommentsReducer,
+};
 
 export const ArticleComments = memo((props: ArticleCommentsProps) => {
     const { className, id } = props;
@@ -63,12 +67,14 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
                 className={cls.commentTitle}
             />
             <Suspense fallback={<Loader />}>
-                <CommentForm
-                    onSendComment={onSendComment}
-                    onCommentTextChange={onCommentTextChange}
-                    text={text}
-                    error={error}
-                />
+                <DynamicModuleLoader reducers={reducers}>
+                    <CommentForm
+                        onSendComment={onSendComment}
+                        onCommentTextChange={onCommentTextChange}
+                        text={text}
+                        error={error}
+                    />
+                </DynamicModuleLoader>
             </Suspense>
             <CommentList
                 isLoading={commentsIsLoading}
