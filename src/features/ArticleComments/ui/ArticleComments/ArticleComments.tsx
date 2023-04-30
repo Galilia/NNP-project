@@ -3,30 +3,25 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { CommentForm, CommentList } from '@/entities/Comment';
-// TODO
-// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
-// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
-import {
-    getArticleCommentsIsLoading,
-} from '@/pages/ArticleDetailsPage/model/selectors/commentsSelectors';
-// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
-import {
-    addCommentForArticle,
-} from '@/pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
-// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
-import {
-    fetchCommentsByArticleId,
-} from '@/pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-// eslint-disable-next-line galilia-plugin/public-api-imports,galilia-plugin/layer-imports
-import {
-    getArticleComments,
-} from '@/pages/ArticleDetailsPage/model/slices/articleDetailsCommentsSlice';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Loader } from '@/shared/ui/Loader';
 import { VStack } from '@/shared/ui/Stack';
 import { Text, TextSize } from '@/shared/ui/Text';
+
+import {
+    getAddCommentFormError,
+    getAddCommentFormText,
+    getArticleCommentsIsLoading,
+} from '../../model/selectors/ArticleCommentsSelectors';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import {
+    articleCommentsActions,
+    // articleCommentsReducer,
+} from '../../model/slices/ArticleCommentsSlice';
+import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
 
 import cls from './ArticleComments.module.scss';
 
@@ -35,11 +30,17 @@ interface ArticleCommentsProps {
     id?: string
 }
 
+// const reducers: ReducersList = {
+//     addCommentForm: articleCommentsReducer,
+// };
+
 export const ArticleComments = memo((props: ArticleCommentsProps) => {
     const { className, id } = props;
     const { t } = useTranslation();
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
+    const text = useSelector(getAddCommentFormText);
+    const error = useSelector(getAddCommentFormError);
     const dispatch = useAppDispatch();
 
     useInitialEffect(() => {
@@ -50,6 +51,10 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
         dispatch(addCommentForArticle(text));
     }, [dispatch]);
 
+    const onCommentTextChange = useCallback((value: string) => {
+        dispatch(articleCommentsActions.setText(value));
+    }, [dispatch]);
+
     return (
         <VStack gap="16" max className={classNames(cls.ArticleComments, {}, [className])}>
             <Text
@@ -58,7 +63,12 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
                 className={cls.commentTitle}
             />
             <Suspense fallback={<Loader />}>
-                <CommentForm onSendComment={onSendComment} />
+                <CommentForm
+                    onSendComment={onSendComment}
+                    onCommentTextChange={onCommentTextChange}
+                    text={text}
+                    error={error}
+                />
             </Suspense>
             <CommentList
                 isLoading={commentsIsLoading}
