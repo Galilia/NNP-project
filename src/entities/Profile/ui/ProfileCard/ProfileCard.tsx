@@ -77,11 +77,9 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
     return (
         <VStack gap="8" max className={classNames(cls.ProfileCard, mods, [className])}>
-            {data?.avatar && (
-                <HStack justify="center" max>
-                    <Avatar src={data?.avatar} alt="avatar" />
-                </HStack>
-            )}
+            <HStack justify="center" max>
+                <Avatar src={data?.avatar} alt="avatar" />
+            </HStack>
             { withCaret ? (
                 <ProfileCardWithCaret
                     data={data}

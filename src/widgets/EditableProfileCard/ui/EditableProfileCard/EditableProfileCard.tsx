@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { ProfileCard } from '@/entities/Profile';
+import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
 import {
     DynamicModuleLoader,
     ReducersList,
@@ -78,6 +79,14 @@ export const EditableProfileCard = ({ className, id }: EditableProfileCardProps)
     }, [dispatch]);
 
     const onChangeAvatar = useCallback((value?: string) => {
+        const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
+
+        if (user) {
+            localStorage.setItem(
+                'user',
+                JSON.stringify({ ...JSON.parse(user), avatar: value }),
+            );
+        }
         dispatch(profileActions.updateProfile({ avatar: value || '' }));
     }, [dispatch]);
 
