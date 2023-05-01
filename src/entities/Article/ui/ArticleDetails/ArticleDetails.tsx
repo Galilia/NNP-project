@@ -27,14 +27,12 @@ import { fetchArticleById } from '../../model/services/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { ArticleBlock } from '../../model/types/article';
 import {
-    ArticleCodeBlockComponent,
-} from '../../ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
-import {
     ArticleImageBlockComponent,
 } from '../../ui/ArticleImageBlockComponent/ArticleImageBlockComponent';
 import {
     ArticleTextBlockComponent,
 } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 
 import cls from './ArticleDetails.module.scss';
 
