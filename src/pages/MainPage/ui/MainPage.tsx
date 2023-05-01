@@ -8,7 +8,7 @@ const MainPage = () => {
     const { t } = useTranslation();
 
     return (
-        <Page>
+        <Page data-testid="MainPage">
             {/* eslint-disable i18next/no-literal-string */}
             <h1>List of developed entities and features</h1>
             <h2>Entities:</h2>
