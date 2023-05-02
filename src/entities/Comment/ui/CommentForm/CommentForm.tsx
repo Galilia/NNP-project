@@ -34,10 +34,12 @@ const CommentForm = memo((props: CommentFormProps) => {
                 value={text}
                 onChange={onCommentTextChange}
                 className={cls.input}
+                data-testid="AddCommentForm.Input"
             />
             <Button
                 theme={ButtonTheme.OUTLINE}
                 onClick={onSendHandler}
+                data-testid="AddCommentForm.Button"
             >
                 {t('Send')}
             </Button>
