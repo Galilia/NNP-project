@@ -26,6 +26,15 @@
       "description": "You've been Liked!",
       "date": "Fri Apr 21 2023 16:58:24 GMT+0300 (Израиль, летнее время)",
       "id": 3
+    },
+    {
+      "userId": "4",
+      "profileId": "1",
+      "title": "User testuser liked you!",
+      "description": "You've been Liked!",
+      "date": "Tue May 02 2023 14:22:26 GMT+0300 (Израиль, летнее время)",
+      "isRead": true,
+      "id": 4
     }
   ],
   "articles": [
@@ -751,6 +760,15 @@
         "MANAGER"
       ],
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+    },
+    {
+      "id": "4",
+      "username": "testuser",
+      "password": "123",
+      "roles": [
+        "ADMIN"
+      ],
+      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
   ],
   "profile": [
@@ -882,6 +900,12 @@
       "profileId": "2",
       "rate": 5,
       "id": 3
+    },
+    {
+      "userId": "4",
+      "profileId": "1",
+      "rate": 3,
+      "id": 4
     }
   ]
 }
