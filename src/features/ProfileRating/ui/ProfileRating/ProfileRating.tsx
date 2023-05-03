@@ -55,6 +55,7 @@ const ProfileRating = memo((props: ProfileRatingProps) => {
                 userId,
                 profileId,
                 title: `User ${username} liked you!`,
+                // eslint-disable-next-line
                 description: "You've been Liked!",
                 date: new Date().toString(),
                 isRead: true,

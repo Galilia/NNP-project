@@ -71,8 +71,8 @@ module.exports = {
         ],
         'max-len': ['error', { ignoreComments: true, code: 120 }],
         'no-console': 'warn',
-        quotes: ['error', 'single'],
-        'jsx-quotes': ['error', 'prefer-double'],
+        // quotes: ['error', 'single'],
+        // 'jsx-quotes': ['error', 'prefer-double'],
         semi: ['warn', 'always'],
         'import/order': [
             'error',
