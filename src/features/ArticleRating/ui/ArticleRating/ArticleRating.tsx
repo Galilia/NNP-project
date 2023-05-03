@@ -6,7 +6,10 @@ import { getUserAuthData } from '@/entities/User';
 import { useTranslationProps } from '@/shared/lib/hooks/useTranslationProps/useTranslationProps';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
-import { useGetArticleRating, useRateArticle } from '../../api/articleRatingApi';
+import {
+    useGetArticleRating,
+    useRateArticle,
+} from '../../api/articleRatingApi';
 
 export interface ArticleRatingProps {
     className?: string;
@@ -24,28 +27,39 @@ const ArticleRating = memo((props: ArticleRatingProps) => {
     });
     const rating = data?.[0];
     const _rateTheArticle = useTranslationProps('Rate the article');
-    const _leaveYourFeedback = useTranslationProps('Leave your feedback, please');
+    const _leaveYourFeedback = useTranslationProps(
+        'Leave your feedback, please',
+    );
 
-    const handleRateArticle = useCallback((starsCount: number, feedback?: string) => {
-        try {
-            rateArticleMutation({
-                userId,
-                articleId,
-                rate: starsCount,
-                feedback,
-            });
-        } catch (e) {
-            console.log(e);
-        }
-    }, [articleId, rateArticleMutation, userId]);
+    const handleRateArticle = useCallback(
+        (starsCount: number, feedback?: string) => {
+            try {
+                rateArticleMutation({
+                    userId,
+                    articleId,
+                    rate: starsCount,
+                    feedback,
+                });
+            } catch (e) {
+                console.log(e);
+            }
+        },
+        [articleId, rateArticleMutation, userId],
+    );
 
-    const onAccept = useCallback((starsCount: number, feedback?: string) => {
-        handleRateArticle(starsCount, feedback);
-    }, [handleRateArticle]);
+    const onAccept = useCallback(
+        (starsCount: number, feedback?: string) => {
+            handleRateArticle(starsCount, feedback);
+        },
+        [handleRateArticle],
+    );
 
-    const onCancel = useCallback((starsCount: number) => {
-        handleRateArticle(starsCount);
-    }, [handleRateArticle]);
+    const onCancel = useCallback(
+        (starsCount: number) => {
+            handleRateArticle(starsCount);
+        },
+        [handleRateArticle],
+    );
 
     if (isLoading) {
         return <Skeleton width="100%" height={120} />;

@@ -17,9 +17,7 @@ interface NotificationListProps {
 }
 
 export const NotificationList = memo((props: NotificationListProps) => {
-    const {
-        className, handleNotification, notifications, isLoading,
-    } = props;
+    const { className, handleNotification, notifications, isLoading } = props;
     const { t } = useTranslation();
 
     if (notifications?.length === 0) {
@@ -32,11 +30,7 @@ export const NotificationList = memo((props: NotificationListProps) => {
 
     if (isLoading) {
         return (
-            <VStack
-                gap="16"
-                max
-                className={classNames('', {}, [className])}
-            >
+            <VStack gap="16" max className={classNames('', {}, [className])}>
                 <Skeleton width="100%" border="8px" height="80px" />
                 <Skeleton width="100%" border="8px" height="80px" />
                 <Skeleton width="100%" border="8px" height="80px" />
@@ -45,11 +39,7 @@ export const NotificationList = memo((props: NotificationListProps) => {
     }
 
     return (
-        <VStack
-            gap="16"
-            max
-            className={classNames('', {}, [className])}
-        >
+        <VStack gap="16" max className={classNames('', {}, [className])}>
             {notifications?.map((item) => (
                 <NotificationItem
                     key={item.id}

@@ -14,7 +14,9 @@ export default {
     decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof ArticleComments>;
 
-const Template: ComponentStory<typeof ArticleComments> = (args) => <ArticleComments {...args} />;
+const Template: ComponentStory<typeof ArticleComments> = (args) => (
+    <ArticleComments {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};

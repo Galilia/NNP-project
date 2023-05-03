@@ -16,7 +16,9 @@ export default {
     decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof ArticleList>;
 
-const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
+const Template: ComponentStory<typeof ArticleList> = (args) => (
+    <ArticleList {...args} />
+);
 
 export const LoadingList = Template.bind({});
 LoadingList.args = {
@@ -34,24 +36,20 @@ LoadingGrid.args = {
 
 export const ListGrid = Template.bind({});
 ListGrid.args = {
-    articles: new Array(9)
-        .fill(0)
-        .map((item, index) => ({
-            ...articleData,
-            id: String(index),
-        })),
+    articles: new Array(9).fill(0).map((item, index) => ({
+        ...articleData,
+        id: String(index),
+    })),
     isLoading: false,
     view: 'GRID',
 };
 
 export const List = Template.bind({});
 List.args = {
-    articles: new Array(9)
-        .fill(0)
-        .map((item, index) => ({
-            ...articleData,
-            id: String(index),
-        })),
+    articles: new Array(9).fill(0).map((item, index) => ({
+        ...articleData,
+        id: String(index),
+    })),
     isLoading: false,
     view: 'LIST',
 };

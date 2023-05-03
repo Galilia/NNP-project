@@ -1,6 +1,4 @@
-import {
-    memo, useCallback, useState,
-} from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
@@ -16,7 +14,10 @@ import { Text, TextTheme } from '@/shared/ui/Text';
 
 import { LoginFormProps } from '../../lib/utils/LoginForm.utils';
 import {
-    getLoginEmail, getLoginError, getLoginIsLoading, getLoginPassword,
+    getLoginEmail,
+    getLoginError,
+    getLoginIsLoading,
+    getLoginPassword,
 } from '../../model/selectors/loginSelectors';
 import { loginByEmail } from '../../model/services/loginByEmail/loginByEmail';
 import { signUpByEmail } from '../../model/services/signUpByEmail/signUpByEmail';
@@ -37,13 +38,19 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const isLoading = useSelector(getLoginIsLoading);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const onChangeEmail = useCallback((value: string) => {
-        dispatch(loginActions.setEmail(value));
-    }, [dispatch]);
+    const onChangeEmail = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setEmail(value));
+        },
+        [dispatch],
+    );
 
-    const onChangePassword = useCallback((value: string) => {
-        dispatch(loginActions.setPassword(value));
-    }, [dispatch]);
+    const onChangePassword = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setPassword(value));
+        },
+        [dispatch],
+    );
 
     const onSignUpClick = useCallback(() => {
         dispatch(signUpByEmail({ email, password }));
@@ -59,8 +66,17 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <div className={classNames(cls.LoginForm, {}, [className])}>
-                { !isLoggedIn ? <Text title={t('Register')} /> : <Text title={t('Login')} /> }
-                {error && <Text text={t('Login or password is not correct')} theme={TextTheme.ERROR} />}
+                {!isLoggedIn ? (
+                    <Text title={t('Register')} />
+                ) : (
+                    <Text title={t('Login')} />
+                )}
+                {error && (
+                    <Text
+                        text={t('Login or password is not correct')}
+                        theme={TextTheme.ERROR}
+                    />
+                )}
                 <Input
                     type="text"
                     className={cls.input}
@@ -78,7 +94,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                     value={password}
                 />
 
-                { !isLoggedIn ? (
+                {!isLoggedIn ? (
                     <Button
                         theme={ButtonTheme.OUTLINE}
                         onClick={onSignUpClick}
@@ -102,7 +118,9 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                     onClick={() => setIsLoggedIn((prev) => !prev)}
                     disabled={isLoading}
                 >
-                    {!isLoggedIn ? t('already registered? please, login!') : t('dont have login, please, sign up!')}
+                    {!isLoggedIn
+                        ? t('already registered? please, login!')
+                        : t('dont have login, please, sign up!')}
                 </Button>
             </div>
         </DynamicModuleLoader>

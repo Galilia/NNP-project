@@ -3,7 +3,9 @@ import { StateSchema } from '@/app/providers/StoreProvider';
 import {
     getLoginEmail,
     getLoginError,
-    getLoginIsLoading, getLoginPassword, getLoginUsername,
+    getLoginIsLoading,
+    getLoginPassword,
+    getLoginUsername,
 } from '../../model/selectors/loginSelectors';
 
 describe('loginSelectors.test', () => {

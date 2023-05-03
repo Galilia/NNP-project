@@ -1,5 +1,9 @@
 import {
-    AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
+    AnyAction,
+    CombinedState,
+    EnhancedStore,
+    Reducer,
+    ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 
@@ -19,14 +23,14 @@ import { rtkApi } from '@/shared/api/rtkApi';
 import { ProfileSchema } from '@/widgets/EditableProfileCard';
 
 export interface StateSchema {
-    counter: CounterSchema,
-    user: UserSchema,
-    scrollSave: ScrollSaveSchema,
-    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>,
+    counter: CounterSchema;
+    user: UserSchema;
+    scrollSave: ScrollSaveSchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     // Async reducers
-    loginForm?: LoginSchema,
-    profile?: ProfileSchema,
+    loginForm?: LoginSchema;
+    profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;
     // articleDetailsComments?: ArticleDetailsCommentsSchema;
     // articleDetailsRecommend?: ArticleDetailsRecommendSchema;
@@ -39,7 +43,10 @@ export type StateSchemaKey = keyof StateSchema;
 
 export interface ReducerManager {
     getReducerMap: () => ReducersMapObject<StateSchema>;
-    reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
+    reduce: (
+        state: StateSchema,
+        action: AnyAction,
+    ) => CombinedState<StateSchema>;
     add: (key: StateSchemaKey, reducer: Reducer) => void;
     remove: (key: StateSchemaKey) => void;
 }
@@ -55,5 +62,5 @@ export interface ThunkExtraArg {
 export interface ThunkConfig<T> {
     rejectValue: T;
     extra: ThunkExtraArg;
-    state: StateSchema
+    state: StateSchema;
 }

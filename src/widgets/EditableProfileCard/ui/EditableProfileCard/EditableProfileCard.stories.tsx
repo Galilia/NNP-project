@@ -18,36 +18,43 @@ export default {
     decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof EditableProfileCard>;
 
-const Template: ComponentStory<typeof EditableProfileCard> = () => <EditableProfileCard id="1" />;
+const Template: ComponentStory<typeof EditableProfileCard> = () => (
+    <EditableProfileCard id="1" />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [StoreDecorator({
-    profile: {
-        form: {
-            username: 'admin',
-            age: 22,
-            country: Country.Ukraine,
-            lastname: 'Galperin',
-            first: 'asd',
-            city: 'asf',
-            currency: Currency.USD,
+Normal.decorators = [
+    StoreDecorator({
+        profile: {
+            form: {
+                username: 'admin',
+                age: 22,
+                country: Country.Ukraine,
+                lastname: 'Galperin',
+                first: 'asd',
+                city: 'asf',
+                currency: Currency.USD,
+            },
         },
-    },
-})];
+    }),
+];
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
-    profile: {
-        form: {
-            username: 'admin',
-            age: 22,
-            country: Country.Ukraine,
-            lastname: 'Galilia',
-            first: 'asd',
-            city: 'asf',
-            currency: Currency.USD,
+Dark.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+        profile: {
+            form: {
+                username: 'admin',
+                age: 22,
+                country: Country.Ukraine,
+                lastname: 'Galilia',
+                first: 'asd',
+                city: 'asf',
+                currency: Currency.USD,
+            },
         },
-    },
-})];
+    }),
+];

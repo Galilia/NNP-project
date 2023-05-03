@@ -1,6 +1,4 @@
-import React, {
-    memo, useCallback, useMemo, useState,
-} from 'react';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { NotificationList } from '@/entities/Notification';
@@ -13,7 +11,10 @@ import { Drawer } from '@/shared/ui/Drawer';
 import { Icon } from '@/shared/ui/Icon';
 import { Popover } from '@/shared/ui/Popups';
 
-import { useGetNotifications, useUpdateNotification } from '../../api/notificationApi';
+import {
+    useGetNotifications,
+    useUpdateNotification,
+} from '../../api/notificationApi';
 
 import cls from './NotificationButton.module.scss';
 
@@ -27,26 +28,38 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const userData = useSelector(getUserAuthData);
     const userId = userData?.id ?? '';
-    const { data: notifications, isLoading, refetch } = useGetNotifications(
+    const {
+        data: notifications,
+        isLoading,
+        refetch,
+    } = useGetNotifications(
         { profileId: userId },
         { pollingInterval: 20000, refetchOnMountOrArgChange: true },
     );
     const [updateNotification] = useUpdateNotification();
 
-    const handleNotification = useCallback((notificationId: string) => {
-        if (notifications) {
-            try {
-                const notificationToUpdate = notifications.find((n) => n.id === notificationId);
-                if (notificationToUpdate && !notificationToUpdate.isRead) {
-                    updateNotification({ ...notificationToUpdate, isRead: true });
+    const handleNotification = useCallback(
+        (notificationId: string) => {
+            if (notifications) {
+                try {
+                    const notificationToUpdate = notifications.find(
+                        (n) => n.id === notificationId,
+                    );
+                    if (notificationToUpdate && !notificationToUpdate.isRead) {
+                        updateNotification({
+                            ...notificationToUpdate,
+                            isRead: true,
+                        });
+                    }
+                } catch (e) {
+                    console.log(e);
+                } finally {
+                    refetch();
                 }
-            } catch (e) {
-                console.log(e);
-            } finally {
-                refetch();
             }
-        }
-    }, [notifications, updateNotification, refetch]);
+        },
+        [notifications, updateNotification, refetch],
+    );
 
     const onOpenDrawer = useCallback(() => {
         setIsOpen(true);
@@ -67,43 +80,39 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
             return null;
         }
 
-        return notifications?.length !== 0
-            ? (
-                <div className={cls.notificationsCount}>
-                    {String(notifications?.length)}
-                </div>
-            )
-            : null;
+        return notifications?.length !== 0 ? (
+            <div className={cls.notificationsCount}>
+                {String(notifications?.length)}
+            </div>
+        ) : null;
     }, [isLoading, notifications?.length]);
 
-    return !isMobile
-        ? (
-            <>
-                { NotificationsCount }
-                <Popover
-                    className={classNames(cls.NotificationButton, {}, [className])}
-                    direction="bottom left"
-                    trigger={trigger}
-                >
-                    <NotificationList
-                        className={cls.notifications}
-                        handleNotification={handleNotification}
-                        notifications={notifications}
-                        isLoading={isLoading}
-                    />
-                </Popover>
-            </>
-        )
-        : (
-            <>
-                {trigger}
-                <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-                    <NotificationList
-                        handleNotification={handleNotification}
-                        notifications={notifications}
-                        isLoading={isLoading}
-                    />
-                </Drawer>
-            </>
-        );
+    return !isMobile ? (
+        <>
+            {NotificationsCount}
+            <Popover
+                className={classNames(cls.NotificationButton, {}, [className])}
+                direction="bottom left"
+                trigger={trigger}
+            >
+                <NotificationList
+                    className={cls.notifications}
+                    handleNotification={handleNotification}
+                    notifications={notifications}
+                    isLoading={isLoading}
+                />
+            </Popover>
+        </>
+    ) : (
+        <>
+            {trigger}
+            <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+                <NotificationList
+                    handleNotification={handleNotification}
+                    notifications={notifications}
+                    isLoading={isLoading}
+                />
+            </Drawer>
+        </>
+    );
 });

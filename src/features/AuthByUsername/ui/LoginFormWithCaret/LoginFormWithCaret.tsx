@@ -14,11 +14,12 @@ import { Text, TextTheme } from '@/shared/ui/Text';
 
 import { LoginFormProps } from '../../lib/utils/LoginForm.utils';
 import {
-    getLoginError, getLoginIsLoading, getLoginPassword, getLoginUsername,
+    getLoginError,
+    getLoginIsLoading,
+    getLoginPassword,
+    getLoginUsername,
 } from '../../model/selectors/loginSelectors';
-import {
-    loginByUsername,
-} from '../../model/services/loginByUsername/loginByUsername';
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 
 import cls from './LoginFormWithCaret.module.scss';
@@ -35,13 +36,19 @@ const LoginFormWithCaret = memo(({ className, onSuccess }: LoginFormProps) => {
     const error = useSelector(getLoginError);
     const isLoading = useSelector(getLoginIsLoading);
 
-    const onChangeUsername = useCallback((value: string) => {
-        dispatch(loginActions.setUsername(value));
-    }, [dispatch]);
+    const onChangeUsername = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setUsername(value));
+        },
+        [dispatch],
+    );
 
-    const onChangePassword = useCallback((value: string) => {
-        dispatch(loginActions.setPassword(value));
-    }, [dispatch]);
+    const onChangePassword = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setPassword(value));
+        },
+        [dispatch],
+    );
 
     const onLoginClick = useCallback(async () => {
         const result = await dispatch(loginByUsername({ username, password }));
@@ -54,7 +61,12 @@ const LoginFormWithCaret = memo(({ className, onSuccess }: LoginFormProps) => {
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <div className={classNames(cls.LoginForm, {}, [className])}>
                 <Text title={t('Authorization')} />
-                {error && <Text text={t('Login or password is not correct')} theme={TextTheme.ERROR} />}
+                {error && (
+                    <Text
+                        text={t('Login or password is not correct')}
+                        theme={TextTheme.ERROR}
+                    />
+                )}
                 <InputWithCaret
                     type="text"
                     className={cls.input}

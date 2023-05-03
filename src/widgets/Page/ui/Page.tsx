@@ -1,6 +1,4 @@
-import {
-    MutableRefObject, ReactNode, UIEventHandler, useRef,
-} from 'react';
+import { MutableRefObject, ReactNode, UIEventHandler, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
@@ -23,14 +21,17 @@ interface PageProps extends TestProps {
 
 export const Page = (props: PageProps) => {
     const {
-        className, children, onScrollEnd, 'data-testid': dataTestId,
+        className,
+        children,
+        onScrollEnd,
+        'data-testid': dataTestId,
     } = props;
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerEndOfPageRef = useRef() as MutableRefObject<HTMLDivElement>;
     const dispatch = useAppDispatch();
     const { pathname } = useLocation();
-    const scrollPosition = useSelector(
-        (state: StateSchema) => getScrollByPath(state, pathname),
+    const scrollPosition = useSelector((state: StateSchema) =>
+        getScrollByPath(state, pathname),
     );
 
     useInfiniteScroll({
@@ -45,10 +46,12 @@ export const Page = (props: PageProps) => {
 
     const onScroll: UIEventHandler<HTMLElement> = useThrottle((e) => {
         const target = e.currentTarget;
-        dispatch(scrollSaveActions.setScrollPosition({
-            position: target.scrollTop,
-            path: pathname,
-        }));
+        dispatch(
+            scrollSaveActions.setScrollPosition({
+                position: target.scrollTop,
+                path: pathname,
+            }),
+        );
     }, 500);
 
     return (
@@ -59,7 +62,9 @@ export const Page = (props: PageProps) => {
             data-testid={dataTestId ?? 'page'}
         >
             {children}
-            {onScrollEnd ? <div className={cls.trigger} ref={triggerEndOfPageRef} /> : null}
+            {onScrollEnd ? (
+                <div className={cls.trigger} ref={triggerEndOfPageRef} />
+            ) : null}
         </main>
     );
 };

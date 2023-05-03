@@ -9,19 +9,21 @@ import cls from './AutocompleteDropdown.module.scss';
 
 interface AutocompleteDropdownProps {
     className?: string;
-    dropdownRef: LegacyRef<HTMLUListElement> | undefined,
-    items: AutocompleteSchema[],
+    dropdownRef: LegacyRef<HTMLUListElement> | undefined;
+    items: AutocompleteSchema[];
     handleTriggerClick: (item: AutocompleteSchema) => void;
     isLoading: boolean;
 }
 
 export const AutocompleteDropdown = memo((props: AutocompleteDropdownProps) => {
-    const {
-        className, dropdownRef, items, handleTriggerClick, isLoading,
-    } = props;
+    const { className, dropdownRef, items, handleTriggerClick, isLoading } =
+        props;
 
     return (
-        <ul className={classNames(cls.AutocompleteDropdown, {}, [className])} ref={dropdownRef}>
+        <ul
+            className={classNames(cls.AutocompleteDropdown, {}, [className])}
+            ref={dropdownRef}
+        >
             {isLoading ? (
                 <li>
                     <Loader />

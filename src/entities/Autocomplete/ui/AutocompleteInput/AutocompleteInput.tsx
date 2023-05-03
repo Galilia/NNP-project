@@ -1,6 +1,4 @@
-import {
-    ChangeEvent, KeyboardEventHandler, LegacyRef, memo,
-} from 'react';
+import { ChangeEvent, KeyboardEventHandler, LegacyRef, memo } from 'react';
 
 import CloseIcon from '@/shared/assets/icons/close-24-24.svg';
 import SearchIcon from '@/shared/assets/icons/search.svg';

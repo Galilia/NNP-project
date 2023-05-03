@@ -11,7 +11,9 @@ export default {
     },
 } as ComponentMeta<typeof InputWithCaret>;
 
-const Template: ComponentStory<typeof InputWithCaret> = (args) => <InputWithCaret {...args} />;
+const Template: ComponentStory<typeof InputWithCaret> = (args) => (
+    <InputWithCaret {...args} />
+);
 
 export const Primary = Template.bind({});
 Primary.args = {

@@ -11,7 +11,9 @@ export default {
     },
 } as ComponentMeta<typeof AutocompleteDropdown>;
 
-const Template: ComponentStory<typeof AutocompleteDropdown> = (args) => <AutocompleteDropdown {...args} />;
+const Template: ComponentStory<typeof AutocompleteDropdown> = (args) => (
+    <AutocompleteDropdown {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {

@@ -16,7 +16,11 @@ export const signUpByEmail = createAsyncThunk<User, SignUpByEmailProps>(
         try {
             const auth = getAuth();
 
-            const response = await createUserWithEmailAndPassword(auth, email, password);
+            const response = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password,
+            );
 
             if (!response.user) {
                 throw new Error();

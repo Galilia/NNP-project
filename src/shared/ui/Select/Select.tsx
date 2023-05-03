@@ -6,7 +6,7 @@ import cls from './Select.module.scss';
 
 export interface SelectOption<T extends string> {
     value: T;
-    content: string
+    content: string;
 }
 
 interface SelectProps<T extends string> {
@@ -18,39 +18,37 @@ interface SelectProps<T extends string> {
     readonly?: boolean;
 }
 
-export const Select = <T extends string> (props: SelectProps<T>) => {
-    const {
-        className, label, options, value, onChange, readonly,
-    } = props;
+export const Select = <T extends string>(props: SelectProps<T>) => {
+    const { className, label, options, value, onChange, readonly } = props;
 
     const optionList = useMemo(
-        () => options?.map((opt) => (
-            <option
-                className={cls.option}
-                value={opt.value}
-                key={opt.value}
-            >
-                {opt.content}
-            </option>
-        )),
+        () =>
+            options?.map((opt) => (
+                <option
+                    className={cls.option}
+                    value={opt.value}
+                    key={opt.value}
+                >
+                    {opt.content}
+                </option>
+            )),
         [options],
     );
 
-    const onChangeHandler = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
-        if (onChange) {
-            onChange(e.target.value as T);
-        }
-    }, [onChange]);
+    const onChangeHandler = useCallback(
+        (e: ChangeEvent<HTMLSelectElement>) => {
+            if (onChange) {
+                onChange(e.target.value as T);
+            }
+        },
+        [onChange],
+    );
 
     const mods: Mods = {};
 
     return (
         <div className={classNames(cls.Wrapper, mods, [className])}>
-            { label && (
-                <span className={cls.label}>
-                    {`${label}>`}
-                </span>
-            ) }
+            {label && <span className={cls.label}>{`${label}>`}</span>}
             <select
                 className={cls.select}
                 value={value}

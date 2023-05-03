@@ -18,7 +18,9 @@ export default {
     decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = () => <ArticleDetailsPage />;
+const Template: ComponentStory<typeof ArticleDetailsPage> = () => (
+    <ArticleDetailsPage />
+);
 
 const article: Article = {
     id: '1',
@@ -63,16 +65,21 @@ const article: Article = {
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-})];
+Normal.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            data: article,
+        },
+    }),
+];
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-}), ThemeDecorator(Theme.DARK)];
+Dark.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            data: article,
+        },
+    }),
+    ThemeDecorator(Theme.DARK),
+];

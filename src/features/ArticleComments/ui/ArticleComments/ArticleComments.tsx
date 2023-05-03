@@ -31,7 +31,7 @@ import cls from './ArticleComments.module.scss';
 
 interface ArticleCommentsProps {
     className?: string;
-    id?: string
+    id?: string;
 }
 
 const reducers: ReducersList = {
@@ -51,16 +51,26 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
         dispatch(fetchCommentsByArticleId(id));
     });
 
-    const onSendComment = useCallback((text: string) => {
-        dispatch(addCommentForArticle(text));
-    }, [dispatch]);
+    const onSendComment = useCallback(
+        (text: string) => {
+            dispatch(addCommentForArticle(text));
+        },
+        [dispatch],
+    );
 
-    const onCommentTextChange = useCallback((value: string) => {
-        dispatch(articleCommentsActions.setText(value));
-    }, [dispatch]);
+    const onCommentTextChange = useCallback(
+        (value: string) => {
+            dispatch(articleCommentsActions.setText(value));
+        },
+        [dispatch],
+    );
 
     return (
-        <VStack gap="16" max className={classNames(cls.ArticleComments, {}, [className])}>
+        <VStack
+            gap="16"
+            max
+            className={classNames(cls.ArticleComments, {}, [className])}
+        >
             <Text
                 size={TextSize.L}
                 title={t('Comments')}
@@ -76,10 +86,7 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
                     />
                 </DynamicModuleLoader>
             </Suspense>
-            <CommentList
-                isLoading={commentsIsLoading}
-                comments={comments}
-            />
+            <CommentList isLoading={commentsIsLoading} comments={comments} />
         </VStack>
     );
 });

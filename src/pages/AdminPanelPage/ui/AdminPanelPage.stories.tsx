@@ -16,7 +16,9 @@ export default {
     decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof AdminPanelPage>;
 
-const Template: ComponentStory<typeof AdminPanelPage> = () => <AdminPanelPage />;
+const Template: ComponentStory<typeof AdminPanelPage> = () => (
+    <AdminPanelPage />
+);
 
 export const Light = Template.bind({});
 Light.args = {};

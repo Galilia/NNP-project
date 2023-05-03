@@ -3,8 +3,5 @@
     "window.zoomLevel": 0,
     "vsicons.presets.angular": true,
     "git.ignoreLimitWarning": true,
-    "i18n-ally.localesPaths": [
-        "public/locales",
-        "src/shared/config/i18n"
-    ]
+    "i18n-ally.localesPaths": ["public/locales", "src/shared/config/i18n"]
 }

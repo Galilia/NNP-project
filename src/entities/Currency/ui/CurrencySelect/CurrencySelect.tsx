@@ -13,27 +13,37 @@ interface CurrencySelectProps {
     readonly?: boolean;
 }
 
-export const CurrencySelect = memo(({
-    className, value, onChange, readonly,
-}: CurrencySelectProps) => {
-    const { t } = useTranslation('profile');
+export const CurrencySelect = memo(
+    ({ className, value, onChange, readonly }: CurrencySelectProps) => {
+        const { t } = useTranslation('profile');
 
-    const options = useMemo(() => Object.entries(Currency).map((val) => ({ value: val[0], content: val[1] })), []);
+        const options = useMemo(
+            () =>
+                Object.entries(Currency).map((val) => ({
+                    value: val[0],
+                    content: val[1],
+                })),
+            [],
+        );
 
-    const onChangeHandler = useCallback((value: string) => {
-        onChange?.(value as Currency);
-    }, [onChange]);
+        const onChangeHandler = useCallback(
+            (value: string) => {
+                onChange?.(value as Currency);
+            },
+            [onChange],
+        );
 
-    return (
-        <ListBox
-            onChange={onChangeHandler}
-            value={value}
-            items={options}
-            defaultValue={t('pick_currency')}
-            label={t('pick_currency')}
-            className={classNames('', {}, [className])}
-            readonly={readonly}
-            direction="top right"
-        />
-    );
-});
+        return (
+            <ListBox
+                onChange={onChangeHandler}
+                value={value}
+                items={options}
+                defaultValue={t('pick_currency')}
+                label={t('pick_currency')}
+                className={classNames('', {}, [className])}
+                readonly={readonly}
+                direction="top right"
+            />
+        );
+    },
+);

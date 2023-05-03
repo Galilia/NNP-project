@@ -17,9 +17,8 @@ export interface CommentFormProps {
 }
 
 const CommentForm = memo((props: CommentFormProps) => {
-    const {
-        className, onSendComment, onCommentTextChange, text, error,
-    } = props;
+    const { className, onSendComment, onCommentTextChange, text, error } =
+        props;
     const { t } = useTranslation();
 
     const onSendHandler = useCallback(() => {

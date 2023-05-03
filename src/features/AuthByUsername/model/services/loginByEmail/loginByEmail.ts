@@ -16,7 +16,11 @@ export const loginByEmail = createAsyncThunk<User, LoginByEmailProps>(
         try {
             const auth = getAuth();
 
-            const response = await signInWithEmailAndPassword(auth, email, password);
+            const response = await signInWithEmailAndPassword(
+                auth,
+                email,
+                password,
+            );
 
             if (!response.user) {
                 throw new Error();

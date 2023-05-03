@@ -11,16 +11,20 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [StoreDecorator({
-        user: {
-            authData: {
-                id: '1',
+    decorators: [
+        StoreDecorator({
+            user: {
+                authData: {
+                    id: '1',
+                },
             },
-        },
-    })],
+        }),
+    ],
 } as ComponentMeta<typeof ArticleRating>;
 
-const Template: ComponentStory<typeof ArticleRating> = (args) => <ArticleRating {...args} />;
+const Template: ComponentStory<typeof ArticleRating> = (args) => (
+    <ArticleRating {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {

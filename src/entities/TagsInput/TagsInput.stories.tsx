@@ -11,7 +11,9 @@ export default {
     },
 } as ComponentMeta<typeof TagsInput>;
 
-const Template: ComponentStory<typeof TagsInput> = (args) => <TagsInput {...args} />;
+const Template: ComponentStory<typeof TagsInput> = (args) => (
+    <TagsInput {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};

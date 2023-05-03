@@ -10,7 +10,7 @@ import {
 
 export type ReducersList = {
     [name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[name]>>;
-}
+};
 
 interface DynamicModuleLoaderProps {
     children?: ReactNode;
@@ -18,7 +18,11 @@ interface DynamicModuleLoaderProps {
     removeAfterUnmount?: boolean;
 }
 
-export const DynamicModuleLoader = ({ children, removeAfterUnmount = true, reducers }: DynamicModuleLoaderProps) => {
+export const DynamicModuleLoader = ({
+    children,
+    removeAfterUnmount = true,
+    reducers,
+}: DynamicModuleLoaderProps) => {
     const dispatch = useDispatch();
     const store = useStore() as ReduxStoreWithManager;
 
@@ -46,5 +50,5 @@ export const DynamicModuleLoader = ({ children, removeAfterUnmount = true, reduc
     }, []);
 
     // eslint-disable-next-line react/jsx-no-useless-fragment
-    return (<>{ children }</>);
+    return <>{children}</>;
 };

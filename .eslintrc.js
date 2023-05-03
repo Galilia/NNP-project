@@ -8,6 +8,7 @@ module.exports = {
         'plugin:react/recommended',
         'airbnb',
         'plugin:i18next/recommended',
+        'prettier',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -27,10 +28,13 @@ module.exports = {
         'eslint-plugin-import',
     ],
     rules: {
-        'react/jsx-indent': [2, 4],
-        'react/jsx-indent-props': [2, 4],
-        indent: [2, 4],
-        'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
+        // 'react/jsx-indent': [2, 4],
+        // 'react/jsx-indent-props': [2, 4],
+        // indent: [2, 4],
+        'react/jsx-filename-extension': [
+            2,
+            { extensions: ['.js', '.jsx', '.tsx'] },
+        ],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
         'unused-imports/no-unused-imports': 'error',
@@ -43,47 +47,65 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
-        'i18next/no-literal-string':
-            ['error', {
+        'i18next/no-literal-string': [
+            'error',
+            {
                 markupOnly: true,
-                ignoreAttribute:
-                    ['data-testid', 'to', 'alt', 'placeholder', 'target', 'fallback',
-                        'direction', 'align', 'gap', 'justify', 'wrap', 'role', 'as', 'border'],
-            }],
+                ignoreAttribute: [
+                    'data-testid',
+                    'to',
+                    'alt',
+                    'placeholder',
+                    'target',
+                    'fallback',
+                    'direction',
+                    'align',
+                    'gap',
+                    'justify',
+                    'wrap',
+                    'role',
+                    'as',
+                    'border',
+                ],
+            },
+        ],
         'max-len': ['error', { ignoreComments: true, code: 120 }],
         'no-console': 'warn',
         quotes: ['error', 'single'],
         'jsx-quotes': ['error', 'prefer-double'],
         semi: ['warn', 'always'],
-        'import/order': ['error', {
-            groups: [
-                'builtin',
-                'external',
-                'internal',
-                'parent',
-                'sibling',
-                'index',
-                'object',
-                'type',
-            ],
-            'newlines-between': 'always',
-            alphabetize: {
-                order: 'asc',
-                caseInsensitive: false,
+        'import/order': [
+            'error',
+            {
+                groups: [
+                    'builtin',
+                    'external',
+                    'internal',
+                    'parent',
+                    'sibling',
+                    'index',
+                    'object',
+                    'type',
+                ],
+                'newlines-between': 'always',
+                alphabetize: {
+                    order: 'asc',
+                    caseInsensitive: false,
+                },
+                pathGroups: [
+                    {
+                        pattern: '@/**',
+                        group: 'internal',
+                        position: 'before',
+                    },
+                    {
+                        pattern: '*.module.scss',
+                        group: 'type',
+                        position: 'after',
+                    },
+                ],
             },
-            pathGroups: [
-                {
-                    pattern: '@/**',
-                    group: 'internal',
-                    position: 'before',
-                },
-                {
-                    pattern: '*.module.scss',
-                    group: 'type',
-                    position: 'after',
-                },
-            ],
-        }],
+        ],
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
@@ -97,7 +119,12 @@ module.exports = {
             'error',
             {
                 alias: '@',
-                testFilesPatterns: ['**/*.testing.*', '**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'],
+                testFilesPatterns: [
+                    '**/*.testing.*',
+                    '**/*.test.*',
+                    '**/*.stories.*',
+                    '**/StoreDecorator.tsx',
+                ],
             },
         ],
         'galilia-plugin/layer-imports': [
@@ -107,6 +134,7 @@ module.exports = {
                 ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
             },
         ],
+        'react/jsx-max-props-per-line': ['error', { maximum: 4 }],
     },
     globals: {
         __IS_DEV__: true,

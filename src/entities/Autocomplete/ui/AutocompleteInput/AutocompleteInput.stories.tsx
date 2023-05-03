@@ -11,7 +11,9 @@ export default {
     },
 } as ComponentMeta<typeof AutocompleteInput>;
 
-const Template: ComponentStory<typeof AutocompleteInput> = (args) => <AutocompleteInput {...args} />;
+const Template: ComponentStory<typeof AutocompleteInput> = (args) => (
+    <AutocompleteInput {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {

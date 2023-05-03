@@ -5,8 +5,7 @@ import { useParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
 
-import cls
-    from './ArticleEditPage.module.scss';
+import cls from './ArticleEditPage.module.scss';
 
 interface ArticleEditPageProps {
     className?: string;
@@ -15,14 +14,12 @@ interface ArticleEditPageProps {
 const ArticleEditPage = memo((props: ArticleEditPageProps) => {
     const { className } = props;
     const { t } = useTranslation('article-details');
-    const { id } = useParams<{id: string}>();
+    const { id } = useParams<{ id: string }>();
     const isEdit = Boolean(id);
 
     return (
         <Page className={classNames(cls.ArticleEditPage, {}, [className])}>
-            {isEdit
-                ? t('Edit article with ID = ') + id
-                : t('Create article')}
+            {isEdit ? t('Edit article with ID = ') + id : t('Create article')}
         </Page>
     );
 });

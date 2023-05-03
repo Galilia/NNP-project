@@ -8,4 +8,5 @@ export const getScrollByPath = createSelector(
     (state: StateSchema, path: string) => path,
     (scroll, path) => scroll[path] || 0,
 );
-export const getScrollIndex = (state: StateSchema) => state.scrollSave?.idx ?? 0;
+export const getScrollIndex = (state: StateSchema) =>
+    state.scrollSave?.idx ?? 0;

@@ -1,6 +1,4 @@
-import {
-    FC, HTMLAttributeAnchorTarget, memo, useEffect, useRef,
-} from 'react';
+import { FC, HTMLAttributeAnchorTarget, memo, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 
@@ -27,11 +25,16 @@ interface ArticleListProps {
     handleScrollIndexClick?: (index: number) => void;
 }
 
-const getSkeletons = () => new Array(3)
-    .fill(0)
-    .map((_, index) => (
-        <ArticleListItemSkeleton key={index} view="LIST" className={cls.card} />
-    ));
+const getSkeletons = () =>
+    new Array(3)
+        .fill(0)
+        .map((_, index) => (
+            <ArticleListItemSkeleton
+                key={index}
+                view="LIST"
+                className={cls.card}
+            />
+        ));
 
 export const ArticleList = memo((props: ArticleListProps) => {
     const {
@@ -69,7 +72,11 @@ export const ArticleList = memo((props: ArticleListProps) => {
             className={cls.card}
             key={article.id}
             target={target}
-            handleButtonClick={handleScrollIndexClick ? () => handleScrollIndexClick(index) : undefined}
+            handleButtonClick={
+                handleScrollIndexClick
+                    ? () => handleScrollIndexClick(index)
+                    : undefined
+            }
         />
     );
 
@@ -77,7 +84,9 @@ export const ArticleList = memo((props: ArticleListProps) => {
         return (
             <HStack wrap="wrap" gap="16">
                 {articles.length > 0
-                    ? articles.map((article, index) => renderArticle(index, article))
+                    ? articles.map((article, index) =>
+                          renderArticle(index, article),
+                      )
                     : null}
                 {isLoading && getSkeletons()}
             </HStack>
@@ -86,27 +95,36 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     const Footer = memo(() => {
         if (isLoading) {
-            return (
-                <div className={cls.skeleton}>
-                    {getSkeletons()}
-                </div>
-            );
+            return <div className={cls.skeleton}>{getSkeletons()}</div>;
         }
         return null;
     });
 
     if (!isLoading && !articles.length) {
         return (
-            <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+            <div
+                className={classNames(cls.ArticleList, {}, [
+                    className,
+                    cls[view],
+                ])}
+            >
                 <Text size={TextSize.L} title={t('No articles found')} />
             </div>
         );
     }
 
-    // eslint-disable-next-line react/no-unstable-nested-components
-    const ItemContainerComp: FC<{ height: number; width: number; index: number }> = ({ height, width, index }) => (
+    const ItemContainerComp: FC<{
+        height: number;
+        width: number;
+        index: number;
+        // eslint-disable-next-line react/no-unstable-nested-components
+    }> = ({ height, width, index }) => (
         <div className={cls.ItemContainer}>
-            <ArticleListItemSkeleton key={index} view={view} className={cls.card} />
+            <ArticleListItemSkeleton
+                key={index}
+                view={view}
+                className={cls.card}
+            />
         </div>
     );
 
@@ -115,7 +133,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
             className={classNames(cls.ArticleList, {}, [className, cls[view]])}
             data-testid="ArticleList"
         >
-            { view === 'LIST' ? (
+            {view === 'LIST' ? (
                 <Virtuoso
                     style={{ height: '100%' }}
                     data={articles}

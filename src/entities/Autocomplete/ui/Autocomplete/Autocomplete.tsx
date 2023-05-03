@@ -13,9 +13,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 
 import { AutocompleteSchema } from '../../model/types/autocompleteSchema';
-import {
-    AutocompleteDropdown,
-} from '../../ui/AutocompleteDropdown/AutocompleteDropdown';
+import { AutocompleteDropdown } from '../../ui/AutocompleteDropdown/AutocompleteDropdown';
 import { AutocompleteInput } from '../../ui/AutocompleteInput/AutocompleteInput';
 
 import cls from './Autocomplete.module.scss';
@@ -48,7 +46,9 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
     };
 
     const getData = async (query: string): Promise<AutocompleteSchema[]> => {
-        const response = await $api.get(`https://restcountries.com/v2/name/${query}`);
+        const response = await $api.get(
+            `https://restcountries.com/v2/name/${query}`,
+        );
 
         if (!Array.isArray(response.data)) {
             throw new Error('Unexpected response format');
@@ -85,7 +85,10 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
     };
 
     const handleOutsideClick = (event: MouseEvent) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        if (
+            dropdownRef.current &&
+            !dropdownRef.current.contains(event.target as Node)
+        ) {
             setSearchArr([]);
         }
     };
@@ -110,12 +113,19 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
         };
     }, []);
 
-    const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (event) => {
+    const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (
+        event,
+    ) => {
         if (event.key === 'Backspace') {
-            const openingBracketIndex = query.lastIndexOf('<', selectionStart - 1);
+            const openingBracketIndex = query.lastIndexOf(
+                '<',
+                selectionStart - 1,
+            );
             const closingBracketIndex = query.indexOf('>', selectionEnd - 1);
             if (openingBracketIndex !== -1 && closingBracketIndex !== -1) {
-                const newValue = query.substring(0, openingBracketIndex) + query.substring(closingBracketIndex + 1);
+                const newValue =
+                    query.substring(0, openingBracketIndex) +
+                    query.substring(closingBracketIndex + 1);
 
                 setQuery(newValue);
                 setSelectionStart(openingBracketIndex);
@@ -125,7 +135,9 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
         }
     };
 
-    const handleSelectionChange: ReactEventHandler<HTMLTextAreaElement> = (event) => {
+    const handleSelectionChange: ReactEventHandler<HTMLTextAreaElement> = (
+        event,
+    ) => {
         const { selectionStart, selectionEnd } = event.currentTarget;
         setSelectionStart(selectionStart ?? 0);
         setSelectionEnd(selectionEnd ?? 0);
@@ -140,7 +152,10 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
 
     const handleTriggerClick = (item: AutocompleteSchema) => {
         const searchTermToReplace = query.match(/<\w*$/)?.[0] || '';
-        const newQuery = `${query.replace(searchTermToReplace, `<${item.name}>`)} `;
+        const newQuery = `${query.replace(
+            searchTermToReplace,
+            `<${item.name}>`,
+        )} `;
         setQuery(newQuery);
         setSearchArr([]);
         setShouldLoadData(false);
@@ -168,15 +183,14 @@ export const Autocomplete = memo((props: AutocompleteProps) => {
                 triggerRef={triggerRef}
                 handleInputClear={handleInputClear}
             />
-            {searchArr.length > 0
-                && (
-                    <AutocompleteDropdown
-                        dropdownRef={dropdownRef}
-                        items={searchArr}
-                        handleTriggerClick={handleTriggerClick}
-                        isLoading={isLoading}
-                    />
-                )}
+            {searchArr.length > 0 && (
+                <AutocompleteDropdown
+                    dropdownRef={dropdownRef}
+                    items={searchArr}
+                    handleTriggerClick={handleTriggerClick}
+                    isLoading={isLoading}
+                />
+            )}
         </div>
     );
 });

@@ -18,20 +18,14 @@ export interface ProfileRatingProps {
 }
 
 const ProfileRating = memo((props: ProfileRatingProps) => {
-    const {
-        className,
-        profileId,
-    } = props;
+    const { className, profileId } = props;
     const { t } = useTranslation();
     const userData = useSelector(getUserAuthData);
     const userId = userData?.id ?? '';
     const username = userData?.username ?? '';
     const [rateProfileMutation] = useUpdateRateProfile();
     const [notificationProfileMutation] = useUpdateNotificationProfile();
-    const {
-        data,
-        isLoading,
-    } = useGetProfileRating({
+    const { data, isLoading } = useGetProfileRating({
         userId,
         profileId,
     });
@@ -39,18 +33,21 @@ const ProfileRating = memo((props: ProfileRatingProps) => {
     const _rateTheProfile = t('Rate the profile');
     const _leaveYourFeedback = t('Leave your feedback, please');
 
-    const handleRateProfile = useCallback((starsCount: number, feedback?: string) => {
-        try {
-            rateProfileMutation({
-                userId,
-                profileId,
-                rate: starsCount,
-                feedback,
-            });
-        } catch (e) {
-            console.log(e);
-        }
-    }, [profileId, rateProfileMutation, userId]);
+    const handleRateProfile = useCallback(
+        (starsCount: number, feedback?: string) => {
+            try {
+                rateProfileMutation({
+                    userId,
+                    profileId,
+                    rate: starsCount,
+                    feedback,
+                });
+            } catch (e) {
+                console.log(e);
+            }
+        },
+        [profileId, rateProfileMutation, userId],
+    );
 
     const handleNotifyProfile = useCallback(() => {
         try {
@@ -58,8 +55,8 @@ const ProfileRating = memo((props: ProfileRatingProps) => {
                 userId,
                 profileId,
                 title: `User ${username} liked you!`,
-                description: 'You\'ve been Liked!',
-                date: (new Date()).toString(),
+                description: "You've been Liked!",
+                date: new Date().toString(),
                 isRead: true,
             });
         } catch (e) {
@@ -67,15 +64,21 @@ const ProfileRating = memo((props: ProfileRatingProps) => {
         }
     }, [notificationProfileMutation, profileId, userId, username]);
 
-    const onAccept = useCallback((starsCount: number, feedback?: string) => {
-        handleRateProfile(starsCount, feedback);
-        handleNotifyProfile();
-    }, [handleNotifyProfile, handleRateProfile]);
+    const onAccept = useCallback(
+        (starsCount: number, feedback?: string) => {
+            handleRateProfile(starsCount, feedback);
+            handleNotifyProfile();
+        },
+        [handleNotifyProfile, handleRateProfile],
+    );
 
-    const onCancel = useCallback((starsCount: number) => {
-        handleRateProfile(starsCount);
-        handleNotifyProfile();
-    }, [handleNotifyProfile, handleRateProfile]);
+    const onCancel = useCallback(
+        (starsCount: number) => {
+            handleRateProfile(starsCount);
+            handleNotifyProfile();
+        },
+        [handleNotifyProfile, handleRateProfile],
+    );
 
     if (userId === profileId) {
         return null;

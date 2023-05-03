@@ -9,20 +9,19 @@ import { HStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
 
 import {
-    canUserEdit, getProfileReadonly,
+    canUserEdit,
+    getProfileReadonly,
 } from '../../model/selectors/profileSelectors';
-import {
-    updateProfileData,
-} from '../../model/services/updateProfileData/updateProfileData';
-import {
-    profileActions,
-} from '../../model/slice/profileSlice';
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
+import { profileActions } from '../../model/slice/profileSlice';
 
 interface EditableProfileCardHeaderProps {
     className?: string;
 }
 
-export const EditableProfileCardHeader = ({ className }: EditableProfileCardHeaderProps) => {
+export const EditableProfileCardHeader = ({
+    className,
+}: EditableProfileCardHeaderProps) => {
     const { t } = useTranslation('profile');
     const readonly = useSelector(getProfileReadonly);
     const dispatch = useAppDispatch();
@@ -41,11 +40,15 @@ export const EditableProfileCardHeader = ({ className }: EditableProfileCardHead
     }, [dispatch]);
 
     return (
-        <HStack justify="between" max className={classNames('', {}, [className])}>
+        <HStack
+            justify="between"
+            max
+            className={classNames('', {}, [className])}
+        >
             <Text title={t('profile')} />
             {canEdit && (
                 <div>
-                    { readonly ? (
+                    {readonly ? (
                         <Button
                             theme={ButtonTheme.OUTLINE}
                             onClick={onEdit}

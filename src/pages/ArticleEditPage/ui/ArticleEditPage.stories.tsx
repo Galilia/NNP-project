@@ -16,7 +16,9 @@ export default {
     decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof ArticleEditPage>;
 
-const Template: ComponentStory<typeof ArticleEditPage> = () => <ArticleEditPage />;
+const Template: ComponentStory<typeof ArticleEditPage> = () => (
+    <ArticleEditPage />
+);
 
 export const Light = Template.bind({});
 Light.args = {};

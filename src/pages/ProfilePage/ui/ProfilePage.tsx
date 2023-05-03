@@ -6,7 +6,7 @@ import { EditableProfileCard } from '@/widgets/EditableProfileCard';
 import { Page } from '@/widgets/Page';
 
 const ProfilePage = () => {
-    const { id } = useParams<{id: string}>();
+    const { id } = useParams<{ id: string }>();
 
     if (!id) {
         return null;

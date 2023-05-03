@@ -16,9 +16,6 @@ export { fetchProfileData } from './model/services/fetchProfileData/fetchProfile
 
 export { updateProfileData } from './model/services/updateProfileData/updateProfileData';
 
-export {
-    profileActions,
-    profileReducer,
-} from './model/slice/profileSlice';
+export { profileActions, profileReducer } from './model/slice/profileSlice';
 
 export { ValidateProfileError } from './model/consts/profileConsts';

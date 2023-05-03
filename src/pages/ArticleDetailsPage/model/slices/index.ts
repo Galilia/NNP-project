@@ -6,7 +6,8 @@ import { ArticleDetailsPageSchema } from '../types';
 
 import { articleDetailsRecommendReducer } from './articleDetailsRecommendSlice';
 
-export const articleDetailsPageReducer = combineReducers<ArticleDetailsPageSchema>({
-    comments: articleDetailsCommentsReducer,
-    recommendations: articleDetailsRecommendReducer,
-});
+export const articleDetailsPageReducer =
+    combineReducers<ArticleDetailsPageSchema>({
+        comments: articleDetailsCommentsReducer,
+        recommendations: articleDetailsRecommendReducer,
+    });
