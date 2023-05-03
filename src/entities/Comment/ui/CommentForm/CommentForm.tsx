@@ -28,7 +28,12 @@ const CommentForm = memo((props: CommentFormProps) => {
     }, [onCommentTextChange, onSendComment, text]);
 
     return (
-        <HStack justify="between" max className={classNames(cls.CommentForm, {}, [className])}>
+        <HStack
+            data-testid="AddCommentForm"
+            justify="between"
+            max
+            className={classNames(cls.CommentForm, {}, [className])}
+        >
             <InputWithCaret
                 placeholder={t('Add comment')}
                 value={text}

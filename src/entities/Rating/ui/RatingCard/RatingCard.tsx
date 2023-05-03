@@ -97,7 +97,12 @@ export const RatingCard = memo((props: RatingCardProps) => {
                                 >
                                     {t('Close')}
                                 </Button>
-                                <Button onClick={acceptHandler}>{t('Send')}</Button>
+                                <Button
+                                    data-testid="RatingCard.Send"
+                                    onClick={acceptHandler}
+                                >
+                                    {t('Send')}
+                                </Button>
                             </HStack>
                         </VStack>
                     </Modal>

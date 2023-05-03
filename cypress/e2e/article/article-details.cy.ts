@@ -1,5 +1,5 @@
 let currentArticleId = '';
-describe('Пользователь заходит на страницу статьи', () => {
+describe('User visits article page', () => {
     beforeEach(() => {
         cy.login();
         cy.createArticle().then((article) => {
@@ -10,19 +10,19 @@ describe('Пользователь заходит на страницу стат
     afterEach(() => {
         cy.removeArticle(currentArticleId);
     });
-    it('И видит содержимое статьи', () => {
+    it('And sees the content of the article', () => {
         cy.getByTestId('ArticleDetails.Info').should('exist');
     });
-    it('И видит список рекоммендаций', () => {
+    it('And sees a list of recommendations', () => {
         cy.getByTestId('ArticleRecommendationsList').should('exist');
     });
-    it('И оставляет комментарий', () => {
+    it('And leave a comment', () => {
         cy.getByTestId('ArticleDetails.Info');
         cy.getByTestId('AddCommentForm').scrollIntoView();
         cy.addComment('text');
         cy.getByTestId('CommentCard.Content').should('have.length', 1);
     });
-    it('И ставит оценку', () => {
+    it('And evaluates', () => {
         cy.getByTestId('ArticleDetails.Info');
         cy.getByTestId('RatingCard').scrollIntoView();
         cy.setRate(4, 'feedback');
