@@ -140,8 +140,19 @@ Requests to the server sends using axios library and RTK-Query [RTK query](/src/
 
 For asynchronous reducers connection (not to pull them into a general bundle), the [DynamicModuleLoader](/src/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader.tsx) is used.
 
-## Working with feature-flag *** 
-*** - in development
+## Working with feature-flag 
+
+Allow feature flags only with toggleFeatures helper  an object with options is passed to it
+```
+{
+   name: feature flag name,
+   on: a function that will work after enabling the feature
+   of: function that will work after the feature is turned off
+}
+```
+To automatically remove a feature, use the remove-feature.ts script, which takes 2 arguments:
+1. The name of the feature flag to be removed
+2. Status (on\off)
 
 ## Entities
 

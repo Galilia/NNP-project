@@ -1,8 +1,8 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import { ArticleDetails } from '@/entities/Article';
-import { Counter } from '@/entities/Counter';
 import { ArticleComments } from '@/features/ArticleComments';
 import { ArticleRating } from '@/features/ArticleRating';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
@@ -11,7 +11,8 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { getFeatureFlag } from '@/shared/lib/features';
+import { getFeatureFlag, toggleFeatures } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/Card';
 import { VStack } from '@/shared/ui/Stack';
 import { Page } from '@/widgets/Page';
 
@@ -32,10 +33,17 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const { id } = useParams<{ id: string }>();
     const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
     const isCounterEnabled = getFeatureFlag('isCounterEnabled');
+    const { t } = useTranslation();
 
     if (!id) {
         return null;
     }
+
+    const articleRatingCounter = toggleFeatures({
+        name: 'isCounterEnabled',
+        on: () => <ArticleRating articleId={id} />,
+        off: () => <Card>{t('article rating coming soon')}</Card>,
+    });
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -45,8 +53,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
                 <VStack gap="16" max>
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
-                    {isCounterEnabled && <Counter />}
-                    {isArticleRatingEnabled && <ArticleRating articleId={id} />}
+                    {articleRatingCounter}
                     <ArticleRecommendationsList />
                     <ArticleComments id={id} />
                 </VStack>
