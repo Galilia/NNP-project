@@ -1,6 +1,7 @@
 import { memo, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+import { ArticlePageGreeting } from '@/features/articlePageGreeting';
 import {
     DynamicModuleLoader,
     ReducersList,
@@ -41,6 +42,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
                 onLoadNextPart={onLoadNextPart}
                 className={cls.list}
             />
+            <ArticlePageGreeting />
         </DynamicModuleLoader>
     );
 };
