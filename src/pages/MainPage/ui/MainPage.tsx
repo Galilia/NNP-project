@@ -1,5 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
+import {
+    AboutMe,
+    LatestProjects,
+    SkillsTools,
+    WorkTogether,
+} from '@/entities/Portfolio';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
 
 import cls from './MainPage.module.scss';
@@ -8,28 +15,14 @@ const MainPage = () => {
     const { t } = useTranslation();
 
     return (
-        <Page data-testid="MainPage">
-            {/* eslint-disable i18next/no-literal-string */}
-            <h1>List of developed entities and features</h1>
-            <h2>Entities:</h2>
-            <ul>
-                <li>Autocomplete</li>
-                <li>Comment</li>
-                <li>Counter</li>
-                <li>Currency</li>
-                <li>Country</li>
-                <li>Profile</li>
-                <li>User</li>
-                <li>TagsInput</li>
-            </ul>
-
-            <h2 className={cls.header}>Features:</h2>
-            <ul>
-                <li>addCommentForm</li>
-                <li>AuthByUsername</li>
-                <li>ScrollSave</li>
-                <li>LangSwitcher</li>
-            </ul>
+        <Page
+            data-testid="MainPage"
+            className={classNames(cls.MainPage, {}, [])}
+        >
+            <AboutMe />
+            <SkillsTools />
+            <LatestProjects />
+            <WorkTogether />
         </Page>
     );
 };

@@ -1,3 +1,7 @@
 {
-    "main_page": "Main Page"
+    "main_page": "Main Page",
+    "about_me_description": "I've been working in the field of web development and design\n for over 5 years. In my spare time, I enjoy hanging out\n with my family, watching movies and anime.",
+    "download_cv": "Download CV",
+    "contact_me": "Contact Me",
+    "skills_and_tools": "Skills & Tools"
 }
