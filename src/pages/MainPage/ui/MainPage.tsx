@@ -5,7 +5,7 @@ import {
     LatestProjects,
     SkillsTools,
     WorkTogether,
-} from '@/entities/Portfolio';
+} from '@/features/Portfolio';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
 

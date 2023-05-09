@@ -31,7 +31,7 @@ export const AboutMe = ({ className }: AboutMeProps) => {
                         </Button>
                     </a>
                     <a
-                        href="src/shared/assets/pdf/Ilia_Galperin_FullStack_Developer_CV.pdf"
+                        href="../../../../shared/assets/pdf/Ilia_Galperin_FullStack_Developer_CV.pdf"
                         target="_blank"
                         download="Ilia_Galperin_FullStack_Developer_CV.pdf"
                     >
@@ -43,7 +43,7 @@ export const AboutMe = ({ className }: AboutMeProps) => {
             </div>
             <div className="aboutme-myphoto">
                 <img
-                    src="src/shared/assets/images/photoIlia.jpg"
+                    src="../../../../shared/assets/images/photoIlia.jpg"
                     className="_graphicGroup_jkj8c_9"
                     alt="collage"
                     draggable="false"
