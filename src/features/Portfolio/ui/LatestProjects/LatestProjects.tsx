@@ -8,13 +8,12 @@ import cls from './LatestProjects.module.scss';
 
 interface LatestProjectsProps {
     className?: string;
-    onScroll?: () => void;
 }
 
 export const LatestProjects = forwardRef<HTMLDivElement>(
     (
         // eslint-disable-next-line react/prop-types
-        { className, onScroll }: LatestProjectsProps,
+        { className }: LatestProjectsProps,
         ref: ForwardedRef<HTMLDivElement>,
     ) => {
         const { t } = useTranslation('main');

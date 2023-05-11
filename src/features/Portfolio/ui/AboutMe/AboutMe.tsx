@@ -9,13 +9,12 @@ import cls from './AboutMe.module.scss';
 
 interface AboutMeProps {
     className?: string;
-    onScroll?: () => void;
 }
 
 export const AboutMe = forwardRef<HTMLDivElement>(
     (
         // eslint-disable-next-line react/prop-types
-        { className, onScroll }: AboutMeProps,
+        { className }: AboutMeProps,
         ref: ForwardedRef<HTMLDivElement>,
     ) => {
         const { t } = useTranslation('main');
@@ -36,7 +35,7 @@ export const AboutMe = forwardRef<HTMLDivElement>(
                     <div className={cls.sectionButton}>
                         <Button
                             theme={ButtonTheme.BACKGROUND}
-                            onClick={onScroll}
+                            // onClick={onScroll}
                         >
                             {t('contact_me')}
                         </Button>

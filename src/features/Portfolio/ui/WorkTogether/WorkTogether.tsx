@@ -42,15 +42,11 @@ const linkInfoData = [
 
 interface WorkTogetherProps {
     className?: string;
-    onScroll?: () => void;
 }
 
 export const WorkTogether = forwardRef<HTMLDivElement>(
-    (
-        // eslint-disable-next-line react/prop-types
-        { className, onScroll }: WorkTogetherProps,
-        ref: ForwardedRef<HTMLDivElement>,
-    ) => {
+    // eslint-disable-next-line react/prop-types
+    ({ className }: WorkTogetherProps, ref: ForwardedRef<HTMLDivElement>) => {
         const { t } = useTranslation('main');
 
         return (
@@ -149,8 +145,3 @@ export const WorkTogether = forwardRef<HTMLDivElement>(
         );
     },
 );
-//
-// WorkTogether.propTypes = {
-//     className: PropTypes.string,
-//     onScroll: PropTypes.func,
-// };

@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -8,6 +8,8 @@ import {
     WorkTogether,
 } from '@/features/Portfolio';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { HStack } from '@/shared/ui/Stack';
 import { Page } from '@/widgets/Page';
 
 import cls from './MainPage.module.scss';
@@ -43,24 +45,34 @@ const MainPage = () => {
             data-testid="MainPage"
             className={classNames(cls.MainPage, {}, [])}
         >
-            {/* <Button onClick={scrollToAboutMe}>Scroll to About Me</Button> */}
-            {/* <Button onClick={scrollToLatestProjects}> */}
-            {/*     Scroll to Latest Projects */}
-            {/* </Button> */}
-            {/* <Button onClick={scrollToWorkTogether}> */}
-            {/*     Scroll to Work Together */}
-            {/* </Button> */}
+            <HStack gap="32" max justify="end">
+                <Button
+                    theme={ButtonTheme.CLEAR}
+                    className={cls.links}
+                    onClick={scrollToAboutMe}
+                >
+                    {t('About')}
+                </Button>
+                <Button
+                    theme={ButtonTheme.CLEAR}
+                    className={cls.links}
+                    onClick={scrollToLatestProjects}
+                >
+                    {t('Projects')}
+                </Button>
+                <Button
+                    theme={ButtonTheme.CLEAR}
+                    className={cls.links}
+                    onClick={scrollToWorkTogether}
+                >
+                    {t('Contact')}
+                </Button>
+            </HStack>
 
-            <AboutMe ref={aboutMeRef} onScroll={scrollToWorkTogether} />
+            <AboutMe ref={aboutMeRef} />
             <SkillsTools />
-            <LatestProjects
-                ref={latestProjectsRef}
-                onScroll={scrollToLatestProjects}
-            />
-            <WorkTogether
-                ref={workTogetherRef}
-                onScroll={scrollToWorkTogether}
-            />
+            <LatestProjects ref={latestProjectsRef} />
+            <WorkTogether ref={workTogetherRef} />
         </Page>
     );
 };
