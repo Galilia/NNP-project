@@ -29,7 +29,7 @@
   margin-top: 2rem;
 }
 
-a {
+.sectionHref {
   color: inherit;
 }
 
@@ -57,14 +57,14 @@ a {
   flex: 0 2 581px;
 }
 
-label {
+.workTogetherFormLabel {
   font-weight: 800;
   font-size: 1rem;
   line-height: 1.5rem;
   margin-bottom: 8px;
 }
 
-input,textarea {
+.workTogetherFormInput {
   color: var(--primary-color);
   padding: 0.5rem 1rem;
   border: 1px solid var(--primary-color);

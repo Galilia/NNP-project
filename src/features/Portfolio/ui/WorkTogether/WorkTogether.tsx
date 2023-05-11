@@ -1,3 +1,4 @@
+import { ForwardedRef, forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import GITHUB from '@/shared/assets/icons/portfolio/links/github.svg';
@@ -41,87 +42,115 @@ const linkInfoData = [
 
 interface WorkTogetherProps {
     className?: string;
+    onScroll?: () => void;
 }
 
-export const WorkTogether = ({ className }: WorkTogetherProps) => {
-    const { t } = useTranslation('main');
+export const WorkTogether = forwardRef<HTMLDivElement>(
+    (
+        // eslint-disable-next-line react/prop-types
+        { className, onScroll }: WorkTogetherProps,
+        ref: ForwardedRef<HTMLDivElement>,
+    ) => {
+        const { t } = useTranslation('main');
 
-    return (
-        <div className={classNames(cls.WorkTogether, {}, [className])}>
-            <h2>{t('lets_work_together')}</h2>
-            <div className={cls.sectionContacts}>
-                <div className={cls.sectionContactLinks}>
-                    <p>{t('open_for_work')}</p>
-                    <div className="button-container">
-                        <a
-                            href="../../../../shared/assets/pdf/Ilia_Galperin_FullStack_Developer_CV.pdf"
-                            target="_blank"
-                            download="Ilia_Galperin_FullStack_Developer_CV.pdf"
-                        >
-                            <Button theme={ButtonTheme.BACKGROUND_INVERTED}>
-                                {t('download_cv')}
-                            </Button>
-                        </a>
-                    </div>
-                    <div className={cls.linksWrapper}>
-                        {linkInfoData.map((item, index) => (
+        return (
+            <div
+                ref={ref}
+                className={classNames(cls.WorkTogether, {}, [className])}
+            >
+                <h2>{t('lets_work_together')}</h2>
+                <div className={cls.sectionContacts}>
+                    <div className={cls.sectionContactLinks}>
+                        <p>{t('open_for_work')}</p>
+                        <div className={cls.buttonContainer}>
                             <a
-                                href={item.href}
+                                href="../../../../shared/assets/pdf/Ilia_Galperin_FullStack_Developer_CV.pdf"
                                 target="_blank"
-                                rel="noreferrer"
+                                download="Ilia_Galperin_FullStack_Developer_CV.pdf"
+                                className={cls.sectionHref}
                             >
-                                <div
-                                    className={cls.skillsItemWrapper}
-                                    key={index}
-                                >
-                                    <div className={cls.icon}>
-                                        <Icon
-                                            Svg={item.icon}
-                                            className={cls.icon}
-                                            style={{ fill: item.color }}
-                                        />
-                                    </div>
-                                    <h3>{item.title}</h3>
-                                </div>
+                                <Button theme={ButtonTheme.BACKGROUND_INVERTED}>
+                                    {t('download_cv')}
+                                </Button>
                             </a>
-                        ))}
+                        </div>
+                        <div className={cls.linksWrapper}>
+                            {linkInfoData.map((item, index) => (
+                                <a
+                                    href={item.href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className={cls.sectionHref}
+                                >
+                                    <div
+                                        className={cls.skillsItemWrapper}
+                                        key={index}
+                                    >
+                                        <div className={cls.icon}>
+                                            <Icon
+                                                Svg={item.icon}
+                                                className={cls.icon}
+                                                style={{ fill: item.color }}
+                                            />
+                                        </div>
+                                        <h3>{item.title}</h3>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
                     </div>
-                </div>
-                <div className={cls.formWrapper}>
-                    <form className={cls.workTogetherForm}>
-                        <label htmlFor="username">
-                            {t('work_together_name')}
-                        </label>
-                        <input
-                            type="text"
-                            name="username"
-                            placeholder="Your Name"
-                            required
-                            value=""
-                        />
-                        <label htmlFor="useremail">
-                            {t('work_together_email')}
-                        </label>
-                        <input
-                            type="email"
-                            name="useremail"
-                            placeholder="YourName@gmail.com"
-                            required
-                        />
-                        <label htmlFor="message">
-                            {t('work_together_message')}
-                        </label>
-                        <textarea
-                            className="_contactFormArea_umpot_43"
-                            name="message"
-                            rows={7}
-                            placeholder="Write something nice :)"
-                            required
-                        />
-                        <Button type="submit">{t('submit')}</Button>
-                    </form>
+                    <div className={cls.formWrapper}>
+                        <form className={cls.workTogetherForm}>
+                            <label
+                                htmlFor="username"
+                                className={cls.workTogetherFormLabel}
+                            >
+                                {t('work_together_name')}
+                            </label>
+                            <input
+                                type="text"
+                                name="username"
+                                placeholder="Your Name"
+                                required
+                                value=""
+                                className={cls.workTogetherFormInput}
+                            />
+                            <label
+                                htmlFor="useremail"
+                                className={cls.workTogetherFormLabel}
+                            >
+                                {t('work_together_email')}
+                            </label>
+                            <input
+                                type="email"
+                                name="useremail"
+                                placeholder="YourName@gmail.com"
+                                required
+                                className={cls.workTogetherFormInput}
+                            />
+                            <label
+                                htmlFor="message"
+                                className={cls.workTogetherFormLabel}
+                            >
+                                {t('work_together_message')}
+                            </label>
+                            <textarea
+                                name="message"
+                                rows={7}
+                                placeholder="Write something nice :)"
+                                required
+                                className={cls.workTogetherFormInput}
+                            />
+                            <Button type="submit">{t('submit')}</Button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
-};
+        );
+    },
+);
+//
+// WorkTogether.propTypes = {
+//     className: PropTypes.string,
+//     onScroll: PropTypes.func,
+// };

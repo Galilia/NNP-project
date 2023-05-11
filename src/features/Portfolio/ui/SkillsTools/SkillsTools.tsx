@@ -57,19 +57,20 @@ export const SkillsTools = ({ className }: LatestProjectsProps) => {
     return (
         <div className={classNames(cls.LatestProjects, {}, [className])}>
             <div className={cls.skillsContent}>
-                <h2>{t('skills_and_tools')}</h2>
+                <h2 className={cls.skillsHeader}>{t('skills_and_tools')}</h2>
                 <div>
                     <div className={cls.skillsWrapper}>
                         {skillsData.map((skill, index) => (
                             <div className={cls.skillsItemWrapper} key={index}>
-                                <div className={cls.icon}>
+                                <div className={cls.skillsItemIcon}>
                                     <Icon
                                         Svg={skill.icon}
-                                        className={cls.icon}
                                         style={{ fill: skill.color }}
                                     />
                                 </div>
-                                <h3>{skill.title}</h3>
+                                <h3 className={cls.skillsItemTitle}>
+                                    {skill.title}
+                                </h3>
                             </div>
                         ))}
                     </div>
