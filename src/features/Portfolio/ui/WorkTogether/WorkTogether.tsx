@@ -77,11 +77,9 @@ export const WorkTogether = forwardRef<HTMLDivElement>(
                                     target="_blank"
                                     rel="noreferrer"
                                     className={cls.sectionHref}
+                                    key={index}
                                 >
-                                    <div
-                                        className={cls.skillsItemWrapper}
-                                        key={index}
-                                    >
+                                    <div className={cls.skillsItemWrapper}>
                                         <div className={cls.icon}>
                                             <Icon
                                                 Svg={item.icon}
