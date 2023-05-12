@@ -21,7 +21,7 @@ import Webpack from '@/shared/assets/icons/portfolio/webpack.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Icon } from '@/shared/ui/Icon';
 
-import cls from './SkillsTools.module.scss';
+import cls from './PortfolioSkills.module.scss';
 
 interface LatestProjectsProps {
     className?: string;
@@ -51,7 +51,7 @@ const skillsData = [
     { icon: AdobePS, title: 'Adobe PS', color: FILL_COLOR_GREEN },
 ];
 
-export const SkillsTools = ({ className }: LatestProjectsProps) => {
+export const PortfolioSkills = ({ className }: LatestProjectsProps) => {
     const { t } = useTranslation('main');
 
     return (

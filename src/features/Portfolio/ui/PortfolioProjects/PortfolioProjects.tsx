@@ -1,11 +1,10 @@
-import { ForwardedRef, forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import React from '@/shared/assets/icons/portfolio/react.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 
-import cls from './LatestProjects.module.scss';
+import cls from './PortfolioProjects.module.scss';
 
 const projects = [
     {
@@ -42,9 +41,9 @@ const projects = [
     },
     {
         img: 'src/shared/assets/images/photoIlia.jpg',
-        title: 'Personal Portfolio Website',
+        title: 'Personal Project',
         description:
-            'React based portfolio website made with Webpack\n' +
+            'React based website made with Webpack\n' +
             'build tool. Includes Lazy loading,\n' +
             'light/dark theme switcher,\n' +
             'internationalization and additional\n' +
@@ -55,7 +54,7 @@ const projects = [
         stack:
             ': React, Typescript, Redux, SCSS, Webpack, Babel, Eslint,\n' +
             'Storybook, CI/CD, FSD, i18n, Unit Testing, Cypress',
-        github: '',
+        github: 'https://github.com/Galilia/nnp-react-app',
     },
 ];
 
@@ -63,53 +62,60 @@ interface LatestProjectsProps {
     className?: string;
 }
 
-export const LatestProjects = forwardRef<HTMLDivElement>(
-    (
-        // eslint-disable-next-line react/prop-types
-        { className }: LatestProjectsProps,
-        ref: ForwardedRef<HTMLDivElement>,
-    ) => {
-        const { t } = useTranslation('main');
+export const PortfolioProjects = ({ className }: LatestProjectsProps) => {
+    const { t } = useTranslation('main');
 
-        return (
-            <div
-                className={classNames(cls.LatestProjects, {}, [className])}
-                ref={ref}
-            >
-                <div className={cls.sectionContent}>
-                    <h2 className={cls.latestProjectsHeader}>
-                        {t('Latest projects')}
-                    </h2>
-                    {projects.map((project, index) => (
-                        <div className={cls.projectCard} key={index}>
-                            <div className={cls.imageContainer}>
-                                <img
-                                    src={project.img}
-                                    alt="Portfolio website view on different devices"
-                                    className={cls.image}
-                                />
-                            </div>
-                            <div className={cls.descriptionContainer}>
+    return (
+        <div
+            className={classNames(cls.LatestProjects, {}, [className])}
+            id="projects"
+        >
+            <div className={cls.sectionContent}>
+                <h2 className={cls.latestProjectsHeader}>
+                    {t('Latest projects')}
+                </h2>
+                {projects.map((project, index) => (
+                    <div className={cls.projectCard} key={index}>
+                        <div className={cls.imageContainer}>
+                            <img
+                                src={project.img}
+                                alt="Portfolio website view on different devices"
+                                className={cls.image}
+                            />
+                        </div>
+                        <div className={cls.descriptionContainer}>
+                            <h3 className={cls.headerContainer}>
+                                {project.title}
+                            </h3>
+                            {project.company && (
                                 <h3 className={cls.headerContainer}>
-                                    {project.title}
+                                    {project.company}
                                 </h3>
-                                {project.company && (
-                                    <h3 className={cls.headerContainer}>
-                                        {project.company}
-                                    </h3>
-                                )}
-                                <p className={cls.paragraphContainer}>
-                                    {project.description}
-                                    <br />
-                                    <br />
-                                    <span className={cls.descriptionStack}>
-                                        {t('STACK')}
-                                    </span>
-                                    {project.stack}
-                                </p>
-                                <div className={cls.descriptionButtonContainer}>
+                            )}
+                            <p className={cls.paragraphContainer}>
+                                {project.description}
+                                <br />
+                                <br />
+                                <span className={cls.descriptionStack}>
+                                    {t('STACK')}
+                                </span>
+                                {project.stack}
+                            </p>
+                            <div className={cls.descriptionButtonContainer}>
+                                <a
+                                    href={project.website}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    <Button
+                                        theme={ButtonTheme.BACKGROUND_INVERTED}
+                                    >
+                                        {t('Visit Website')}
+                                    </Button>
+                                </a>
+                                {project.github && (
                                     <a
-                                        href={project.website}
+                                        href={project.github}
                                         target="_blank"
                                         rel="noreferrer"
                                     >
@@ -118,30 +124,15 @@ export const LatestProjects = forwardRef<HTMLDivElement>(
                                                 ButtonTheme.BACKGROUND_INVERTED
                                             }
                                         >
-                                            {t('Visit Website')}
+                                            {t('Show Git Repo')}
                                         </Button>
                                     </a>
-                                    {project.github && (
-                                        <a
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                        >
-                                            <Button
-                                                theme={
-                                                    ButtonTheme.BACKGROUND_INVERTED
-                                                }
-                                            >
-                                                {t('Show Git Repo')}
-                                            </Button>
-                                        </a>
-                                    )}
-                                </div>
+                                )}
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
-        );
-    },
-);
+        </div>
+    );
+};

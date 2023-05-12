@@ -1,4 +1,4 @@
-export { AboutMe } from './ui/AboutMe/AboutMe';
-export { LatestProjects } from './ui/LatestProjects/LatestProjects';
-export { SkillsTools } from './ui/SkillsTools/SkillsTools';
-export { WorkTogether } from './ui/WorkTogether/WorkTogether';
+export { PortfolioAboutMe } from '@/features/Portfolio/ui/PortfolioAboutMe/PortfolioAboutMe';
+export { PortfolioProjects } from '@/features/Portfolio/ui/PortfolioProjects/PortfolioProjects';
+export { PortfolioSkills } from '@/features/Portfolio/ui/PortfolioSkills/PortfolioSkills';
+export { PortfolioWorkTogether } from '@/features/Portfolio/ui/PortfolioWorkTogether/PortfolioWorkTogether';

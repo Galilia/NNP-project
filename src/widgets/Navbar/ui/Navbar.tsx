@@ -32,6 +32,27 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         setIsAuthModal(false);
     }, []);
 
+    const scrollToAboutMe = () => {
+        const aboutMeElement = document.querySelector('#aboutMe');
+        if (aboutMeElement) {
+            aboutMeElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const scrollToProjects = () => {
+        const projectsElement = document.querySelector('#projects');
+        if (projectsElement) {
+            projectsElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const scrollToContactMe = () => {
+        const contactMeElement = document.querySelector('#contactMe');
+        if (contactMeElement) {
+            contactMeElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     if (authData) {
         return (
             <header className={classNames(cls.Navbar, {}, [className])}>
@@ -65,6 +86,29 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 title={t('navbar_name')}
                 theme={TextTheme.INVERTED}
             />
+            <HStack gap="32" max justify="end">
+                <Button
+                    theme={ButtonTheme.CLEAR}
+                    className={cls.links}
+                    onClick={scrollToAboutMe}
+                >
+                    {t('About')}
+                </Button>
+                <Button
+                    theme={ButtonTheme.CLEAR}
+                    className={cls.links}
+                    onClick={scrollToProjects}
+                >
+                    {t('Projects')}
+                </Button>
+                <Button
+                    theme={ButtonTheme.CLEAR}
+                    className={cls.links}
+                    onClick={scrollToContactMe}
+                >
+                    {t('Contact')}
+                </Button>
+            </HStack>
             <Button
                 theme={ButtonTheme.CLEAR_INVERTED}
                 className={cls.links}
