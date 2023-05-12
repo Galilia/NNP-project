@@ -1,77 +1,77 @@
 .WorkTogether {
-  display: flex;
-  width: 100%;
-  max-width: 1440px;
-  background-color: inherit;
-  flex-direction: column;
-  padding: 2.7rem 0;
+    display: flex;
+    width: 100%;
+    max-width: 1440px;
+    background-color: inherit;
+    flex-direction: column;
+    padding: 2.7rem 0;
 }
 
 .sectionContacts {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  row-gap: 4rem;
-  column-gap: 1.8rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    row-gap: 4rem;
+    column-gap: 1.8rem;
 }
 
 .sectionContactLinks {
-  display: flex;
-  flex-flow: column nowrap;
-  flex: 2 1 300px;
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 2 1 300px;
 }
 
 .linksWrapper {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  row-gap: 18px;
-  margin-top: 2rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    row-gap: 18px;
+    margin-top: 2rem;
 }
 
 .sectionHref {
-  color: inherit;
+    color: inherit;
 }
 
 .skillsItemWrapper {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 220px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 220px;
 }
 
 .icon {
-  font-size: 2.1rem;
-  margin-right: 0.4em;
+    font-size: 2.1rem;
+    margin-right: 0.4em;
 }
 
 .formWrapper {
-  display: flex;
-  flex: 0 2 581px;
+    display: flex;
+    flex: 0 2 581px;
 }
 
 .workTogetherForm {
-  display: flex;
-  flex-flow: column nowrap;
-  width: 100%;
-  flex: 0 2 581px;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    flex: 0 2 581px;
 }
 
 .workTogetherFormLabel {
-  font-weight: 800;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  margin-bottom: 8px;
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 8px;
 }
 
 .workTogetherFormInput {
-  color: var(--primary-color);
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--primary-color);
-  border-radius: 6px;
-  margin-bottom: 0.7rem;
-  font-size: 1rem;
-  line-height: 1.2rem;
-  background-color: inherit;
-  transition: all .1s ease-in-out;
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 6px;
+    margin-bottom: 0.7rem;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    background-color: inherit;
+    transition: all 0.1s ease-in-out;
 }

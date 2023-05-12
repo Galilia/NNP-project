@@ -8,6 +8,7 @@ import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { NotificationButton } from '@/features/NotificationButton';
 import { getRouteArticleCreate } from '@/shared/const/routerConst';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { useScrollToElement } from '@/shared/lib/hooks/useScrollToElement/useScrollToElement';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
@@ -23,6 +24,9 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState(false);
     const authData = useSelector(getUserAuthData);
+    const scrollToAboutMe = useScrollToElement('aboutMe');
+    const scrollToProjects = useScrollToElement('projects');
+    const scrollToContactMe = useScrollToElement('contactMe');
 
     const onShowModal = useCallback(() => {
         setIsAuthModal(true);
@@ -31,27 +35,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const onCloseModal = useCallback(() => {
         setIsAuthModal(false);
     }, []);
-
-    const scrollToAboutMe = () => {
-        const aboutMeElement = document.querySelector('#aboutMe');
-        if (aboutMeElement) {
-            aboutMeElement.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
-    const scrollToProjects = () => {
-        const projectsElement = document.querySelector('#projects');
-        if (projectsElement) {
-            projectsElement.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
-    const scrollToContactMe = () => {
-        const contactMeElement = document.querySelector('#contactMe');
-        if (contactMeElement) {
-            contactMeElement.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
 
     if (authData) {
         return (
@@ -86,7 +69,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 title={t('navbar_name')}
                 theme={TextTheme.INVERTED}
             />
-            <HStack gap="32" max justify="end">
+            <HStack gap="32" justify="end">
                 <Button
                     theme={ButtonTheme.CLEAR}
                     className={cls.links}

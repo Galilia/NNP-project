@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { useScrollToElement } from '@/shared/lib/hooks/useScrollToElement/useScrollToElement';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 
@@ -12,13 +13,7 @@ interface AboutMeProps {
 
 export const PortfolioAboutMe = ({ className }: AboutMeProps) => {
     const { t } = useTranslation('main');
-
-    const scrollToContactMe = () => {
-        const contactMeElement = document.querySelector('#contactMe');
-        if (contactMeElement) {
-            contactMeElement.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+    const scrollToContactMe = useScrollToElement('contactMe');
 
     return (
         <HStack
