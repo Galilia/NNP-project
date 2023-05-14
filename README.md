@@ -185,3 +185,7 @@ To automatically remove a feature, use the remove-feature.ts script, which takes
 ## Hooks
 
 [Hooks](/docs/hooks.md) that were used in project.
+
+## Plugins
+
+[Plugins](/docs/plugins.md) that were used in project.
