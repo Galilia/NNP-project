@@ -180,3 +180,7 @@ To automatically remove a feature, use the remove-feature.ts script, which takes
 - profileRating - Фича выставления рейтинга профиля
 - ThemeSwitcher - Фича для переключения темы
 - UI - Фича содержащая функционал связанная с UI (scroll и тд)
+
+## Hooks
+
+Hooks that were used in project [Hooks](/docs/hooks.md)

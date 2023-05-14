@@ -6,6 +6,15 @@ export interface UseInfiniteScrollOptions {
     wrapperRef: MutableRefObject<HTMLElement>;
 }
 
+/**
+ * Custom hook that triggers a callback function when an element (trigger) intersects with a wrapper element.
+ * Commonly used for implementing infinite scrolling.
+ *
+ * @param options - An object that contains:
+ *                  callback - The function to be invoked when the trigger intersects with the wrapper,
+ *                  triggerRef - A ref to the trigger element,
+ *                  wrapperRef - A ref to the wrapper element.
+ */
 export function useInfiniteScroll({
     callback,
     triggerRef,

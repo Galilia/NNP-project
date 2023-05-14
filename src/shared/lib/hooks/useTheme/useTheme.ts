@@ -8,6 +8,13 @@ interface UseThemeResult {
     theme: Theme;
 }
 
+/**
+ * Reusable hook for switching between themes.
+ *
+ * @returns - An object with two properties:
+ *            theme - the current theme, and
+ *            toggleTheme - a callback function to switch the current theme to the next one.
+ */
 export function useTheme(): UseThemeResult {
     const { theme, setTheme } = useContext(ThemeContext);
 

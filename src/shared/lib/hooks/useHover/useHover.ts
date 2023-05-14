@@ -7,6 +7,12 @@ interface UseHoverBind {
 
 type UseHoverResult = [boolean, UseHoverBind];
 
+/**
+ * Custom hook that detects whether an element is being hovered over by the user.
+ *
+ * @returns - A tuple where the first item is a boolean indicating whether the element is being hovered over,
+ *            and the second item is an object containing handlers for onMouseEnter and onMouseLeave events.
+ */
 export const useHover = (): UseHoverResult => {
     const [isHover, setIsHover] = useState(false);
 
