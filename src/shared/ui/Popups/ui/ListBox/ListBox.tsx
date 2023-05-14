@@ -12,19 +12,52 @@ import popupCls from '../../styles/popup.module.scss';
 import cls from './ListBox.module.scss';
 
 export interface ListBoxItem {
+    /**
+     * The value associated with the list box item.
+     */
     value: string;
+    /**
+     * The content to be displayed for the list box item.
+     */
     content: ReactNode;
+    /**
+     * A boolean that, when true, indicates that the list box item is disabled.
+     */
     disabled?: boolean;
 }
 
 interface ListBoxProps {
+    /**
+     * An array of list box items.
+     */
     items?: ListBoxItem[];
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * The currently selected value of the list box.
+     */
     value?: string;
+    /**
+     * The default value for the list box if no value is provided.
+     */
     defaultValue?: string | null | undefined;
+    /**
+     * Function to handle the change event when the list box value is selected.
+     */
     onChange?: (value: string) => void;
+    /**
+     * A boolean that, when true, indicates that the list box is read-only.
+     */
     readonly?: boolean;
+    /**
+     * The direction in which the list box options are displayed.
+     */
     direction?: DropdownDirection;
+    /**
+     * The label for the list box.
+     */
     label?: string | null | undefined;
 }
 

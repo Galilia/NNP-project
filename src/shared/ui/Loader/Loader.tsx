@@ -3,6 +3,9 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Loader.module.scss';
 
 interface LoaderProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
 }
 

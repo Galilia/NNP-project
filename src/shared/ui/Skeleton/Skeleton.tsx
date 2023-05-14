@@ -5,9 +5,21 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Skeleton.module.scss';
 
 interface SkeletonProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * The height of the skeleton element.
+     */
     height?: string | number;
+    /**
+     * The width of the skeleton element.
+     */
     width?: string | number;
+    /**
+     * The border radius of the skeleton element.
+     */
     border?: string;
 }
 

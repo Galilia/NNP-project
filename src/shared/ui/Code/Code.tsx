@@ -8,7 +8,13 @@ import { Button, ButtonTheme } from '../Button/Button';
 import cls from './Code.module.scss';
 
 interface CodeProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * The text content to be displayed as code.
+     */
     text: string;
 }
 

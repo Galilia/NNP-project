@@ -13,10 +13,25 @@ import { Portal } from '../Portal/Portal';
 import cls from './Drawer.module.scss';
 
 interface DrawerProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * The content to be rendered inside the drawer.
+     */
     children: ReactNode;
+    /**
+     * A boolean that, when true, indicates whether the drawer is open.
+     */
     isOpen?: boolean;
+    /**
+     * Function to handle the closing of the drawer.
+     */
     onClose?: () => void;
+    /**
+     * A boolean that, when true, renders the drawer content lazily.
+     */
     lazy?: boolean;
 }
 const height = window.innerHeight - 100;

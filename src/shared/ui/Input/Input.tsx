@@ -11,12 +11,31 @@ type HTMLInputProps = Omit<
 
 interface InputProps extends HTMLInputProps {
     className?: string;
+    /**
+     * The current value of the input field. Can be either a string or a number.
+     */
     value?: string | number;
+    /**
+     * Function to handle the change of input field value.
+     */
     onChange?: (value: string) => void;
+    /**
+     * A flag that, when true, automatically focuses the input field when it is rendered.
+     */
     autofocus?: boolean;
+
     label: string;
+    /**
+     * A flag that, when true, makes the input field read-only.
+     */
     readonly?: boolean;
+    /**
+     * A flag that, when true, allows only numeric input.
+     */
     onlyNumbers?: boolean;
+    /**
+     * The placeholder text displayed in the input field before the user enters a value.
+     */
     placeholder: string;
 }
 

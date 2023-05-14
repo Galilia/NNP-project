@@ -25,12 +25,33 @@ export enum TextSize {
 }
 
 interface TextProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * The title text to be displayed.
+     */
     title?: string | null | undefined;
+    /**
+     * The main text content to be displayed.
+     */
     text?: string | null | undefined;
+    /**
+     * The theme of the text.
+     */
     theme?: TextTheme;
+    /**
+     * The alignment of the text.
+     */
     align?: TextAlign;
+    /**
+     * The size of the text.
+     */
     size?: TextSize;
+    /**
+     * The value for the `data-testid` attribute used for testing.
+     */
     'data-testid'?: string;
 }
 

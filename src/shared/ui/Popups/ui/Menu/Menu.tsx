@@ -11,16 +11,40 @@ import popupCls from '../../styles/popup.module.scss';
 import cls from './Menu.module.scss';
 
 export interface DropdownItem {
+    /**
+     * A boolean that, when true, indicates that the dropdown item is disabled.
+     */
     disabled?: boolean;
+    /**
+     * The content to be displayed for the dropdown item.
+     */
     content?: ReactNode;
+    /**
+     * Function to handle the click event when the dropdown item is clicked.
+     */
     onClick?: () => void;
+    /**
+     * The URL for the dropdown item when used as a link.
+     */
     href?: string;
 }
 
 interface MenuDropdownProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * An array of dropdown items.
+     */
     items: DropdownItem[];
+    /**
+     * The trigger element that opens the menu dropdown.
+     */
     trigger?: ReactNode;
+    /**
+     * The direction in which the menu dropdown is displayed.
+     */
     direction?: DropdownDirection;
 }
 

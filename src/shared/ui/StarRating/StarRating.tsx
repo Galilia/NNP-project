@@ -8,9 +8,21 @@ import { Icon } from '../Icon/Icon';
 import cls from './StarRating.module.scss';
 
 interface StarRatingProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * Callback function that is called when a star is selected. It receives the count of stars selected.
+     */
     onSelect?: (starsCount: number) => void;
+    /**
+     * The size of the stars in the rating component.
+     */
     size?: number;
+    /**
+     * The number of stars that should be initially selected.
+     */
     selectedStars?: number;
 }
 

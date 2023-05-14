@@ -5,7 +5,13 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Overlay.module.scss';
 
 interface OverlayProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * Function to handle the click event on the overlay.
+     */
     onClick?: () => void;
 }
 

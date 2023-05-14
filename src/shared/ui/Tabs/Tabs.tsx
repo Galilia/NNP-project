@@ -7,14 +7,32 @@ import { Card, CardTheme } from '../Card/Card';
 import cls from './Tabs.module.scss';
 
 export interface TabItem {
+    /**
+     * The value that identifies the tab.
+     */
     value: string;
+    /**
+     * The content to be displayed when this tab is active.
+     */
     content: ReactNode;
 }
 
 interface TabsProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * An array of `TabItem` objects that defines the tabs.
+     */
     tabs: TabItem[];
+    /**
+     * The value of the currently active tab.
+     */
     value: string;
+    /**
+     * Function to handle the clicking of a tab. It receives the `TabItem` of the clicked tab.
+     */
     onTabClick: (tab: TabItem) => void;
 }
 

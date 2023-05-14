@@ -12,8 +12,17 @@ export enum AppLinkTheme {
 }
 
 interface AppLinkProps extends LinkProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * The theme of the app link.
+     */
     theme?: AppLinkTheme;
+    /**
+     * The content to be displayed as the link text.
+     */
     children?: ReactNode;
 }
 

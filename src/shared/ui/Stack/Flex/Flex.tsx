@@ -46,13 +46,37 @@ type DivProps = DetailedHTMLProps<
 >;
 
 export interface FlexProps extends DivProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * The content of the flex container.
+     */
     children: ReactNode;
+    /**
+     * The justify content property for aligning items along the main axis.
+     */
     justify?: FlexJustify;
+    /**
+     * The align items property for aligning items along the cross axis.
+     */
     align?: FlexAlign;
+    /**
+     * The flex-direction property for controlling the direction of flex items.
+     */
     direction: FlexDirection;
+    /**
+     * The gap between flex items.
+     */
     gap?: FlexGap;
+    /**
+     * Whether the flex container should have a max-width of 100%.
+     */
     max?: boolean;
+    /**
+     * The wrap property for controlling whether flex items should wrap or not.
+     */
     wrap?: FlexWrap;
 }
 

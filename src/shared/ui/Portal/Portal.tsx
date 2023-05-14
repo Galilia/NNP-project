@@ -2,7 +2,13 @@ import { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
 interface PortalProps {
+    /**
+     * The content to be rendered inside the portal.
+     */
     children?: ReactNode;
+    /**
+     * The target DOM element where the portal should be rendered. Defaults to `document.body`.
+     */
     element?: HTMLElement;
 }
 

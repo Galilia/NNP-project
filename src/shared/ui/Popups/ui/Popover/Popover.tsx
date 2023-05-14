@@ -11,9 +11,21 @@ import popupCls from '../../styles/popup.module.scss';
 import cls from './Popover.module.scss';
 
 interface PopoverProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * The trigger element that opens the popover.
+     */
     trigger?: ReactNode;
+    /**
+     * The direction in which the popover is displayed.
+     */
     direction?: DropdownDirection;
+    /**
+     * The content to be displayed inside the popover.
+     */
     children: ReactNode;
 }
 

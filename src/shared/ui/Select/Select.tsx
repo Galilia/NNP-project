@@ -5,16 +5,40 @@ import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Select.module.scss';
 
 export interface SelectOption<T extends string> {
+    /**
+     * The value of the select option.
+     */
     value: T;
+    /**
+     * The display content of the select option.
+     */
     content: string;
 }
 
 interface SelectProps<T extends string> {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * The label displayed above the select element.
+     */
     label?: string | null | undefined;
+    /**
+     * An array of options available for selection.
+     */
     options?: SelectOption<T>[];
+    /**
+     * The currently selected option.
+     */
     value?: T;
+    /**
+     * Function to be called when the selected value changes.
+     */
     onChange?: (value: T) => void;
+    /**
+     * Boolean flag indicating whether the select is readonly.
+     */
     readonly?: boolean;
 }
 

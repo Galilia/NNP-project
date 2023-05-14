@@ -7,8 +7,17 @@ import {
 } from 'react';
 
 interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * The fallback element to be displayed while the image is loading.
+     */
     fallback?: ReactElement;
+    /**
+     * The fallback element to be displayed if there is an error loading the image.
+     */
     errorFallback?: ReactElement;
 }
 

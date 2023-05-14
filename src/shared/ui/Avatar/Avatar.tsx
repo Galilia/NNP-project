@@ -10,10 +10,25 @@ import { Skeleton } from '../Skeleton';
 import cls from './Avatar.module.scss';
 
 interface AvatarProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * The URL of the image to be displayed as the avatar.
+     */
     src?: string;
+    /**
+     * The alternative text for the avatar image.
+     */
     alt?: string;
+    /**
+     * The size of the avatar in pixels.
+     */
     size?: number;
+    /**
+     * A boolean that, when true, applies an inverted color scheme to the fallback avatar icon.
+     */
     fallbackInverted?: boolean;
 }
 
