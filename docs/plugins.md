@@ -1,9 +1,6 @@
 ## Plugins
 
-Plugins that were used in project:
-Here are the descriptions of the plugins used in the project:
-
-Sure! Here's a list of plugins used in the project, along with their descriptions and groupings based on their usage:
+Here's a list of plugins used in the project, along with their descriptions and groupings based on their usage:
 
 **Storybook:**
 - `@storybook/addon-actions`: Allows adding interactivity and actions to Storybook stories.
