@@ -30,6 +30,7 @@ npm run start:dev - server start + frontend project in development mode
 - `npm run prepare` - precommit husky
 - `npm run generate:slice` - Script to generate FSD slices
 - `postinstall` - Command to delete the .cache folder inside the node_modules folder of the project.
+- `remove-feature` - Command to remove feature flag with unused component/function declared in on or off.
 
 ## Project architecture
 The project was written in accordance with the methodology FEATURE SLICED DESIGN
@@ -168,19 +169,19 @@ To automatically remove a feature, use the remove-feature.ts script, which takes
 
 ## Features
 
-- addCommentForm - Фича формы добавления комментария
-- articleEditForm - Фича формы изменения статьи
-- articleRating - Фича выставления оценки для статьи
-- articleRecommendationsList - Фича со списком рекоммендаций статей
-- AuthByUsername - Фича для авторизации по имени пользователя
-- avatarDropdown - Фича с аватаром пользователя и меню
-- editableProfileCard - Фича с формой изменения профиля
-- LangSwitcher - Фича для переключения языка
-- notificationButton - Фича с кнопкой, открывающей список уведомлений
-- profileRating - Фича выставления рейтинга профиля
-- ThemeSwitcher - Фича для переключения темы
-- UI - Фича содержащая функционал связанная с UI (scroll и тд)
+- addCommentForm - Feature of adding a comment form
+- articleEditForm - Feature of editing an article form
+- articleRating - Feature of giving a rating to an article
+- articleRecommendationsList - Feature with a list of article recommendations
+- AuthByUsername - Feature for authentication by username
+- avatarDropdown - Feature with a user avatar and menu
+- editableProfileCard - Feature with an editable profile form
+- LangSwitcher - Feature for language switching
+- notificationButton - Feature with a button that opens the notification list
+- profileRating - Feature of giving a rating to a profile
+- ThemeSwitcher - Feature for theme switching
+- UI - Feature containing functionality related to UI (scroll, etc.)
 
 ## Hooks
 
-Hooks that were used in project [Hooks](/docs/hooks.md)
+[Hooks](/docs/hooks.md) that were used in project.

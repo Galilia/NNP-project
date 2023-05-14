@@ -10,10 +10,25 @@ import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
+    /**
+     * Optional class name for additional custom styling.
+     */
     className?: string;
+    /**
+     * The content to be displayed within the modal.
+     */
     children?: ReactNode;
+    /**
+     * A boolean that, when true, makes the modal visible.
+     */
     isOpen?: boolean;
+    /**
+     * Function to handle the closing of the modal.
+     */
     onClose?: () => void;
+    /**
+     * A boolean that, when true, renders the modal content only when the modal is open.
+     */
     lazy?: boolean;
 }
 
