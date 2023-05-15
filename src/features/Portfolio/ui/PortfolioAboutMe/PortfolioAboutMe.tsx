@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useScrollToElement } from '@/shared/lib/hooks/useScrollToElement/useScrollToElement';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { HStack } from '@/shared/ui/Stack';
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 
 import cls from './PortfolioAboutMe.module.scss';
 

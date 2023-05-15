@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Country, CountrySelect } from '@/entities/Country';
 import { Currency, CurrencySelect } from '@/entities/Currency';
-import { InputWithCaret } from '@/shared/ui/InputWithCaret';
+import { InputWithCaret } from '@/shared/ui/deprecated/InputWithCaret';
 
 import { Profile } from '../../model/types/profile';
 

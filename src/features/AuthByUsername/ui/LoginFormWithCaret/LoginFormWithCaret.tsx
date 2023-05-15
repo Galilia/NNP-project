@@ -8,9 +8,9 @@ import {
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { InputWithCaret } from '@/shared/ui/InputWithCaret';
-import { Text, TextTheme } from '@/shared/ui/Text';
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { InputWithCaret } from '@/shared/ui/deprecated/InputWithCaret';
+import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
 
 import { LoginFormProps } from '../../lib/utils/LoginForm.utils';
 import {

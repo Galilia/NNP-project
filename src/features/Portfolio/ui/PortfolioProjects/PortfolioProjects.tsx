@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import React from '@/shared/assets/icons/portfolio/react.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
 
 import cls from './PortfolioProjects.module.scss';
 

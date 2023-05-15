@@ -5,8 +5,8 @@ import LINKEDIN from '@/shared/assets/icons/portfolio/links/linkedin.svg';
 import EMAIL from '@/shared/assets/icons/portfolio/links/mail.svg';
 import TG from '@/shared/assets/icons/portfolio/links/tg.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { Icon } from '@/shared/ui/Icon';
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Icon } from '@/shared/ui/deprecated/Icon';
 
 import cls from './PortfolioWorkTogether.module.scss';
 

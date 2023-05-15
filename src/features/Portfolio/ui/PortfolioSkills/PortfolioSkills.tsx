@@ -19,7 +19,7 @@ import TypeScript from '@/shared/assets/icons/portfolio/typescript.svg';
 import VSCode from '@/shared/assets/icons/portfolio/vscode.svg';
 import Webpack from '@/shared/assets/icons/portfolio/webpack.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Icon } from '@/shared/ui/Icon';
+import { Icon } from '@/shared/ui/deprecated/Icon';
 
 import cls from './PortfolioSkills.module.scss';
 

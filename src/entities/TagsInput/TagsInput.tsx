@@ -2,7 +2,7 @@ import { KeyboardEventHandler, memo, useState } from 'react';
 
 import CloseIcon from '@/shared/assets/icons/close-24-24.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Icon } from '@/shared/ui/Icon';
+import { Icon } from '@/shared/ui/deprecated/Icon';
 
 import cls from './TagsInput.module.scss';
 

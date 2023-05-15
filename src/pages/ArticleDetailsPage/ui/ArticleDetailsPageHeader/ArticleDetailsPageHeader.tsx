@@ -9,8 +9,8 @@ import {
     getRouteArticles,
 } from '@/shared/const/routerConst';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { HStack } from '@/shared/ui/Stack';
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 
 import { getCanEditArticle } from '../../model/selectors/articleSelectors';
 

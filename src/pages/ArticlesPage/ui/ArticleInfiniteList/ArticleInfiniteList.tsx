@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { ArticleList } from '@/entities/Article';
 import { getScrollIndex, scrollSaveActions } from '@/features/ScrollSave';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text } from '@/shared/ui/Text';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 import {
     getArticlesPageError,

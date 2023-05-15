@@ -2,10 +2,10 @@ import React, { memo } from 'react';
 
 import CloseIcon from '@/shared/assets/icons/close-window-icon.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { Card, CardTheme } from '@/shared/ui/Card';
-import { Icon } from '@/shared/ui/Icon';
-import { Text } from '@/shared/ui/Text';
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Card, CardTheme } from '@/shared/ui/deprecated/Card';
+import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 import { Notification } from '../../model/types/notifications';
 
