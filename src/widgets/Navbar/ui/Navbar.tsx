@@ -8,6 +8,7 @@ import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { NotificationButton } from '@/features/NotificationButton';
 import { getRouteArticleCreate } from '@/shared/const/routerConst';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { useScrollToElement } from '@/shared/lib/hooks/useScrollToElement/useScrollToElement';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
@@ -38,27 +39,47 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     if (authData) {
         return (
-            <header className={classNames(cls.Navbar, {}, [className])}>
-                <Text
-                    className={cls.appName}
-                    title={t('Galilia App')}
-                    theme={TextTheme.INVERTED}
-                />
-                <AppLink
-                    className={cls.createLink}
-                    theme={AppLinkTheme.SECONDARY}
-                    to={getRouteArticleCreate()}
-                >
-                    {t('Create Article')}
-                </AppLink>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <header
+                        className={classNames(cls.NavbarRedesigned, {}, [
+                            className,
+                        ])}
+                    >
+                        <HStack gap="16" className={cls.actions}>
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
+                    </header>
+                }
+                off={
+                    <header className={classNames(cls.Navbar, {}, [className])}>
+                        <Text
+                            className={cls.appName}
+                            title={t('Galilia App')}
+                            theme={TextTheme.INVERTED}
+                        />
+                        <AppLink
+                            className={cls.createLink}
+                            theme={AppLinkTheme.SECONDARY}
+                            to={getRouteArticleCreate()}
+                        >
+                            {t('Create Article')}
+                        </AppLink>
 
-                <HStack gap="16" className={cls.actions}>
-                    <NotificationButton />
-                    <AvatarDropdown />
-                </HStack>
+                        <HStack gap="16" className={cls.actions}>
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
 
-                <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
-            </header>
+                        <LoginModal
+                            isOpen={isAuthModal}
+                            onClose={onCloseModal}
+                        />
+                    </header>
+                }
+            />
         );
     }
 
