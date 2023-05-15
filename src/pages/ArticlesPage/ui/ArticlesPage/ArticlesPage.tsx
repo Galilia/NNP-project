@@ -6,6 +6,7 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 
@@ -36,12 +37,27 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
         dispatch(initArticlesPage(searchParams));
     });
 
+    const ArticleInfinite = () => (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            off={
+                <ArticleInfiniteList
+                    onLoadNextPart={onLoadNextPart}
+                    className={cls.list}
+                />
+            }
+            on={
+                <ArticleInfiniteList
+                    onLoadNextPart={onLoadNextPart}
+                    className={cls.listRedesigned}
+                />
+            }
+        />
+    );
+
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <ArticleInfiniteList
-                onLoadNextPart={onLoadNextPart}
-                className={cls.list}
-            />
+            <ArticleInfinite />
             <ArticlePageGreeting />
         </DynamicModuleLoader>
     );
