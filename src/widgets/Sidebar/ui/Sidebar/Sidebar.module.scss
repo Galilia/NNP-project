@@ -33,6 +33,7 @@
 .collapsed {
     width: var(--sidebar-width-collapsed);
 
+    /* eslint-disable no-duplicate-selectors */
     .switchers {
         flex-direction: column;
         align-items: center;

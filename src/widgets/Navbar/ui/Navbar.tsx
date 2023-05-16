@@ -92,21 +92,21 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             />
             <HStack gap="32" justify="end">
                 <Button
-                    theme={ButtonTheme.CLEAR}
+                    theme={ButtonTheme.CLEAR_INVERTED}
                     className={cls.links}
                     onClick={scrollToAboutMe}
                 >
                     {t('About')}
                 </Button>
                 <Button
-                    theme={ButtonTheme.CLEAR}
+                    theme={ButtonTheme.CLEAR_INVERTED}
                     className={cls.links}
                     onClick={scrollToProjects}
                 >
                     {t('Projects')}
                 </Button>
                 <Button
-                    theme={ButtonTheme.CLEAR}
+                    theme={ButtonTheme.CLEAR_INVERTED}
                     className={cls.links}
                     onClick={scrollToContactMe}
                 >
