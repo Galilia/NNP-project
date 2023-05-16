@@ -14,6 +14,6 @@ export default {
 const Template: ComponentStory<typeof AppLogo> = (args) => (
     <AppLogo {...args} />
 );
-
+// TODO new story
 export const Normal = Template.bind({});
 Normal.args = {};
