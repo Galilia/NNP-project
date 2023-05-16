@@ -119,7 +119,7 @@ For development, the project contains 2 configs:
 Webpack adapted to the main features of the application.
 All configuration is stored in /config
 
-- /config/babel - babel]
+- /config/babel - babel
 - /config/build - webpack config
 - /config/jest - tests config
 - /config/storybook - storybook config
