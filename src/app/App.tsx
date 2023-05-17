@@ -1,5 +1,6 @@
 import React, { Suspense, useEffect } from 'react';
 import './styles/index.scss';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { getUserInited, initAuthData } from '@/entities/User';
@@ -8,7 +9,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
-import { Loader } from '@/shared/ui/deprecated/Loader';
 import { Navbar } from '@/widgets/Navbar';
 import { PageLoader } from '@/widgets/PageLoader';
 import { Sidebar } from '@/widgets/Sidebar';
@@ -16,6 +16,8 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { AppRouter } from './providers/router';
 
 function App() {
+    const { t } = useTranslation();
+
     const { theme } = useTheme();
     const dispatch = useAppDispatch();
     const inited = useSelector(getUserInited);
@@ -49,11 +51,7 @@ function App() {
                             content={<AppRouter />}
                             header={<Navbar />}
                             sidebar={<Sidebar />}
-                            toolbar={
-                                <div>
-                                    <Loader />
-                                </div>
-                            }
+                            toolbar={<div>{t('')}</div>}
                         />
                     </Suspense>
                 </div>

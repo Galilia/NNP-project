@@ -14,7 +14,7 @@ import { ToggleFeatures } from '@/shared/lib/features';
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
 import { MenuDropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
-import { MenuDropdown as Dropdown } from '@/shared/ui/redesigned/Popups';
+import { MenuDropdown } from '@/shared/ui/redesigned/Popups';
 
 interface AvatarDropdownProps {
     className?: string;
@@ -61,7 +61,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
         <ToggleFeatures
             feature="isAppRedesigned"
             on={
-                <Dropdown
+                <MenuDropdown
                     direction="bottom left"
                     className={classNames('', {}, [className])}
                     items={items}

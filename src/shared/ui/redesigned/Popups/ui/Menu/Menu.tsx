@@ -51,7 +51,7 @@ interface MenuDropdownProps {
 export function MenuDropdown(props: MenuDropdownProps) {
     const { className, trigger, items, direction = 'bottom right' } = props;
 
-    const menuClasses = [mapDirectionClass[direction]];
+    const menuClasses = [mapDirectionClass[direction], popupCls.menu];
 
     return (
         <Menu
