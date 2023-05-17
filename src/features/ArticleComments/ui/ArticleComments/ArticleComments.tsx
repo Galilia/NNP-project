@@ -11,8 +11,8 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Loader } from '@/shared/ui/deprecated/Loader';
-import { VStack } from '@/shared/ui/deprecated/Stack';
 import { Text, TextSize } from '@/shared/ui/deprecated/Text';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 
 import {
     getAddCommentFormError,

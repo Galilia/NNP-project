@@ -12,8 +12,8 @@ import { ToggleFeatures } from '@/shared/lib/features';
 import { useScrollToElement } from '@/shared/lib/hooks/useScrollToElement/useScrollToElement';
 import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
-import { HStack } from '@/shared/ui/deprecated/Stack';
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 import cls from './Navbar.module.scss';
 

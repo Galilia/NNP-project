@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import { ProfileRating } from '@/features/ProfileRating';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { EditableProfileCard } from '@/widgets/EditableProfileCard';
 import { Page } from '@/widgets/Page';
 

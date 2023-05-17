@@ -10,7 +10,7 @@ import {
 } from '@/shared/const/routerConst';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 import { getCanEditArticle } from '../../model/selectors/articleSelectors';
 

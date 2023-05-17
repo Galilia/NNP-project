@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { HStack } from '@/shared/ui/deprecated/Stack';
 import { Text, TextSize } from '@/shared/ui/deprecated/Text';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSkeleton';

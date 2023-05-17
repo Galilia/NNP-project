@@ -8,9 +8,9 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/deprecated/Button';
-import { VStack } from '@/shared/ui/deprecated/Stack';
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo';
 import { Icon } from '@/shared/ui/redesigned/Icon';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 
 import { getSidebarItems } from '../../model/selectors/sidebarSelectors';
 import { SidebarItem } from '../SidebarItem/SidebarItem';

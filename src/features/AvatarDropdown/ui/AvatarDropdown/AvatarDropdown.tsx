@@ -10,8 +10,11 @@ import {
 } from '@/entities/User';
 import { getRouteAdmin, getRouteProfile } from '@/shared/const/routerConst';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import { MenuDropdown } from '@/shared/ui/deprecated/Popups';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
+import { MenuDropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups';
+import { Avatar } from '@/shared/ui/redesigned/Avatar';
+import { MenuDropdown as Dropdown } from '@/shared/ui/redesigned/Popups';
 
 interface AvatarDropdownProps {
     className?: string;
@@ -21,43 +24,63 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
     const { className } = props;
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const authData = useSelector(getUserAuthData);
     const isAdmin = useSelector(isUserAdmin);
     const isManager = useSelector(isUserManager);
-    const isAdminPanelAvailable = isAdmin || isManager;
+    const authData = useSelector(getUserAuthData);
 
     const onLogout = useCallback(() => {
         dispatch(userActions.logout());
     }, [dispatch]);
 
+    const isAdminPanelAvailable = isAdmin || isManager;
+
     if (!authData) {
         return null;
     }
 
+    const items = [
+        ...(isAdminPanelAvailable
+            ? [
+                  {
+                      content: t('Admin'),
+                      href: getRouteAdmin(),
+                  },
+              ]
+            : []),
+        {
+            content: t('Profile'),
+            href: getRouteProfile(authData.id),
+        },
+        {
+            content: t('Exit'),
+            onClick: onLogout,
+        },
+    ];
+
     return (
-        <MenuDropdown
-            className={classNames('', {}, [className])}
-            direction="bottom left"
-            items={[
-                ...(isAdminPanelAvailable
-                    ? [
-                          {
-                              content: t('Admin'),
-                              href: getRouteAdmin(),
-                          },
-                      ]
-                    : []),
-                {
-                    content: t('Profile'),
-                    href: getRouteProfile(authData.id),
-                },
-                {
-                    content: t('Exit'),
-                    onClick: onLogout,
-                },
-            ]}
-            trigger={
-                <Avatar size={30} src={authData.avatar} fallbackInverted />
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <Dropdown
+                    direction="bottom left"
+                    className={classNames('', {}, [className])}
+                    items={items}
+                    trigger={<Avatar size={40} src={authData.avatar} />}
+                />
+            }
+            off={
+                <DropdownDeprecated
+                    direction="bottom left"
+                    className={classNames('', {}, [className])}
+                    items={items}
+                    trigger={
+                        <AvatarDeprecated
+                            fallbackInverted
+                            size={30}
+                            src={authData.avatar}
+                        />
+                    }
+                />
             }
         />
     );
