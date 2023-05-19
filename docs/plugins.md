@@ -20,6 +20,11 @@ Here's a list of plugins used in the project, along with their descriptions and 
 - `@babel/preset-react`: Configures Babel for transforming JSX syntax.
 - `@babel/preset-typescript`: Configures Babel for transforming TypeScript syntax.
 
+***Self-made plugin:***
+- `babelRemovePropsPlugin`: It's a plugin that removes specified JSX elements from your code during production build. Transforming modern JavaScript (ES6 and later) 
+into an older version of JavaScript (like ES5) that is more widely supported across all browsers.
+
+
 **Webpack:**
 - `@pmmmwh/react-refresh-webpack-plugin`: Enables fast refresh for React components during development.
 - `@svgr/webpack`: Webpack loader for transforming SVG files into React components.
