@@ -1,4 +1,4 @@
-import { ElementType, memo } from 'react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
@@ -21,8 +21,6 @@ interface ArticleInfiniteListProps {
     onLoadNextPart?: () => void;
 }
 
-type HeaderType = ElementType | undefined;
-
 export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
     const { className, onLoadNextPart } = props;
     const { t } = useTranslation();
@@ -40,9 +38,9 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
     const handleScrollIndexClick = (index: number) => {
         dispatch(scrollSaveActions.setScrollIndex(index));
     };
-    // TODO memoize ArticlesPagMeFilters
+    // TODO memoize ArticlesPageFilters
     const Header = toggleFeatures({
-        name: 'isCounterEnabled',
+        name: 'isAppRedesigned',
         on: () => undefined,
         off: () => () => <ArticlesPageFilters />,
     });
