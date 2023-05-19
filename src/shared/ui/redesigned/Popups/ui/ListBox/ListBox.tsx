@@ -1,5 +1,5 @@
 import { Listbox as HListBox } from '@headlessui/react';
-import { Fragment, ReactNode } from 'react';
+import { Fragment, ReactNode, useMemo } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DropdownDirection } from '@/shared/types/ui';
@@ -11,7 +11,7 @@ import popupCls from '../../styles/popup.module.scss';
 
 import cls from './ListBox.module.scss';
 
-export interface ListBoxItem {
+export interface ListBoxItem<T extends string> {
     /**
      * The value associated with the list box item.
      */
@@ -26,11 +26,11 @@ export interface ListBoxItem {
     disabled?: boolean;
 }
 
-interface ListBoxProps {
+interface ListBoxProps<T extends string> {
     /**
      * An array of list box items.
      */
-    items?: ListBoxItem[];
+    items?: ListBoxItem<T>[];
     /**
      * Optional class name for additional custom styling.
      */
@@ -38,7 +38,7 @@ interface ListBoxProps {
     /**
      * The currently selected value of the list box.
      */
-    value?: string;
+    value?: T;
     /**
      * The default value for the list box if no value is provided.
      */
@@ -46,7 +46,7 @@ interface ListBoxProps {
     /**
      * Function to handle the change event when the list box value is selected.
      */
-    onChange?: (value: string) => void;
+    onChange?: (value: T) => void;
     /**
      * A boolean that, when true, indicates that the list box is read-only.
      */
@@ -61,7 +61,7 @@ interface ListBoxProps {
     label?: string | null | undefined;
 }
 
-export function ListBox(props: ListBoxProps) {
+export function ListBox<T extends string>(props: ListBoxProps<T>) {
     const {
         items,
         className,
@@ -75,10 +75,15 @@ export function ListBox(props: ListBoxProps) {
 
     const optionsClasses = [mapDirectionClass[direction], popupCls.menu];
 
+    const selectedItem = useMemo(() => {
+        return items?.find((item) => item.value === value);
+    }, [items, value]);
+
     return (
         <HStack max gap="8">
             {label && <span className={cls.label}>{`${label}>`}</span>}
             <HListBox
+                disabled={readonly}
                 as="div"
                 className={classNames(cls.ListBox, {}, [
                     className,
@@ -86,10 +91,11 @@ export function ListBox(props: ListBoxProps) {
                 ])}
                 value={value}
                 onChange={onChange}
-                disabled={readonly}
             >
-                <HListBox.Button as="div" className={popupCls.trigger}>
-                    <Button disabled={readonly}>{value ?? defaultValue}</Button>
+                <HListBox.Button as="div" className={cls.trigger}>
+                    <Button variant="filled" disabled={readonly}>
+                        {selectedItem?.content ?? defaultValue}
+                    </Button>
                 </HListBox.Button>
                 <HListBox.Options
                     className={classNames(cls.options, {}, optionsClasses)}
@@ -103,17 +109,14 @@ export function ListBox(props: ListBoxProps) {
                         >
                             {({ active, selected }) => (
                                 <li
-                                    className={classNames(
-                                        cls.item,
-                                        {
-                                            [popupCls.active]: active,
-                                            [popupCls.disabled]: item.disabled,
-                                        },
-                                        [className],
-                                    )}
+                                    className={classNames(cls.item, {
+                                        [popupCls.active]: active,
+                                        [popupCls.disabled]: item.disabled,
+                                        [popupCls.selected]: selected,
+                                    })}
                                 >
-                                    {selected && '=> '}
-                                    {item.value}
+                                    {selected}
+                                    {item.content}
                                 </li>
                             )}
                         </HListBox.Option>

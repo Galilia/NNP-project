@@ -2,6 +2,8 @@ import { memo, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { ArticlePageGreeting } from '@/features/articlePageGreeting';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
     ReducersList,
@@ -14,6 +16,8 @@ import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPag
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
 import { ArticleInfiniteList } from '../../ui/ArticleInfiniteList/ArticleInfiniteList';
+import { FiltersContainer } from '../FiltersContainer/FiltersContainer';
+import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorContainer';
 
 import cls from './ArticlesPage.module.scss';
 
@@ -37,28 +41,45 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
         dispatch(initArticlesPage(searchParams));
     });
 
-    const ArticleInfinite = () => (
+    const content = (
         <ToggleFeatures
             feature="isAppRedesigned"
-            off={
-                <ArticleInfiniteList
-                    onLoadNextPart={onLoadNextPart}
-                    className={cls.list}
+            on={
+                <StickyContentLayout
+                    left={<ViewSelectorContainer />}
+                    right={<FiltersContainer />}
+                    content={
+                        <div
+                            className={classNames(
+                                cls.ArticlesPageRedesigned,
+                                {},
+                                [],
+                            )}
+                        >
+                            <ArticleInfiniteList
+                                onLoadNextPart={onLoadNextPart}
+                                className={cls.listRedesigned}
+                            />
+                            <ArticlePageGreeting />
+                        </div>
+                    }
                 />
             }
-            on={
-                <ArticleInfiniteList
-                    onLoadNextPart={onLoadNextPart}
-                    className={cls.listRedesigned}
-                />
+            off={
+                <>
+                    <ArticleInfiniteList
+                        onLoadNextPart={onLoadNextPart}
+                        className={cls.list}
+                    />
+                    <ArticlePageGreeting />
+                </>
             }
         />
     );
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <ArticleInfinite />
-            <ArticlePageGreeting />
+            {content}
         </DynamicModuleLoader>
     );
 };

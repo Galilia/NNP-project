@@ -1,9 +1,10 @@
-import { memo } from 'react';
+import { ElementType, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { ArticleList } from '@/entities/Article';
 import { getScrollIndex, scrollSaveActions } from '@/features/ScrollSave';
+import { toggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text } from '@/shared/ui/deprecated/Text';
 
@@ -20,7 +21,7 @@ interface ArticleInfiniteListProps {
     onLoadNextPart?: () => void;
 }
 
-const Header = () => <ArticlesPageFilters />;
+type HeaderType = ElementType | undefined;
 
 export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
     const { className, onLoadNextPart } = props;
@@ -39,6 +40,12 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
     const handleScrollIndexClick = (index: number) => {
         dispatch(scrollSaveActions.setScrollIndex(index));
     };
+    // TODO memoize ArticlesPagMeFilters
+    const Header = toggleFeatures({
+        name: 'isCounterEnabled',
+        on: () => undefined,
+        off: () => () => <ArticlesPageFilters />,
+    });
 
     return (
         <ArticleList

@@ -4,10 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useScrollToElement } from '@/shared/lib/hooks/useScrollToElement/useScrollToElement';
-import {
-    Button as ButtonDeprecated,
-    ButtonTheme,
-} from '@/shared/ui/deprecated/Button';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 
@@ -26,6 +22,7 @@ export const PortfolioScrollButtons = memo(
         const scrollToProjects = useScrollToElement('projects');
         const scrollToContactMe = useScrollToElement('contactMe');
 
+        // TODO remove ts after redesign
         return (
             <ToggleFeatures
                 feature="isAppRedesigned"
@@ -48,31 +45,8 @@ export const PortfolioScrollButtons = memo(
                         </Button>
                     </HStack>
                 }
-                off={
-                    <HStack gap="32" justify="end">
-                        <ButtonDeprecated
-                            theme={ButtonTheme.CLEAR_INVERTED}
-                            className={cls.links}
-                            onClick={scrollToAboutMe}
-                        >
-                            {t('About')}
-                        </ButtonDeprecated>
-                        <ButtonDeprecated
-                            theme={ButtonTheme.CLEAR_INVERTED}
-                            className={cls.links}
-                            onClick={scrollToProjects}
-                        >
-                            {t('Projects')}
-                        </ButtonDeprecated>
-                        <ButtonDeprecated
-                            theme={ButtonTheme.CLEAR_INVERTED}
-                            className={cls.links}
-                            onClick={scrollToContactMe}
-                        >
-                            {t('Contact')}
-                        </ButtonDeprecated>
-                    </HStack>
-                }
+                // @ts-ignore
+                off={() => undefined}
             />
         );
     },
