@@ -2,6 +2,7 @@ import React, { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
+import { PortfolioScrollButtons } from '@/entities/Portfolio';
 import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
@@ -9,7 +10,6 @@ import { NotificationButton } from '@/features/NotificationButton';
 import { getRouteArticleCreate } from '@/shared/const/routerConst';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { useScrollToElement } from '@/shared/lib/hooks/useScrollToElement/useScrollToElement';
 import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
@@ -25,9 +25,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState(false);
     const authData = useSelector(getUserAuthData);
-    const scrollToAboutMe = useScrollToElement('aboutMe');
-    const scrollToProjects = useScrollToElement('projects');
-    const scrollToContactMe = useScrollToElement('contactMe');
 
     const onShowModal = useCallback(() => {
         setIsAuthModal(true);
@@ -90,29 +87,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 title={t('navbar_name')}
                 theme={TextTheme.INVERTED}
             />
-            <HStack gap="32" justify="end">
-                <Button
-                    theme={ButtonTheme.CLEAR_INVERTED}
-                    className={cls.links}
-                    onClick={scrollToAboutMe}
-                >
-                    {t('About')}
-                </Button>
-                <Button
-                    theme={ButtonTheme.CLEAR_INVERTED}
-                    className={cls.links}
-                    onClick={scrollToProjects}
-                >
-                    {t('Projects')}
-                </Button>
-                <Button
-                    theme={ButtonTheme.CLEAR_INVERTED}
-                    className={cls.links}
-                    onClick={scrollToContactMe}
-                >
-                    {t('Contact')}
-                </Button>
-            </HStack>
+            <PortfolioScrollButtons />
             <Button
                 theme={ButtonTheme.CLEAR_INVERTED}
                 className={cls.links}

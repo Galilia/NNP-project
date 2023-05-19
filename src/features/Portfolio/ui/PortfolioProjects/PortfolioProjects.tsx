@@ -62,6 +62,7 @@ interface LatestProjectsProps {
     className?: string;
 }
 
+// TODO PortfolioProjects and it's content are in development and redesign
 export const PortfolioProjects = ({ className }: LatestProjectsProps) => {
     const { t } = useTranslation('main');
 

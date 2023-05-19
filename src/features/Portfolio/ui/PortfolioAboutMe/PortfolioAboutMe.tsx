@@ -11,6 +11,7 @@ interface AboutMeProps {
     className?: string;
 }
 
+// TODO PortfolioAboutMe and it's content are in development and redesign
 export const PortfolioAboutMe = ({ className }: AboutMeProps) => {
     const { t } = useTranslation('main');
     const scrollToContactMe = useScrollToElement('contactMe');

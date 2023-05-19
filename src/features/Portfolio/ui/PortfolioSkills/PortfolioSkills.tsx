@@ -51,6 +51,7 @@ const skillsData = [
     { icon: AdobePS, title: 'Adobe PS', color: FILL_COLOR_GREEN },
 ];
 
+// TODO PortfolioSkills and it's content are in development and redesign
 export const PortfolioSkills = ({ className }: LatestProjectsProps) => {
     const { t } = useTranslation('main');
 

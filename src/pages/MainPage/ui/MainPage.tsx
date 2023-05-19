@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { PortfolioScrollButtons } from '@/entities/Portfolio';
 import {
     PortfolioAboutMe,
     PortfolioProjects,
@@ -11,12 +12,14 @@ import { Page } from '@/widgets/Page';
 
 import cls from './MainPage.module.scss';
 
+// TODO MainPage and it's content are in development and redesign
 const MainPage = () => {
     return (
         <Page
             data-testid="MainPage"
             className={classNames(cls.MainPage, {}, [])}
         >
+            <PortfolioScrollButtons />
             <PortfolioAboutMe />
             <PortfolioSkills />
             <PortfolioProjects />
