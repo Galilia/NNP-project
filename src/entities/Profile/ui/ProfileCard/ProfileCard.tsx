@@ -1,20 +1,20 @@
-import { useTranslation } from 'react-i18next';
-
-import { Country, CountrySelect } from '@/entities/Country';
-import { Currency, CurrencySelect } from '@/entities/Currency';
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import { Input } from '@/shared/ui/deprecated/Input';
-import { Loader } from '@/shared/ui/deprecated/Loader';
-import { Text, TextAlign, TextTheme } from '@/shared/ui/deprecated/Text';
-import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 import { Profile } from '../../model/types/profile';
-import { ProfileCardWithCaret } from '../ProfileCardWithCaret/ProfileCardWithCaret';
+import {
+    ProfileCardDeprecated,
+    ProfileCardDeprecatedError,
+    ProfileCardDeprecatedLoader,
+} from '../ProfileCardDeprecated/ProfileCardDeprecated';
+import {
+    ProfileCardRedesigned,
+    ProfileCardRedesignedError,
+    ProfileCardRedesignedSkeleton,
+} from '../ProfileCardRedesigned/ProfileCardRedesigned';
 
-import cls from './ProfileCard.module.scss';
-
-interface ProfileCardProps {
+export interface ProfileCardProps {
     className?: string;
     data?: Profile;
     error?: string;
@@ -32,145 +32,33 @@ interface ProfileCardProps {
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
-    const {
-        className,
-        data,
-        error,
-        isLoading,
-        readonly,
-        withCaret,
-        onChangeFirstname,
-        onChangeLastname,
-        onChangeCity,
-        onChangeAge,
-        onChangeUsername,
-        onChangeAvatar,
-        onChangeCurrency,
-        onChangeCountry,
-    } = props;
-    const { t } = useTranslation('profile');
+    const { error, isLoading } = props;
 
     if (isLoading) {
         return (
-            <HStack
-                justify="center"
-                max
-                className={classNames(
-                    cls.ProfileCard,
-                    { [cls.loading]: true },
-                    [className],
-                )}
-            >
-                <Loader />
-            </HStack>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={<ProfileCardRedesignedSkeleton />}
+                off={<ProfileCardDeprecatedLoader />}
+            />
         );
     }
 
     if (error) {
         return (
-            <HStack
-                justify="center"
-                max
-                className={classNames(cls.ProfileCard, {}, [
-                    className,
-                    cls.error,
-                ])}
-            >
-                <Text
-                    theme={TextTheme.ERROR}
-                    text={t('Please, update page')}
-                    title={t('Error happened')}
-                    align={TextAlign.CENTER}
-                />
-            </HStack>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={<ProfileCardRedesignedError />}
+                off={<ProfileCardDeprecatedError />}
+            />
         );
     }
 
-    const mods: Mods = {
-        [cls.editing]: !readonly,
-    };
-
     return (
-        <VStack
-            gap="8"
-            max
-            className={classNames(cls.ProfileCard, mods, [className])}
-        >
-            <HStack justify="center" max>
-                <Avatar src={data?.avatar} alt="avatar" />
-            </HStack>
-            {withCaret ? (
-                <ProfileCardWithCaret
-                    data={data}
-                    onChangeFirstname={onChangeFirstname}
-                    onChangeLastname={onChangeLastname}
-                    onChangeAge={onChangeAge}
-                    onChangeCity={onChangeCity}
-                    onChangeUsername={onChangeUsername}
-                    onChangeAvatar={onChangeAvatar}
-                    onChangeCurrency={onChangeCurrency}
-                    onChangeCountry={onChangeCountry}
-                    readonly={readonly}
-                />
-            ) : (
-                <>
-                    <Input
-                        label={t('your_name')}
-                        value={data?.first}
-                        placeholder={t('your_name')}
-                        onChange={onChangeFirstname}
-                        readonly={readonly}
-                        data-testid="ProfileCard.firstname"
-                    />
-                    <Input
-                        label={t('your_surname')}
-                        value={data?.lastname}
-                        placeholder={t('your_surname')}
-                        onChange={onChangeLastname}
-                        readonly={readonly}
-                        data-testid="ProfileCard.lastname"
-                    />
-                    <Input
-                        label={t('your_age')}
-                        value={data?.age}
-                        placeholder={t('your_age')}
-                        onChange={onChangeAge}
-                        readonly={readonly}
-                        onlyNumbers
-                    />
-                    <Input
-                        label={t('your_city')}
-                        value={data?.city}
-                        placeholder={t('your_city')}
-                        onChange={onChangeCity}
-                        readonly={readonly}
-                    />
-                    <Input
-                        label={t('your_username')}
-                        value={data?.username}
-                        placeholder={t('your_username')}
-                        onChange={onChangeUsername}
-                        readonly={readonly}
-                    />
-                    <Input
-                        label={t('your_avatar')}
-                        value={data?.avatar}
-                        placeholder={t('your_avatar')}
-                        onChange={onChangeAvatar}
-                        readonly={readonly}
-                    />
-                    <CurrencySelect
-                        value={data?.currency}
-                        onChange={onChangeCurrency}
-                        readonly={readonly}
-                    />
-                    <CountrySelect
-                        value={data?.country}
-                        onChange={onChangeCountry}
-                        readonly={readonly}
-                    />
-                </>
-            )}
-        </VStack>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={<ProfileCardRedesigned {...props} />}
+            off={<ProfileCardDeprecated {...props} />}
+        />
     );
 };
