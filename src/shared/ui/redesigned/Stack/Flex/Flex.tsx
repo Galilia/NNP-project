@@ -90,7 +90,7 @@ export const Flex = (props: FlexProps) => {
         direction,
         gap,
         max,
-        wrap,
+        wrap = 'nowrap',
         ...otherProps
     } = props;
 
