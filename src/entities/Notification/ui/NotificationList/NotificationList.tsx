@@ -2,8 +2,10 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { toggleFeatures } from '@/shared/lib/features';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
 import { Text } from '@/shared/ui/deprecated/Text';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 
 import { Notification } from '../../model/types/notifications';
@@ -27,6 +29,12 @@ export const NotificationList = memo((props: NotificationListProps) => {
             </div>
         );
     }
+
+    const Skeleton = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => SkeletonRedesigned,
+        off: () => SkeletonDeprecated,
+    });
 
     if (isLoading) {
         return (

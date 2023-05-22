@@ -3,8 +3,8 @@
 
 #npm run build:prod
 npx lint-staged
-npm run lint:scss
-npm run lint:ts
+#npm run lint:scss
+#npm run lint:ts
 #npm run test:unit
 #npm run storybook:build
 

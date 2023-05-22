@@ -33,8 +33,11 @@
     },
     "lint-staged": {
         "**/*.{ts,tsx}": [
-            "prettier --list-different",
+            "prettier --list-different --write",
             "eslint"
+        ],
+        "**/*.scss": [
+            "stylelint --fix"
         ]
     },
     "keywords": [],
