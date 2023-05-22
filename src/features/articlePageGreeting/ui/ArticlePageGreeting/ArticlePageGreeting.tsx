@@ -5,8 +5,8 @@ import { saveJsonSettings, useJsonSettingsSelector } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
 import { Drawer } from '@/shared/ui/deprecated/Drawer';
-import { Modal } from '@/shared/ui/deprecated/Modal';
 import { Text } from '@/shared/ui/deprecated/Text';
+import { Modal } from '@/shared/ui/redesigned/Modal';
 
 export const ArticlePageGreeting = memo(() => {
     const { t } = useTranslation();
