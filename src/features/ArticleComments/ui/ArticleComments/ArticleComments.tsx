@@ -8,11 +8,13 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Loader } from '@/shared/ui/deprecated/Loader';
-import { Text, TextSize } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 import {
     getAddCommentFormError,
@@ -71,11 +73,24 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
             max
             className={classNames(cls.ArticleComments, {}, [className])}
         >
-            <Text
-                size={TextSize.L}
-                title={t('Comments')}
-                className={cls.commentTitle}
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <Text
+                        size="l"
+                        title={t('Comments')}
+                        className={cls.commentTitle}
+                    />
+                }
+                off={
+                    <TextDeprecated
+                        size={TextSize.L}
+                        title={t('Comments')}
+                        className={cls.commentTitle}
+                    />
+                }
             />
+
             <Suspense fallback={<Loader />}>
                 <DynamicModuleLoader reducers={reducers}>
                     <CommentForm
