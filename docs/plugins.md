@@ -19,6 +19,7 @@ Here's a list of plugins used in the project, along with their descriptions and 
 - `@babel/preset-env`: Configures Babel to use the latest JavaScript features based on the target environment.
 - `@babel/preset-react`: Configures Babel for transforming JSX syntax.
 - `@babel/preset-typescript`: Configures Babel for transforming TypeScript syntax.
+- `babel-plugin-react-anonymous-display-name`: Babel plugin that fixes displaying, in react devtools, components wrapped by React.memo and forwardRef as Anonymous.
 
 ***Self-made plugin:***
 - `babelRemovePropsPlugin`: It's a plugin that removes specified JSX elements from your code during production build. Transforming modern JavaScript (ES6 and later) 

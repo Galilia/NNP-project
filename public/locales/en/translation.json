@@ -27,5 +27,8 @@
     "Rate the profile": "Rate the profile",
     "Notifications not found": "Notifications not found",
     "add_five": "add_five",
-    "navbar_name": "Ilia Galperin"
+    "navbar_name": "Ilia Galperin",
+    "{{count}} views_zero": "{{count}} views",
+    "{{count}} views_one": "{{count}} view",
+    "{{count}} views_other": "{{count}} views"
 }

@@ -79,6 +79,7 @@
         "@vitejs/plugin-react": "^3.1.0",
         "babel-loader": "^8.2.3",
         "babel-plugin-i18next-extract": "^0.8.3",
+        "babel-plugin-react-anonymous-display-name": "^0.1.0",
         "circular-dependency-plugin": "^5.2.2",
         "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.6.0",

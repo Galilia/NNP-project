@@ -39,5 +39,9 @@
     "Thanks for feedback!": "Thanks for feedback!",
     "Rate the profile": "Rate the profile",
     "Notifications not found": "Notifications not found",
-    "add_five": "add_five"
+    "add_five": "add_five",
+    "{{count}} views_zero": "{{count}} views",
+    "{{count}} views_one": "{{count}} view",
+    "{{count}} views_few": "{{count}} views",
+    "{{count}} views_many": "{{count}} views"
 }
