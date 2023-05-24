@@ -793,6 +793,12 @@
       "userId": "1",
       "text": "test 2",
       "id": "74U2Oy3"
+    },
+    {
+      "articleId": "6",
+      "userId": "1",
+      "text": "fasdfdffffffffffffffffffffffffffffasdfdffffffffffffffffffffffffffffasdfdffffffffffffffffffffffffffffasdfdffffffffffffffffffffffffffffasdfdffffffffffffffffffffffffffffasdfdffffffffffffffffffffffffffffasdfdffffffffffffffffffffffffffffasdfdfffffffffffffffffffffffffff",
+      "id": "9JgdAGT"
     }
   ],
   "users": [
@@ -808,7 +814,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_light_theme",
+        "theme": "app_dark_theme",
         "isFirstVisit": true,
         "settingsPageHasBeenOpen": false,
         "isArticlesPageWasOpened": true

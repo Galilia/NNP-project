@@ -2,8 +2,15 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { ToggleFeatures } from '@/shared/lib/features';
+import {
+    Button as ButtonDeprecated,
+    ButtonTheme,
+} from '@/shared/ui/deprecated/Button';
 import { InputWithCaret } from '@/shared/ui/deprecated/InputWithCaret';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { Card } from '@/shared/ui/redesigned/Card';
+import { Input } from '@/shared/ui/redesigned/Input';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 
 import cls from './CommentForm.module.scss';
@@ -27,27 +34,60 @@ const CommentForm = memo((props: CommentFormProps) => {
     }, [onCommentTextChange, onSendComment, text]);
 
     return (
-        <HStack
-            data-testid="AddCommentForm"
-            justify="between"
-            max
-            className={classNames(cls.CommentForm, {}, [className])}
-        >
-            <InputWithCaret
-                placeholder={t('Add comment')}
-                value={text}
-                onChange={onCommentTextChange}
-                className={cls.input}
-                data-testid="AddCommentForm.Input"
-            />
-            <Button
-                theme={ButtonTheme.OUTLINE}
-                onClick={onSendHandler}
-                data-testid="AddCommentForm.Button"
-            >
-                {t('Send')}
-            </Button>
-        </HStack>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <Card padding="24" border="round" fullWidth>
+                    <HStack
+                        data-testid="AddCommentForm"
+                        justify="between"
+                        max
+                        gap="16"
+                        className={classNames(cls.CommentFormRedesigned, {}, [
+                            className,
+                        ])}
+                    >
+                        <Input
+                            placeholder={t('Add comment')}
+                            value={text}
+                            onChange={onCommentTextChange}
+                            className={cls.input}
+                            data-testid="AddCommentForm.Input"
+                        />
+                        <Button
+                            variant="outline"
+                            onClick={onSendHandler}
+                            data-testid="AddCommentForm.Button"
+                        >
+                            {t('Send')}
+                        </Button>
+                    </HStack>
+                </Card>
+            }
+            off={
+                <HStack
+                    data-testid="AddCommentForm"
+                    justify="between"
+                    max
+                    className={classNames(cls.CommentForm, {}, [className])}
+                >
+                    <InputWithCaret
+                        placeholder={t('Add comment')}
+                        value={text}
+                        onChange={onCommentTextChange}
+                        className={cls.input}
+                        data-testid="AddCommentForm.Input"
+                    />
+                    <ButtonDeprecated
+                        theme={ButtonTheme.OUTLINE}
+                        onClick={onSendHandler}
+                        data-testid="AddCommentForm.Button"
+                    >
+                        {t('Send')}
+                    </ButtonDeprecated>
+                </HStack>
+            }
+        />
     );
 });
 
