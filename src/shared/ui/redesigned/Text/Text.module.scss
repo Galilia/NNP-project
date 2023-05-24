@@ -4,6 +4,7 @@
 
 .text {
     color: var(--text-redesigned);
+    word-wrap: break-word;
 }
 
 .error {
@@ -73,4 +74,8 @@
     .text {
         font-weight: 700;
     }
+}
+
+.fullWidth {
+    width: 100%;
 }

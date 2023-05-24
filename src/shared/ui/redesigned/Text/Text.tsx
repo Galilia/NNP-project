@@ -40,6 +40,7 @@ interface TextProps {
      */
     'data-testid'?: string;
     bold?: boolean;
+    fullWidth?: boolean;
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3';
@@ -65,6 +66,7 @@ export const Text = memo((props: TextProps) => {
         align = 'left',
         size = 'm',
         bold,
+        fullWidth,
         'data-testid': dataTestId = 'Text',
     } = props;
 
@@ -77,7 +79,7 @@ export const Text = memo((props: TextProps) => {
         <div
             className={classNames(
                 cls.Text,
-                { [cls.bold]: bold },
+                { [cls.bold]: bold, [cls.fullWidth]: fullWidth },
                 additionalClasses,
             )}
         >
