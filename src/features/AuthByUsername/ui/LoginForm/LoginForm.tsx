@@ -7,10 +7,18 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
-import { Input } from '@/shared/ui/deprecated/Input';
-import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import {
+    Button as ButtonDeprecated,
+    ButtonTheme,
+} from '@/shared/ui/deprecated/Button';
+import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
+import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 import { LoginFormProps } from '../../lib/utils/LoginForm.utils';
 import {
@@ -65,64 +73,125 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-            <div className={classNames(cls.LoginForm, {}, [className])}>
-                {!isLoggedIn ? (
-                    <Text title={t('Register')} />
-                ) : (
-                    <Text title={t('Login')} />
-                )}
-                {error && (
-                    <Text
-                        text={t('Login or password is not correct')}
-                        theme={TextTheme.ERROR}
-                    />
-                )}
-                <Input
-                    type="text"
-                    className={cls.input}
-                    placeholder={t('Enter email')}
-                    label={t('Enter email')}
-                    onChange={onChangeEmail}
-                    value={email}
-                />
-                <Input
-                    type="text"
-                    className={cls.input}
-                    placeholder={t('Enter password')}
-                    label={t('Enter password')}
-                    onChange={onChangePassword}
-                    value={password}
-                />
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <VStack gap="16">
+                        {!isLoggedIn ? (
+                            <Text title={t('Register')} />
+                        ) : (
+                            <Text title={t('Login')} />
+                        )}
+                        {error && (
+                            <Text
+                                text={t('Login or password is not correct')}
+                                variant="error"
+                            />
+                        )}
+                        <Input
+                            type="text"
+                            className={cls.input}
+                            placeholder={t('Enter email')}
+                            label={t('Enter email')}
+                            onChange={onChangeEmail}
+                            value={email}
+                        />
+                        <Input
+                            type="text"
+                            className={cls.input}
+                            placeholder={t('Enter password')}
+                            label={t('Enter password')}
+                            onChange={onChangePassword}
+                            value={password}
+                        />
+                        {!isLoggedIn ? (
+                            <Button
+                                onClick={onSignUpClick}
+                                className={cls.loginBtn}
+                                disabled={isLoading}
+                            >
+                                {t('Sign Up')}
+                            </Button>
+                        ) : (
+                            <Button
+                                onClick={onLoginByEmailClick}
+                                className={cls.loginBtn}
+                                disabled={isLoading}
+                            >
+                                {t('Login')}
+                            </Button>
+                        )}
+                        <Button
+                            onClick={() => setIsLoggedIn((prev) => !prev)}
+                            disabled={isLoading}
+                        >
+                            {!isLoggedIn
+                                ? t('already registered? please, login!')
+                                : t('dont have login, please, sign up!')}
+                        </Button>
+                    </VStack>
+                }
+                off={
+                    <div className={classNames(cls.LoginForm, {}, [className])}>
+                        {!isLoggedIn ? (
+                            <TextDeprecated title={t('Register')} />
+                        ) : (
+                            <TextDeprecated title={t('Login')} />
+                        )}
+                        {error && (
+                            <TextDeprecated
+                                text={t('Login or password is not correct')}
+                                theme={TextTheme.ERROR}
+                            />
+                        )}
+                        <InputDeprecated
+                            type="text"
+                            className={cls.input}
+                            placeholder={t('Enter email')}
+                            label={t('Enter email')}
+                            onChange={onChangeEmail}
+                            value={email}
+                        />
+                        <InputDeprecated
+                            type="text"
+                            className={cls.input}
+                            placeholder={t('Enter password')}
+                            label={t('Enter password')}
+                            onChange={onChangePassword}
+                            value={password}
+                        />
 
-                {!isLoggedIn ? (
-                    <Button
-                        theme={ButtonTheme.OUTLINE}
-                        onClick={onSignUpClick}
-                        className={cls.loginBtn}
-                        disabled={isLoading}
-                    >
-                        {t('Sign Up')}
-                    </Button>
-                ) : (
-                    <Button
-                        theme={ButtonTheme.OUTLINE}
-                        onClick={onLoginByEmailClick}
-                        className={cls.loginBtn}
-                        disabled={isLoading}
-                    >
-                        {t('Login')}
-                    </Button>
-                )}
-                <Button
-                    theme={ButtonTheme.CLEAR}
-                    onClick={() => setIsLoggedIn((prev) => !prev)}
-                    disabled={isLoading}
-                >
-                    {!isLoggedIn
-                        ? t('already registered? please, login!')
-                        : t('dont have login, please, sign up!')}
-                </Button>
-            </div>
+                        {!isLoggedIn ? (
+                            <ButtonDeprecated
+                                theme={ButtonTheme.OUTLINE}
+                                onClick={onSignUpClick}
+                                className={cls.loginBtn}
+                                disabled={isLoading}
+                            >
+                                {t('Sign Up')}
+                            </ButtonDeprecated>
+                        ) : (
+                            <ButtonDeprecated
+                                theme={ButtonTheme.OUTLINE}
+                                onClick={onLoginByEmailClick}
+                                className={cls.loginBtn}
+                                disabled={isLoading}
+                            >
+                                {t('Login')}
+                            </ButtonDeprecated>
+                        )}
+                        <ButtonDeprecated
+                            theme={ButtonTheme.CLEAR}
+                            onClick={() => setIsLoggedIn((prev) => !prev)}
+                            disabled={isLoading}
+                        >
+                            {!isLoggedIn
+                                ? t('already registered? please, login!')
+                                : t('dont have login, please, sign up!')}
+                        </ButtonDeprecated>
+                    </div>
+                }
+            />
         </DynamicModuleLoader>
     );
 });

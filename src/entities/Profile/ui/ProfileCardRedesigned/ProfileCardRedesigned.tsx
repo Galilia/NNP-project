@@ -71,7 +71,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
     const { t } = useTranslation('profile');
 
     return (
-        <Card padding="24" fullWidth className={className}>
+        <Card padding="24" fullWidth border="partial" className={className}>
             <VStack gap="32">
                 {data?.avatar && (
                     <HStack justify="center" max>

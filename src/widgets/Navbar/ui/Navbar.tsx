@@ -11,9 +11,14 @@ import { getRouteArticleCreate } from '@/shared/const/routerConst';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
-import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import {
+    Button as ButtonDeprecated,
+    ButtonTheme,
+} from '@/shared/ui/deprecated/Button';
+import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Button } from '@/shared/ui/redesigned/Button';
 import { HStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 import cls from './Navbar.module.scss';
 
@@ -52,7 +57,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 }
                 off={
                     <header className={classNames(cls.Navbar, {}, [className])}>
-                        <Text
+                        <TextDeprecated
                             className={cls.appName}
                             title={t('Galilia App')}
                             theme={TextTheme.INVERTED}
@@ -82,19 +87,43 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     return (
         <header className={classNames(cls.Navbar, {}, [className])}>
-            <Text
-                className={cls.appName}
-                title={t('navbar_name')}
-                theme={TextTheme.INVERTED}
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <>
+                        <Text
+                            className={cls.appName}
+                            title={t('navbar_name')}
+                        />
+                        <PortfolioScrollButtons />
+                        <Button
+                            className={cls.links}
+                            onClick={onShowModal}
+                            variant="outline"
+                        >
+                            {t('Login')}
+                        </Button>
+                    </>
+                }
+                off={
+                    <>
+                        <TextDeprecated
+                            className={cls.appName}
+                            title={t('navbar_name')}
+                            theme={TextTheme.INVERTED}
+                        />
+                        <PortfolioScrollButtons />
+                        <ButtonDeprecated
+                            theme={ButtonTheme.CLEAR_INVERTED}
+                            className={cls.links}
+                            onClick={onShowModal}
+                        >
+                            {t('Login')}
+                        </ButtonDeprecated>
+                    </>
+                }
             />
-            <PortfolioScrollButtons />
-            <Button
-                theme={ButtonTheme.CLEAR_INVERTED}
-                className={cls.links}
-                onClick={onShowModal}
-            >
-                {t('Login')}
-            </Button>
+
             {isAuthModal && (
                 <LoginModal
                     isOpen={isAuthModal}
