@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { memo, Suspense, useEffect } from 'react';
 import './styles/index.scss';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -15,9 +15,10 @@ import { PageLoader } from '@/widgets/PageLoader';
 import { Sidebar } from '@/widgets/Sidebar';
 
 import { useAppToolbar } from './lib/useAppToolbar';
+import { withTheme } from './providers/ThemeProvider/ui/withTheme';
 import { AppRouter } from './providers/router';
 
-function App() {
+const App = memo(() => {
     const { t } = useTranslation();
 
     const { theme } = useTheme();
@@ -79,6 +80,6 @@ function App() {
             }
         />
     );
-}
+});
 
-export default App;
+export default withTheme(App);

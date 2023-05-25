@@ -1,13 +1,13 @@
 import { addDecorator } from '@storybook/react';
-import {Suspense, useEffect} from "react";
-import {I18nextProvider} from "react-i18next";
+import { Suspense, useEffect } from 'react';
+import { I18nextProvider } from 'react-i18next';
 
-import i18n from "../../src/shared/config/i18n/i18nForStorybook";
+import { FeaturesFlagsDecorator } from '@/shared/config/storybook/FeaturesFlagsDecorator/FeaturesFlagsDecorator';
+
+import i18n from '../../src/shared/config/i18n/i18nForStorybook';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
-import {
-    SuspenseDecorator,
-} from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
+import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '../../src/shared/const/themeConst';
 
@@ -69,3 +69,4 @@ addDecorator(StyleDecorator);
 addDecorator(ThemeDecorator(Theme.LIGHT));
 addDecorator(RouterDecorator);
 addDecorator(SuspenseDecorator);
+addDecorator(FeaturesFlagsDecorator({}));
