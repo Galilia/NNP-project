@@ -50,7 +50,7 @@ export const PortfolioAboutMe = ({ className }: AboutMeProps) => {
             </div>
             <div className={cls.aboutMePhoto}>
                 <img
-                    src="src/shared/assets/images/photoIlia.jpg"
+                    src="@/shared/assets/images/photoIlia.jpg"
                     alt="collage"
                     draggable="false"
                 />
