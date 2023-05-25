@@ -9,6 +9,7 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 import {
     Button as ButtonDeprecated,
     ButtonTheme,
@@ -45,6 +46,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const error = useSelector(getLoginError);
     const isLoading = useSelector(getLoginIsLoading);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const forceUpdate = useForceUpdate();
 
     const onChangeEmail = useCallback(
         (value: string) => {
@@ -68,8 +70,9 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         const result = await dispatch(loginByEmail({ email, password }));
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
+            forceUpdate();
         }
-    }, [dispatch, email, onSuccess, password]);
+    }, [dispatch, email, forceUpdate, onSuccess, password]);
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>

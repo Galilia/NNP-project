@@ -9,6 +9,7 @@ export function setFeatureFlags(newFeatureFlags?: FeatureFlags) {
     }
 }
 
+// TODO featureFlags[flag] ?? true; for test redesign
 export function getFeatureFlag(flag: keyof FeatureFlags) {
     return featureFlags[flag];
 }

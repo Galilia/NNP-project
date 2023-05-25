@@ -8,6 +8,7 @@ import {
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { InputWithCaret } from '@/shared/ui/deprecated/InputWithCaret';
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
@@ -35,6 +36,7 @@ const LoginFormWithCaret = memo(({ className, onSuccess }: LoginFormProps) => {
     const password = useSelector(getLoginPassword);
     const error = useSelector(getLoginError);
     const isLoading = useSelector(getLoginIsLoading);
+    const forceUpdate = useForceUpdate();
 
     const onChangeUsername = useCallback(
         (value: string) => {
@@ -54,8 +56,9 @@ const LoginFormWithCaret = memo(({ className, onSuccess }: LoginFormProps) => {
         const result = await dispatch(loginByUsername({ username, password }));
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
+            forceUpdate();
         }
-    }, [dispatch, onSuccess, password, username]);
+    }, [dispatch, forceUpdate, onSuccess, password, username]);
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>

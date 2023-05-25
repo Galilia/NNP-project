@@ -9,7 +9,7 @@ import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { NotificationButton } from '@/features/NotificationButton';
 import { getRouteArticleCreate } from '@/shared/const/routerConst';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { toggleFeatures, ToggleFeatures } from '@/shared/lib/features';
 import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
 import {
     Button as ButtonDeprecated,
@@ -18,7 +18,6 @@ import {
 import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { HStack } from '@/shared/ui/redesigned/Stack';
-import { Text } from '@/shared/ui/redesigned/Text';
 
 import cls from './Navbar.module.scss';
 
@@ -39,16 +38,18 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         setIsAuthModal(false);
     }, []);
 
+    const mainClass = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => cls.NavbarRedesigned,
+        off: () => cls.Navbar,
+    });
+
     if (authData) {
         return (
             <ToggleFeatures
                 feature="isAppRedesigned"
                 on={
-                    <header
-                        className={classNames(cls.NavbarRedesigned, {}, [
-                            className,
-                        ])}
-                    >
+                    <header className={classNames(mainClass, {}, [className])}>
                         <HStack gap="16" className={cls.actions}>
                             <NotificationButton />
                             <AvatarDropdown />
@@ -56,7 +57,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     </header>
                 }
                 off={
-                    <header className={classNames(cls.Navbar, {}, [className])}>
+                    <header className={classNames(mainClass, {}, [className])}>
                         <TextDeprecated
                             className={cls.appName}
                             title={t('Galilia App')}
@@ -75,10 +76,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                             <AvatarDropdown />
                         </HStack>
 
-                        <LoginModal
-                            isOpen={isAuthModal}
-                            onClose={onCloseModal}
-                        />
+                        {/* <LoginModal */}
+                        {/*     isOpen={isAuthModal} */}
+                        {/*     onClose={onCloseModal} */}
+                        {/* /> */}
                     </header>
                 }
             />
@@ -86,24 +87,17 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     }
 
     return (
-        <header className={classNames(cls.Navbar, {}, [className])}>
+        <header className={classNames(mainClass, {}, [className])}>
             <ToggleFeatures
                 feature="isAppRedesigned"
                 on={
-                    <>
-                        <Text
-                            className={cls.appName}
-                            title={t('navbar_name')}
-                        />
-                        <PortfolioScrollButtons />
-                        <Button
-                            className={cls.links}
-                            onClick={onShowModal}
-                            variant="outline"
-                        >
-                            {t('Login')}
-                        </Button>
-                    </>
+                    <Button
+                        className={cls.links}
+                        onClick={onShowModal}
+                        variant="clear"
+                    >
+                        {t('Login')}
+                    </Button>
                 }
                 off={
                     <>
