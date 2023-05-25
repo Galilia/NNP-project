@@ -28,10 +28,25 @@
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--card-bg);        /* tracking area color */
+    background: var(--light-bg-redesigned);        /* tracking area color */
 }
 
 *::-webkit-scrollbar-thumb {
+    background-color: var(--icon-redesigned);    /* slider color */
+    border-radius: 20px;       /* rounded runner */
+    border: 1px solid var(--accent-redesigned);
+}
+
+.app *::-webkit-scrollbar {
+    width: 12px;               /* the width of the entire scrollbar */
+    height: 8px;
+}
+
+.app *::-webkit-scrollbar-track {
+    background: var(--card-bg);        /* tracking area color */
+}
+
+.app *::-webkit-scrollbar-thumb {
     background-color: var(--inverted-primary-color);    /* slider color */
     border-radius: 20px;       /* rounded runner */
     border: 3px solid var(--primary-color);  /* margin around slider */
