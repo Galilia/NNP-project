@@ -7,11 +7,15 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { InputWithCaret } from '@/shared/ui/deprecated/InputWithCaret';
-import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 import { LoginFormProps } from '../../lib/utils/LoginForm.utils';
 import {
@@ -62,38 +66,79 @@ const LoginFormWithCaret = memo(({ className, onSuccess }: LoginFormProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-            <div className={classNames(cls.LoginForm, {}, [className])}>
-                <Text title={t('Authorization')} />
-                {error && (
-                    <Text
-                        text={t('Login or password is not correct')}
-                        theme={TextTheme.ERROR}
-                    />
-                )}
-                <InputWithCaret
-                    type="text"
-                    className={cls.input}
-                    placeholder={t('Enter username')}
-                    autofocus
-                    onChange={onChangeUsername}
-                    value={username}
-                />
-                <InputWithCaret
-                    type="text"
-                    className={cls.input}
-                    placeholder={t('Enter password')}
-                    onChange={onChangePassword}
-                    value={password}
-                />
-                <Button
-                    theme={ButtonTheme.OUTLINE}
-                    onClick={onLoginClick}
-                    className={cls.loginBtn}
-                    disabled={isLoading}
-                >
-                    {t('login')}
-                </Button>
-            </div>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <VStack
+                        gap="16"
+                        className={classNames(cls.LoginForm, {}, [className])}
+                    >
+                        <Text title={t('Authorization form')} />
+                        {error && (
+                            <Text
+                                text={t('Login or password is not correct')}
+                                variant="error"
+                            />
+                        )}
+                        <Input
+                            autofocus
+                            type="text"
+                            className={cls.input}
+                            placeholder={t('Enter username')}
+                            onChange={onChangeUsername}
+                            value={username}
+                        />
+                        <Input
+                            type="text"
+                            className={cls.input}
+                            placeholder={t('Enter password')}
+                            onChange={onChangePassword}
+                            value={password}
+                        />
+                        <Button
+                            className={cls.loginBtn}
+                            onClick={onLoginClick}
+                            disabled={isLoading}
+                        >
+                            {t('Login')}
+                        </Button>
+                    </VStack>
+                }
+                off={
+                    <div className={classNames(cls.LoginForm, {}, [className])}>
+                        <TextDeprecated title={t('Authorization')} />
+                        {error && (
+                            <TextDeprecated
+                                text={t('Login or password is not correct')}
+                                theme={TextTheme.ERROR}
+                            />
+                        )}
+                        <InputWithCaret
+                            type="text"
+                            className={cls.input}
+                            placeholder={t('Enter username')}
+                            autofocus
+                            onChange={onChangeUsername}
+                            value={username}
+                        />
+                        <InputWithCaret
+                            type="text"
+                            className={cls.input}
+                            placeholder={t('Enter password')}
+                            onChange={onChangePassword}
+                            value={password}
+                        />
+                        <Button
+                            theme={ButtonTheme.OUTLINE}
+                            onClick={onLoginClick}
+                            className={cls.loginBtn}
+                            disabled={isLoading}
+                        >
+                            {t('login')}
+                        </Button>
+                    </div>
+                }
+            />
         </DynamicModuleLoader>
     );
 });

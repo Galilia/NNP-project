@@ -7,6 +7,7 @@ import {
     PortfolioSkills,
     PortfolioWorkTogether,
 } from '@/features/Portfolio';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
 
@@ -15,16 +16,20 @@ import cls from './MainPage.module.scss';
 // TODO MainPage and it's content are in development and redesign
 const MainPage = () => {
     return (
-        <Page
-            data-testid="MainPage"
-            className={classNames(cls.MainPage, {}, [])}
-        >
-            <PortfolioScrollButtons />
-            <PortfolioAboutMe />
-            <PortfolioSkills />
-            <PortfolioProjects />
-            <PortfolioWorkTogether />
-        </Page>
+        <StickyContentLayout
+            content={
+                <Page
+                    data-testid="MainPage"
+                    className={classNames(cls.MainPage, {}, [])}
+                >
+                    <PortfolioAboutMe />
+                    <PortfolioSkills />
+                    <PortfolioProjects />
+                    <PortfolioWorkTogether />
+                </Page>
+            }
+            right={<PortfolioScrollButtons />}
+        />
     );
 };
 
