@@ -1,8 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
+import photoIlia from '@/shared/assets/images/photoIlia.jpg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useScrollToElement } from '@/shared/lib/hooks/useScrollToElement/useScrollToElement';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { AppImage } from '@/shared/ui/redesigned/AppImage';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { HeaderDescription } from '@/shared/ui/redesigned/HeaderDescription';
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 
 import cls from './PortfolioAboutMe.module.scss';
@@ -24,17 +28,13 @@ export const PortfolioAboutMe = ({ className }: AboutMeProps) => {
             id="aboutMe"
         >
             <div className={cls.sectionAbout}>
-                <h1 className={cls.aboutMeHeader}>
-                    {t('Hey! I’m Ilia, FullStack JavaScript Developer')}
-                </h1>
-                <p className={cls.sectionDescription}>
-                    {t('about_me_description')}
-                </p>
-                <div className={cls.sectionButton}>
-                    <Button
-                        theme={ButtonTheme.BACKGROUND}
-                        onClick={scrollToContactMe}
-                    >
+                <HeaderDescription
+                    header={t('Hey! I’m Ilia, FullStack JavaScript Developer')}
+                    description={t('about_me_description')}
+                    size="l"
+                />
+                <HStack gap="16">
+                    <Button variant="filled" onClick={scrollToContactMe}>
                         {t('contact_me')}
                     </Button>
                     <a
@@ -42,19 +42,16 @@ export const PortfolioAboutMe = ({ className }: AboutMeProps) => {
                         target="_blank"
                         download="Ilia_Galperin_FullStack_Developer_CV.pdf"
                     >
-                        <Button theme={ButtonTheme.BACKGROUND_INVERTED}>
-                            {t('download_cv')}
-                        </Button>
+                        <Button variant="filled">{t('download_cv')}</Button>
                     </a>
-                </div>
+                </HStack>
             </div>
-            <div className={cls.aboutMePhoto}>
-                <img
-                    src="@/shared/assets/images/photoIlia.jpg"
-                    alt="collage"
-                    draggable="false"
-                />
-            </div>
+            <AppImage
+                fallback={<Skeleton width="100%" height={250} />}
+                src={photoIlia}
+                className={cls.aboutMePhoto}
+                alt="Ilia"
+            />
         </HStack>
     );
 };

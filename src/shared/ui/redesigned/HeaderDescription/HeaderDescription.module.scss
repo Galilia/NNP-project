@@ -1,0 +1,74 @@
+.header {
+    color: var(--text-redesigned);
+}
+
+.description {
+    color: var(--text-redesigned);
+    word-wrap: break-word;
+}
+
+.normal {
+    .header {
+        margin-bottom: 1rem;
+    }
+
+    .description {
+        margin-bottom: 1.7rem;
+    }
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.size_s {
+    .header {
+        font: var(--font-m-redesigned);
+    }
+
+    .description {
+        font: var(--font-s-redesigned);
+    }
+}
+
+.size_m {
+    .header {
+        font: var(--font-l-redesigned);
+    }
+
+    .description {
+        font: var(--font-m-redesigned);
+    }
+}
+
+.size_l {
+    .header {
+        font-size: 2.6rem;
+        line-height: 3.5rem;
+        font-weight: bold;
+        font-family: Ubuntu, sans-serif;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+}
+
+.bold {
+    .header,
+    .description {
+        font-weight: 700;
+    }
+}
+
+.fullWidth {
+    width: 100%;
+}
