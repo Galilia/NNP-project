@@ -41,7 +41,10 @@
 
 .size_m {
     .header {
-        font: var(--font-l-redesigned);
+        font-size: 1.6rem;
+        line-height: 2.1rem;
+        font-weight: 700;
+        margin-bottom: 1.7rem;
     }
 
     .description {

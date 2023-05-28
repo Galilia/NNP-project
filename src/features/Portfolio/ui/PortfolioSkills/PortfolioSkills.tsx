@@ -20,6 +20,7 @@ import VSCode from '@/shared/assets/icons/portfolio/vscode.svg';
 import Webpack from '@/shared/assets/icons/portfolio/webpack.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Icon } from '@/shared/ui/deprecated/Icon';
+import { HeaderDescription } from '@/shared/ui/redesigned/HeaderDescription';
 
 import cls from './PortfolioSkills.module.scss';
 
@@ -58,23 +59,21 @@ export const PortfolioSkills = ({ className }: LatestProjectsProps) => {
     return (
         <div className={classNames(cls.LatestProjects, {}, [className])}>
             <div className={cls.skillsContent}>
-                <h2 className={cls.skillsHeader}>{t('skills_and_tools')}</h2>
-                <div>
-                    <div className={cls.skillsWrapper}>
-                        {skillsData.map((skill, index) => (
-                            <div className={cls.skillsItemWrapper} key={index}>
-                                <div className={cls.skillsItemIcon}>
-                                    <Icon
-                                        Svg={skill.icon}
-                                        style={{ fill: skill.color }}
-                                    />
-                                </div>
-                                <h3 className={cls.skillsItemTitle}>
-                                    {skill.title}
-                                </h3>
+                <HeaderDescription header={t('skills_and_tools')} size="m" />
+                <div className={cls.skillsWrapper}>
+                    {skillsData.map((skill, index) => (
+                        <div className={cls.skillsItemWrapper} key={index}>
+                            <div className={cls.skillsItemIcon}>
+                                <Icon
+                                    Svg={skill.icon}
+                                    style={{ fill: skill.color }}
+                                />
                             </div>
-                        ))}
-                    </div>
+                            <h3 className={cls.skillsItemTitle}>
+                                {skill.title}
+                            </h3>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

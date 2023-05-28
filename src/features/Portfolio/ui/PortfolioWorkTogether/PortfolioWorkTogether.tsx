@@ -4,9 +4,11 @@ import GITHUB from '@/shared/assets/icons/portfolio/links/github.svg';
 import LINKEDIN from '@/shared/assets/icons/portfolio/links/linkedin.svg';
 import EMAIL from '@/shared/assets/icons/portfolio/links/mail.svg';
 import TG from '@/shared/assets/icons/portfolio/links/tg.svg';
+import React from '@/shared/assets/icons/portfolio/react.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { HeaderDescription } from '@/shared/ui/redesigned/HeaderDescription';
 
 import cls from './PortfolioWorkTogether.module.scss';
 
@@ -52,7 +54,7 @@ export const PortfolioWorkTogether = ({ className }: WorkTogetherProps) => {
             id="contactMe"
             className={classNames(cls.WorkTogether, {}, [className])}
         >
-            <h2>{t('lets_work_together')}</h2>
+            <HeaderDescription header={t('lets_work_together')} size="m" />
             <div className={cls.sectionContacts}>
                 <div className={cls.sectionContactLinks}>
                     <p>{t('open_for_work')}</p>
@@ -63,9 +65,7 @@ export const PortfolioWorkTogether = ({ className }: WorkTogetherProps) => {
                             download="Ilia_Galperin_FullStack_Developer_CV.pdf"
                             className={cls.sectionHref}
                         >
-                            <Button theme={ButtonTheme.BACKGROUND_INVERTED}>
-                                {t('download_cv')}
-                            </Button>
+                            <Button variant="filled">{t('download_cv')}</Button>
                         </a>
                     </div>
                     <div className={cls.linksWrapper}>

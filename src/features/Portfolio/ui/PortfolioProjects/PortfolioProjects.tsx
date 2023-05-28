@@ -1,14 +1,17 @@
 import { useTranslation } from 'react-i18next';
 
 import React from '@/shared/assets/icons/portfolio/react.svg';
+import amdocs from '@/shared/assets/images/Amdocs.png';
+import microsoft from '@/shared/assets/images/M365-2.png';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { HeaderDescription } from '@/shared/ui/redesigned/HeaderDescription';
 
 import cls from './PortfolioProjects.module.scss';
 
 const projects = [
     {
-        img: 'src/shared/assets/images/Amdocs.png',
+        img: amdocs,
         title: 'Catalog One',
         company: 'Amdocs',
         description:
@@ -17,14 +20,14 @@ const projects = [
             'Similarly, operators like Golan, HOT, T-Mobile, Vodafone also need \n' +
             'a catalog to define and showcase everything they offer to their customers. \n' +
             'Catalog One is a cloud-native solution built using microservices technology. It \n' +
-            'enables operators to streamline their processes and significantly reduce time to\n' +
+            'enables operators to streamline their processes wand significantly reduce time to\n' +
             'market for their products and services.',
         stack: ': React, Redux, JavaScript, Unit testing, Webpack, Jenkins, Jira, Nodejs',
         website:
             'https://www.amdocs.com/sites/default/files/2021-07/amdocs-catalogONE-brochure.pdf',
     },
     {
-        img: 'src/shared/assets/images/M365-2.png',
+        img: microsoft,
         title: 'Microsoft 365 Defender',
         company: 'Microsoft',
         description:
@@ -40,7 +43,7 @@ const projects = [
             'https://www.microsoft.com/en-ww/security/business/siem-and-xdr/microsoft-defender-office-365?market=il',
     },
     {
-        img: 'src/shared/assets/images/photoIlia.jpg',
+        img: microsoft,
         title: 'Personal Project',
         description:
             'React based website made with Webpack\n' +
@@ -72,9 +75,7 @@ export const PortfolioProjects = ({ className }: LatestProjectsProps) => {
             id="projects"
         >
             <div className={cls.sectionContent}>
-                <h2 className={cls.latestProjectsHeader}>
-                    {t('Latest projects')}
-                </h2>
+                <HeaderDescription header={t('Latest projects')} size="m" />
                 {projects.map((project, index) => (
                     <div className={cls.projectCard} key={index}>
                         <div className={cls.imageContainer}>
@@ -108,9 +109,7 @@ export const PortfolioProjects = ({ className }: LatestProjectsProps) => {
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    <Button
-                                        theme={ButtonTheme.BACKGROUND_INVERTED}
-                                    >
+                                    <Button variant="filled">
                                         {t('Visit Website')}
                                     </Button>
                                 </a>
@@ -120,11 +119,7 @@ export const PortfolioProjects = ({ className }: LatestProjectsProps) => {
                                         target="_blank"
                                         rel="noreferrer"
                                     >
-                                        <Button
-                                            theme={
-                                                ButtonTheme.BACKGROUND_INVERTED
-                                            }
-                                        >
+                                        <Button variant="filled">
                                             {t('Show Git Repo')}
                                         </Button>
                                     </a>
