@@ -1,0 +1,15 @@
+.ContactForm {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    flex: 0 2 581px;
+}
+
+.contactFormContainer {
+    display: flex;
+    flex: 0 2 581px;
+}
+
+p.messageSent {
+    margin-top: 1rem;
+}

@@ -28,6 +28,11 @@
     "Notifications not found": "Notifications not found",
     "add_five": "add_five",
     "navbar_name": "Ilia Galperin",
+    "form_email": "Email",
+    "form_name": "Name",
+    "form_message": "Message",
+    "form_submit_btn": "Submit",
+    "form_thank_you": "Your message was sent successfully!",
     "{{count}} views_zero": "{{count}} views",
     "{{count}} views_one": "{{count}} view",
     "{{count}} views_other": "{{count}} views"

@@ -91,51 +91,6 @@ export const PortfolioWorkTogether = ({ className }: WorkTogetherProps) => {
                         ))}
                     </div>
                 </div>
-                <div className={cls.formWrapper}>
-                    <form className={cls.workTogetherForm}>
-                        <label
-                            htmlFor="username"
-                            className={cls.workTogetherFormLabel}
-                        >
-                            {t('work_together_name')}
-                        </label>
-                        <input
-                            type="text"
-                            name="username"
-                            placeholder="Your Name"
-                            required
-                            value=""
-                            className={cls.workTogetherFormInput}
-                        />
-                        <label
-                            htmlFor="useremail"
-                            className={cls.workTogetherFormLabel}
-                        >
-                            {t('work_together_email')}
-                        </label>
-                        <input
-                            type="email"
-                            name="useremail"
-                            placeholder="YourName@gmail.com"
-                            required
-                            className={cls.workTogetherFormInput}
-                        />
-                        <label
-                            htmlFor="message"
-                            className={cls.workTogetherFormLabel}
-                        >
-                            {t('work_together_message')}
-                        </label>
-                        <textarea
-                            name="message"
-                            rows={7}
-                            placeholder="Write something nice :)"
-                            required
-                            className={cls.workTogetherFormInput}
-                        />
-                        <Button type="submit">{t('submit')}</Button>
-                    </form>
-                </div>
             </div>
         </div>
     );

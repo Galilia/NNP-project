@@ -24,7 +24,7 @@ type InputSize = 's' | 'm' | 'l';
 interface InputProps extends HTMLInputProps {
     className?: string;
     value?: string | number;
-    onChange?: (value: string) => void;
+    onChange?: (value: string, name: string) => void;
     autofocus?: boolean;
     readonly?: boolean;
     addonLeft?: ReactNode;
@@ -59,7 +59,7 @@ export const Input = memo((props: InputProps) => {
     }, [autofocus]);
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e.target.value);
+        onChange?.(e.target.value, e.target.name);
     };
 
     const onBlur = () => {

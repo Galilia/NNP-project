@@ -10,6 +10,7 @@ import {
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
+import { ContactForm } from '@/widgets/ContactForm';
 import { Page } from '@/widgets/Page';
 
 import cls from './MainPage.module.scss';
@@ -30,6 +31,7 @@ const MainPage = () => {
                             <PortfolioSkills />
                             <PortfolioProjects />
                             <PortfolioWorkTogether />
+                            <ContactForm />
                         </Page>
                     }
                     right={<PortfolioScrollButtons />}
@@ -45,6 +47,7 @@ const MainPage = () => {
                     <PortfolioSkills />
                     <PortfolioProjects />
                     <PortfolioWorkTogether />
+                    <ContactForm />
                 </Page>
             }
         />
