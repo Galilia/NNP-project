@@ -6,6 +6,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { HeaderDescription } from '@/shared/ui/redesigned/HeaderDescription';
 import { Input } from '@/shared/ui/redesigned/Input';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { Textarea } from '@/shared/ui/redesigned/Textarea';
 
 import cls from './ContactForm.module.scss';
@@ -118,16 +119,21 @@ export const ContactForm = (props: ContactFormProps) => {
                     required
                 />
                 <Button
-                    variant="clear"
+                    variant="filled"
                     type="submit"
                     color="success"
                     fullWidth
                     size="xl"
+                    className={cls.buttonSent}
                 >
                     {t('form_submit_btn')}
                 </Button>
                 {formSent && (
-                    <p className={cls.messageSent}>{t('form_thank_you')}</p>
+                    <Text
+                        className={cls.messageSent}
+                        variant="accent"
+                        title={t('form_thank_you')}
+                    />
                 )}
             </form>
         </div>
