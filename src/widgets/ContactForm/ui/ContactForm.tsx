@@ -95,7 +95,7 @@ export const ContactForm = (props: ContactFormProps) => {
                     className={cls.contactFormInput}
                     type="text"
                     name="user_name"
-                    placeholder={t('name-placeholder')}
+                    placeholder={t('name_placeholder')}
                     required
                 />
                 <HeaderDescription header={t('form_email')} />
