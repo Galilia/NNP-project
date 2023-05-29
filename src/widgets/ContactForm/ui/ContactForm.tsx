@@ -1,11 +1,12 @@
 import emailjs from '@emailjs/browser';
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { HeaderDescription } from '@/shared/ui/redesigned/HeaderDescription';
 import { Input } from '@/shared/ui/redesigned/Input';
+import { Textarea } from '@/shared/ui/redesigned/Textarea';
 
 import cls from './ContactForm.module.scss';
 
@@ -47,10 +48,10 @@ export const ContactForm = (props: ContactFormProps) => {
         }));
     };
 
-    const handleTextareaChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const handleTextareaChange = (value: string, name: string) => {
         setFormData((prevFormData) => ({
             ...prevFormData,
-            [event.target.name]: event.target.value,
+            [name]: value,
         }));
     };
 
@@ -107,13 +108,13 @@ export const ContactForm = (props: ContactFormProps) => {
                     required
                 />
                 <HeaderDescription header={t('form_message')} />
-                <textarea
+                <Textarea
                     value={formData.message}
                     onChange={handleTextareaChange}
                     className={cls.contactFormArea}
                     name="message"
                     rows={7}
-                    placeholder={t('message-placeholder')}
+                    placeholder={t('form_message_placeholder')}
                     required
                 />
                 <Button

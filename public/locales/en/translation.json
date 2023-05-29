@@ -30,6 +30,7 @@
     "navbar_name": "Ilia Galperin",
     "form_email": "Email",
     "form_name": "Name",
+    "form_message_placeholder": "Write something nice :)",
     "form_message": "Message",
     "form_submit_btn": "Submit",
     "form_thank_you": "Your message was sent successfully!",

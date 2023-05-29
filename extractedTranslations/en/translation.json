@@ -85,6 +85,7 @@
   "forbidden_page": "forbidden_page",
   "form_email": "",
   "form_message": "",
+  "form_message_placeholder": "",
   "form_name": "",
   "form_submit_btn": "",
   "form_thank_you": "",
