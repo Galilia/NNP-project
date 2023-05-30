@@ -37,8 +37,9 @@ export const ArticleTextBlockComponent = memo(
                         }
                     />
                 )}
-                {block.paragraphs.map((paragraph) => (
+                {block.paragraphs.map((paragraph, index) => (
                     <ToggleFeatures
+                        key={`${paragraph}-${index}`}
                         feature="isAppRedesigned"
                         on={
                             <Text

@@ -42,7 +42,6 @@ const MainPage = () => {
                     data-testid="MainPage"
                     className={classNames(cls.MainPage, {}, [])}
                 >
-                    <PortfolioScrollButtons />
                     <PortfolioAboutMe />
                     <PortfolioSkills />
                     <PortfolioProjects />
