@@ -47,7 +47,7 @@ interface WorkTogetherProps {
 
 // TODO PortfolioWorkTogether and it's content are in development and redesign
 export const PortfolioWorkTogether = ({ className }: WorkTogetherProps) => {
-    const { t } = useTranslation('main');
+    const { t } = useTranslation('portfolio');
 
     return (
         <div

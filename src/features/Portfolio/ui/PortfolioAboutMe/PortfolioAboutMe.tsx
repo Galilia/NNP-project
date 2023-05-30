@@ -17,7 +17,7 @@ interface AboutMeProps {
 
 // TODO PortfolioAboutMe and it's content are in development and redesign
 export const PortfolioAboutMe = ({ className }: AboutMeProps) => {
-    const { t } = useTranslation('main');
+    const { t } = useTranslation('portfolio');
     const scrollToContactMe = useScrollToElement('contactMe');
 
     return (
@@ -29,7 +29,7 @@ export const PortfolioAboutMe = ({ className }: AboutMeProps) => {
         >
             <div className={cls.sectionAbout}>
                 <HeaderDescription
-                    header={t('Hey! I’m Ilia, FullStack JavaScript Developer')}
+                    header={t('fullStack_javaScript_developer')}
                     description={t('about_me_description')}
                     size="l"
                 />

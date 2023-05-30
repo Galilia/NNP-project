@@ -54,7 +54,7 @@ const skillsData = [
 
 // TODO PortfolioSkills and it's content are in development and redesign
 export const PortfolioSkills = ({ className }: LatestProjectsProps) => {
-    const { t } = useTranslation('main');
+    const { t } = useTranslation('portfolio');
 
     return (
         <div className={classNames(cls.LatestProjects, {}, [className])}>
