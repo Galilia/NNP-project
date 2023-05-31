@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { toggleFeatures } from '@/shared/lib/features';
 import { Text, TextSize } from '@/shared/ui/deprecated/Text';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 
@@ -128,13 +129,26 @@ export const ArticleList = memo((props: ArticleListProps) => {
         </div>
     );
 
+    const mainClass = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => cls.ArticleListRedesigned,
+        off: () => cls.ArticleList,
+    });
+
+    const useWindowScroll = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => true,
+        off: () => false,
+    });
+
     return (
         <div
-            className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+            className={classNames(mainClass, {}, [className, cls[view]])}
             data-testid="ArticleList"
         >
             {view === 'LIST' ? (
                 <Virtuoso
+                    useWindowScroll={useWindowScroll}
                     style={{ height: '100%' }}
                     data={articles}
                     itemContent={renderArticle}
@@ -147,6 +161,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
                 />
             ) : (
                 <VirtuosoGrid
+                    useWindowScroll={useWindowScroll}
                     ref={virtuosoGridRef}
                     totalCount={articles.length}
                     components={{

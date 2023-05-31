@@ -1,3 +1,7 @@
+.ArticleListRedesigned {
+    height: 100%;
+}
+
 .LIST {
     .card {
         margin: 30px 30px 0;
@@ -13,8 +17,8 @@
 .itemsWrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 8px;
+    justify-content: center;
+    gap: 32px;
     margin: 0 30px;
 }
 
