@@ -10,9 +10,13 @@ import {
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import {
+    Button as ButtonDeprecated,
+    ButtonTheme,
+} from '@/shared/ui/deprecated/Button';
 import { InputWithCaret } from '@/shared/ui/deprecated/InputWithCaret';
 import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Button } from '@/shared/ui/redesigned/Button';
 import { Input } from '@/shared/ui/redesigned/Input';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/redesigned/Text';
@@ -128,14 +132,14 @@ const LoginFormWithCaret = memo(({ className, onSuccess }: LoginFormProps) => {
                             onChange={onChangePassword}
                             value={password}
                         />
-                        <Button
+                        <ButtonDeprecated
                             theme={ButtonTheme.OUTLINE}
                             onClick={onLoginClick}
                             className={cls.loginBtn}
                             disabled={isLoading}
                         >
                             {t('login')}
-                        </Button>
+                        </ButtonDeprecated>
                     </div>
                 }
             />

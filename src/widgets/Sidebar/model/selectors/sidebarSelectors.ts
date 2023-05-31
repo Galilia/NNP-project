@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { getUserAuthData } from '@/entities/User';
@@ -18,6 +19,8 @@ import { SidebarItemType } from '../types/sidebar';
 
 export const useSidebarItems = () => {
     const userData = useSelector(getUserAuthData);
+    const { t } = useTranslation();
+
     const sidebarItemsList: SidebarItemType[] = [
         {
             path: getRouteMain(),
@@ -26,7 +29,7 @@ export const useSidebarItems = () => {
                 off: () => MainIconDeprecated,
                 on: () => MainIcon,
             }),
-            text: 'Main',
+            text: t('Main'),
         },
         // {
         //     path: getRouteAbout(),
@@ -48,7 +51,7 @@ export const useSidebarItems = () => {
                     off: () => ProfileIconDeprecated,
                     on: () => ProfileIcon,
                 }),
-                text: 'Profile',
+                text: t('Profile'),
                 authOnly: true,
             },
             {
@@ -58,7 +61,7 @@ export const useSidebarItems = () => {
                     off: () => ArticlesIconDeprecated,
                     on: () => ArticleIcon,
                 }),
-                text: 'Articles',
+                text: t('Articles'),
                 authOnly: true,
             },
         );
