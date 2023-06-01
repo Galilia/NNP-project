@@ -1,4 +1,7 @@
-export { PortfolioAboutMe } from '@/features/Portfolio/ui/PortfolioAboutMe/PortfolioAboutMe';
-export { PortfolioProjects } from '@/features/Portfolio/ui/PortfolioProjects/PortfolioProjects';
-export { PortfolioSkills } from '@/features/Portfolio/ui/PortfolioSkills/PortfolioSkills';
-export { PortfolioWorkTogether } from '@/features/Portfolio/ui/PortfolioWorkTogether/PortfolioWorkTogether';
+export { PortfolioDropdownMenu } from './ui/PortfolioDropdownMenu/PortfolioDropdownMenu';
+export { PortfolioDrawerMenu } from './ui/PortfolioDrawerMenu/PortfolioDrawerMenu';
+
+export { PortfolioAboutMe } from './ui/PortfolioAboutMe/PortfolioAboutMe';
+export { PortfolioProjects } from './ui/PortfolioProjects/PortfolioProjects';
+export { PortfolioSkills } from './ui/PortfolioSkills/PortfolioSkills';
+export { PortfolioWorkTogether } from './ui/PortfolioWorkTogether/PortfolioWorkTogether';

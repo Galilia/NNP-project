@@ -9,7 +9,7 @@ interface MainLayoutProps {
     className?: string;
     header: ReactElement;
     content: ReactElement;
-    sidebar: ReactElement;
+    sidebar: ReactElement | undefined;
     toolbar?: ReactElement;
 }
 

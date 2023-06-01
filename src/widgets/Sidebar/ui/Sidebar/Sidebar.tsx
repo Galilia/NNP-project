@@ -3,6 +3,7 @@ import { memo, useEffect, useMemo, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
+import { MEDIUM_SCREEN_BREAKPOINT } from '@/shared/const/breakpoints';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
@@ -20,12 +21,10 @@ interface SidebarProps {
     className?: string;
 }
 
-const MOBILE_BREAKPOINT = 1280;
-
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
     const sidebarItemsList = useSidebarItems();
-    const isMobile = useDevice(MOBILE_BREAKPOINT);
+    const isMobile = useDevice(MEDIUM_SCREEN_BREAKPOINT);
 
     useEffect(() => {
         if (isMobile) {

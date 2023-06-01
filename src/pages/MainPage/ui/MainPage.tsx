@@ -7,19 +7,20 @@ import {
     PortfolioSkills,
     PortfolioWorkTogether,
 } from '@/features/Portfolio';
+import { MEDIUM_SCREEN_BREAKPOINT } from '@/shared/const/breakpoints';
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
+import { Card } from '@/shared/ui/redesigned/Card';
 import { ContactForm } from '@/widgets/ContactForm';
 import { Page } from '@/widgets/Page';
 
 import cls from './MainPage.module.scss';
 
-const MOBILE_BREAKPOINT = 1280;
 // TODO MainPage and it's content are in development and redesign
 const MainPage = () => {
-    const isMobile = useDevice(MOBILE_BREAKPOINT);
+    const isMobile = useDevice(MEDIUM_SCREEN_BREAKPOINT);
 
     return (
         <ToggleFeatures
@@ -39,7 +40,17 @@ const MainPage = () => {
                             <ContactForm />
                         </Page>
                     }
-                    right={isMobile ? undefined : <PortfolioScrollButtons />}
+                    right={
+                        isMobile ? undefined : (
+                            <Card
+                                padding="24"
+                                border="partial"
+                                className={cls.card}
+                            >
+                                <PortfolioScrollButtons />
+                            </Card>
+                        )
+                    }
                 />
             }
             off={

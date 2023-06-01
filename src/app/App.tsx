@@ -4,11 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { getUserInited, initAuthData } from '@/entities/User';
+import { MOBILE_TABLET_BREAKPOINT } from '@/shared/const/breakpoints';
 import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { Navbar } from '@/widgets/Navbar';
 import { PageLoader } from '@/widgets/PageLoader';
@@ -18,8 +20,6 @@ import { useAppToolbar } from './lib/useAppToolbar';
 import { withTheme } from './providers/ThemeProvider/ui/withTheme';
 import { AppRouter } from './providers/router';
 
-// import setTimeout = jest.setTimeout;
-
 const App = memo(() => {
     const { t } = useTranslation();
 
@@ -27,6 +27,7 @@ const App = memo(() => {
     const dispatch = useAppDispatch();
     const inited = useSelector(getUserInited);
     const toolbar = useAppToolbar();
+    const isMobile = useDevice(MOBILE_TABLET_BREAKPOINT);
 
     useEffect(() => {
         if (!inited) {
@@ -74,7 +75,7 @@ const App = memo(() => {
                         <MainLayout
                             content={<AppRouter />}
                             header={<Navbar />}
-                            sidebar={<Sidebar />}
+                            sidebar={isMobile ? undefined : <Sidebar />}
                             toolbar={toolbar}
                         />
                     </Suspense>
