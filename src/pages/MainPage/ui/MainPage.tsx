@@ -19,6 +19,7 @@ import cls from './MainPage.module.scss';
 const MainPage = () => {
     return (
         <ToggleFeatures
+            data-testid="MainPage"
             feature="isAppRedesigned"
             on={
                 <StickyContentLayout
