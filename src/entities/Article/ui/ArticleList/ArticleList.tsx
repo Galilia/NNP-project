@@ -26,14 +26,14 @@ interface ArticleListProps {
     handleScrollIndexClick?: (index: number) => void;
 }
 
-const getSkeletons = () =>
+const getSkeletons = (useWindowScroll?: boolean) =>
     new Array(3)
         .fill(0)
         .map((_, index) => (
             <ArticleListItemSkeleton
                 key={index}
                 view="LIST"
-                className={cls.card}
+                className={useWindowScroll ? cls.cardRedesigned : cls.card}
             />
         ));
 
@@ -53,6 +53,18 @@ export const ArticleList = memo((props: ArticleListProps) => {
     const { t } = useTranslation();
     const virtuosoGridRef = useRef<VirtuosoGridHandle>(null);
 
+    const mainClass = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => cls.ArticleListRedesigned,
+        off: () => cls.ArticleList,
+    });
+
+    const useWindowScroll = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => true,
+        off: () => false,
+    });
+
     useEffect(() => {
         let timeoutId: NodeJS.Timeout;
         if (view === 'GRID') {
@@ -70,7 +82,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         <ArticleListItem
             article={article}
             view={view}
-            className={cls.card}
+            className={useWindowScroll ? cls.cardRedesigned : cls.card}
             key={article.id}
             target={target}
             handleButtonClick={
@@ -96,7 +108,11 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     const Footer = memo(() => {
         if (isLoading) {
-            return <div className={cls.skeleton}>{getSkeletons()}</div>;
+            return (
+                <div className={cls.skeleton}>
+                    {getSkeletons(useWindowScroll)}
+                </div>
+            );
         }
         return null;
     });
@@ -124,22 +140,10 @@ export const ArticleList = memo((props: ArticleListProps) => {
             <ArticleListItemSkeleton
                 key={index}
                 view={view}
-                className={cls.card}
+                className={useWindowScroll ? cls.cardRedesigned : cls.card}
             />
         </div>
     );
-
-    const mainClass = toggleFeatures({
-        name: 'isAppRedesigned',
-        on: () => cls.ArticleListRedesigned,
-        off: () => cls.ArticleList,
-    });
-
-    const useWindowScroll = toggleFeatures({
-        name: 'isAppRedesigned',
-        on: () => true,
-        off: () => false,
-    });
 
     return (
         <div

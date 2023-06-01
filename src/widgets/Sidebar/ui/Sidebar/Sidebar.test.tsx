@@ -30,6 +30,18 @@ describe('Sidebar', () => {
         const toggleBtn = screen.queryByTestId('sidebar-toggle') as HTMLElement;
         expect(screen.queryByTestId('sidebar')).toBeInTheDocument();
         fireEvent.click(toggleBtn);
-        expect(screen.queryByTestId('sidebar')).toHaveClass('collapsed');
+        const sidebar = screen.queryByTestId('sidebar');
+
+        if (sidebar) {
+            if (sidebar.classList.contains('collapsedRedesigned')) {
+                expect(sidebar).toHaveClass('collapsedRedesigned');
+            } else if (sidebar.classList.contains('collapsed')) {
+                expect(sidebar).toHaveClass('collapsed');
+            } else {
+                fail('Unexpected class');
+            }
+        } else {
+            fail('Sidebar element not found');
+        }
     });
 });

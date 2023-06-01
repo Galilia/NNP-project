@@ -1,10 +1,15 @@
 .ArticleListRedesigned {
     height: 100%;
+    overflow: hidden;
 }
 
 .LIST {
     .card {
         margin: 30px 30px 0;
+    }
+
+    .cardRedesigned {
+        margin-bottom: 30px;
     }
 }
 
