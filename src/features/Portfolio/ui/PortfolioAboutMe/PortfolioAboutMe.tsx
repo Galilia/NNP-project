@@ -46,12 +46,14 @@ export const PortfolioAboutMe = ({ className }: AboutMeProps) => {
                     </a>
                 </HStack>
             </div>
-            <AppImage
-                fallback={<Skeleton width="100%" height={250} />}
-                src={photoIlia}
-                className={cls.aboutMePhoto}
-                alt="Ilia"
-            />
+            <div className={cls.mainPhotoCollage}>
+                <AppImage
+                    fallback={<Skeleton width="100%" height={250} />}
+                    src={photoIlia}
+                    className={cls.aboutMePhoto}
+                    alt="Ilia"
+                />
+            </div>
         </HStack>
     );
 };

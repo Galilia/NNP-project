@@ -20,10 +20,12 @@ interface SidebarProps {
     className?: string;
 }
 
+const MOBILE_BREAKPOINT = 1280;
+
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
     const sidebarItemsList = useSidebarItems();
-    const isMobile = useDevice();
+    const isMobile = useDevice(MOBILE_BREAKPOINT);
 
     useEffect(() => {
         if (isMobile) {

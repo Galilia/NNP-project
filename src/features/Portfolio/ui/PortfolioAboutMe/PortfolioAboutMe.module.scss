@@ -25,12 +25,19 @@
     align-items: center;
     justify-content: center;
     flex: 0 2 500px;
-    margin-left: 20px;
     border-radius: 50%;
 }
 
+.mainPhotoCollage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 2 500px;
+    margin-left: 20px;
+}
+
 img {
-    width: 250px;
+    width: 100%;
     height: auto;
 }
 
@@ -38,10 +45,12 @@ img {
     .AboutMe {
         flex-direction: column-reverse;
         margin-top: 150px;
+    }
 
-        img {
-            width: 200px;
-            height: 200px;
-        }
+    .mainPhotoCollage {
+        max-width: 50%;
+        min-width: 250px;
+        flex: none;
+        margin: 2rem 0;
     }
 }
