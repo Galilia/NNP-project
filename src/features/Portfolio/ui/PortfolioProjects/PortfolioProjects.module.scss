@@ -22,10 +22,6 @@
 }
 
 .projectCard {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
     margin-bottom: 5rem;
     flex-flow: column nowrap;
 }
@@ -37,6 +33,7 @@
 
 .image {
     width: 100%;
+    max-width: 480px;
     height: auto;
 }
 
@@ -63,4 +60,8 @@
     flex-flow: row wrap;
     row-gap: 1rem;
     column-gap: 1rem;
+}
+
+.headerColor {
+    color: var(--icon-redesigned);
 }

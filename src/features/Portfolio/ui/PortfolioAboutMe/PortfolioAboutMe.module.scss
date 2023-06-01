@@ -1,10 +1,6 @@
 .AboutMe {
     height: 100vh;
     min-height: 607px;
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-    width: 100%;
     max-width: 1440px;
 }
 
@@ -36,4 +32,16 @@
 img {
     width: 250px;
     height: auto;
+}
+
+@media screen and (max-width: 841px) {
+    .AboutMe {
+        flex-direction: column-reverse;
+        margin-top: 150px;
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    }
 }

@@ -29,29 +29,6 @@
     text-align: center;
 }
 
-.size_s {
-    .header {
-        font: var(--font-m-redesigned);
-    }
-
-    .description {
-        font: var(--font-s-redesigned);
-    }
-}
-
-.size_m {
-    .header {
-        font-size: 1.6rem;
-        line-height: 2.1rem;
-        font-weight: 700;
-        margin-bottom: 1.7rem;
-    }
-
-    .description {
-        font: var(--font-m-redesigned);
-    }
-}
-
 .size_l {
     .header {
         font-size: 2.6rem;
@@ -61,7 +38,38 @@
     }
 
     .description {
+        font: inherit;
         font-size: 1rem;
+    }
+}
+
+.size_m {
+    .header {
+        font-size: 2.6rem;
+        line-height: 3.5rem;
+        font-weight: bold;
+        font-family: Ubuntu, sans-serif;
+    }
+
+    .description {
+        font: inherit;
+        font-size: 1rem;
+    }
+}
+
+.size_s {
+    .header {
+        font-size: 1rem;
+        line-height: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 0.9rem;
+        font-family: Ubuntu, sans-serif;
+    }
+
+    .description {
+        font: inherit;
+        font-size: 1rem;
+        margin-bottom: 1.7rem;
     }
 }
 

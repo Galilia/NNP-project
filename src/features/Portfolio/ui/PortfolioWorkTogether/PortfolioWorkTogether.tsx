@@ -1,42 +1,25 @@
 import { useTranslation } from 'react-i18next';
+import { SiGithub, SiLinkedin, SiMaildotru, SiTelegram } from 'react-icons/si';
 
-import GITHUB from '@/shared/assets/icons/portfolio/links/github.svg';
-import LINKEDIN from '@/shared/assets/icons/portfolio/links/linkedin.svg';
-import EMAIL from '@/shared/assets/icons/portfolio/links/mail.svg';
-import TG from '@/shared/assets/icons/portfolio/links/tg.svg';
 import React from '@/shared/assets/icons/portfolio/react.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Icon } from '@/shared/ui/deprecated/Icon';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { HeaderDescription } from '@/shared/ui/redesigned/HeaderDescription';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 
 import cls from './PortfolioWorkTogether.module.scss';
 
-const FILL_COLOR_RED = '#c85454';
-
 const linkInfoData = [
+    { name: 'TG', icon: <SiTelegram />, href: 'https://t.me/sdirbiz' },
     {
-        icon: TG,
-        title: 'TG',
-        color: FILL_COLOR_RED,
-        href: 'https://t.me/sdirbiz',
-    },
-    {
-        icon: EMAIL,
-        title: 'EMAIL',
-        color: FILL_COLOR_RED,
+        name: 'EMAIL',
+        icon: <SiMaildotru />,
         href: 'mailto:iliagalperin@gmail.com',
     },
+    { name: 'GITHUB', icon: <SiGithub />, href: 'https://github.com/galilia' },
     {
-        icon: GITHUB,
-        title: 'GITHUB',
-        color: FILL_COLOR_RED,
-        href: 'https://github.com/galilia',
-    },
-    {
-        icon: LINKEDIN,
-        title: 'LINKEDIN',
-        color: FILL_COLOR_RED,
+        name: 'LINKEDIN',
+        icon: <SiLinkedin />,
         href: 'https://www.linkedin.com/in/ilia-galperin-24454882/',
     },
 ];
@@ -54,44 +37,39 @@ export const PortfolioWorkTogether = ({ className }: WorkTogetherProps) => {
             id="contactMe"
             className={classNames(cls.WorkTogether, {}, [className])}
         >
-            <HeaderDescription header={t('lets_work_together')} size="m" />
-            <div className={cls.sectionContacts}>
-                <div className={cls.sectionContactLinks}>
-                    <p>{t('open_for_work')}</p>
-                    <div className={cls.buttonContainer}>
-                        <a
-                            href="../../../../shared/assets/pdf/Ilia_Galperin_FullStack_Developer_CV.pdf"
-                            target="_blank"
-                            download="Ilia_Galperin_FullStack_Developer_CV.pdf"
-                            className={cls.sectionHref}
-                        >
-                            <Button variant="filled">{t('download_cv')}</Button>
-                        </a>
-                    </div>
-                    <div className={cls.linksWrapper}>
-                        {linkInfoData.map((item, index) => (
-                            <a
-                                href={item.href}
-                                target="_blank"
-                                rel="noreferrer"
-                                className={cls.sectionHref}
-                                key={index}
-                            >
-                                <div className={cls.skillsItemWrapper}>
-                                    <div className={cls.icon}>
-                                        <Icon
-                                            Svg={item.icon}
-                                            className={cls.icon}
-                                            style={{ fill: item.color }}
-                                        />
-                                    </div>
-                                    <h3>{item.title}</h3>
-                                </div>
-                            </a>
-                        ))}
-                    </div>
+            <HeaderDescription
+                header={t('lets_work_together')}
+                size="m"
+                description={t('open_for_work')}
+            />
+            <VStack className={cls.sectionContactLinks}>
+                <div className={cls.buttonContainer}>
+                    <a
+                        href="../../../../shared/assets/pdf/Ilia_Galperin_FullStack_Developer_CV.pdf"
+                        target="_blank"
+                        download="Ilia_Galperin_FullStack_Developer_CV.pdf"
+                        className={cls.sectionHref}
+                    >
+                        <Button variant="filled">{t('download_cv')}</Button>
+                    </a>
                 </div>
-            </div>
+                <div className={cls.linksWrapper}>
+                    {linkInfoData.map((item, index) => (
+                        <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={cls.sectionHref}
+                            key={index}
+                        >
+                            <HStack max gap="16">
+                                <div className={cls.icon}>{item.icon}</div>
+                                <h3>{item.name}</h3>
+                            </HStack>
+                        </a>
+                    ))}
+                </div>
+            </VStack>
         </div>
     );
 };

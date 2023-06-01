@@ -15,12 +15,6 @@
     column-gap: 1.8rem;
 }
 
-.sectionContactLinks {
-    display: flex;
-    flex-flow: column nowrap;
-    flex: 2 1 300px;
-}
-
 .linksWrapper {
     display: flex;
     flex-flow: column nowrap;
@@ -33,16 +27,10 @@
     color: inherit;
 }
 
-.skillsItemWrapper {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 220px;
-}
-
 .icon {
     font-size: 2.1rem;
     margin-right: 0.4em;
+    color: var(--save-redesigned);
 }
 
 .formWrapper {

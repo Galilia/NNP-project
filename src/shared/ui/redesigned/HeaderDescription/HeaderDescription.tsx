@@ -41,6 +41,7 @@ interface HeaderDescriptionProps {
     'data-testid'?: string;
     bold?: boolean;
     fullWidth?: boolean;
+    color?: string;
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3';
@@ -67,6 +68,7 @@ export const HeaderDescription = memo((props: HeaderDescriptionProps) => {
         size = 'm',
         bold,
         fullWidth,
+        color,
         'data-testid': dataTestId = 'Text',
     } = props;
 
@@ -85,7 +87,7 @@ export const HeaderDescription = memo((props: HeaderDescriptionProps) => {
         >
             {header && (
                 <HeaderTag
-                    className={cls.header}
+                    className={classNames(cls.header, {}, [color])}
                     data-testid={`${dataTestId}.Header`}
                 >
                     {header}
