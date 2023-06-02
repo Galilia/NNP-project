@@ -1,10 +1,10 @@
+import { DiNodejs } from 'react-icons/di';
 import { MdOutlineDevices } from 'react-icons/md';
 import { RiReactjsLine } from 'react-icons/ri';
 import {
     SiJavascript,
     SiReactrouter,
     SiFigma,
-    SiAdobephotoshop,
     SiHtml5,
     SiCss3,
     SiVisualstudiocode,
@@ -16,6 +16,12 @@ import {
     SiJest,
     SiStorybook,
     SiEslint,
+    SiAngular,
+    SiWebstorm,
+    SiGithub,
+    SiMysql,
+    SiMongodb,
+    SiPostgresql,
 } from 'react-icons/si';
 import { TbApi } from 'react-icons/tb';
 
@@ -24,18 +30,24 @@ export const skills = [
     { name: 'CSS3', icon: <SiCss3 /> },
     { name: 'JavaScript', icon: <SiJavascript /> },
     { name: 'TypeScript', icon: <SiTypescript /> },
-    { name: 'REST API', icon: <TbApi /> },
     { name: 'React', icon: <RiReactjsLine /> },
-    { name: 'Router', icon: <SiReactrouter /> },
     { name: 'Redux', icon: <SiRedux /> },
+    { name: 'Router', icon: <SiReactrouter /> },
+    { name: 'Angular', icon: <SiAngular /> },
+    { name: 'NodeJS', icon: <DiNodejs /> },
+    { name: 'MySQL', icon: <SiMysql /> },
+    { name: 'MongoDB', icon: <SiMongodb /> },
+    { name: 'PostgreSQL', icon: <SiPostgresql /> },
+    { name: 'REST API', icon: <TbApi /> },
+    { name: 'Github', icon: <SiGithub /> },
     { name: 'Webpack', icon: <SiWebpack /> },
     { name: 'Eslint', icon: <SiEslint /> },
     { name: 'Jest', icon: <SiJest /> },
     { name: 'Storybook', icon: <SiStorybook /> },
     { name: 'Responsive Websites', icon: <MdOutlineDevices /> },
+    { name: 'Webstorm', icon: <SiWebstorm /> },
     { name: 'VS Code', icon: <SiVisualstudiocode /> },
     { name: 'GIT', icon: <SiGit /> },
     { name: 'Jira', icon: <SiJirasoftware /> },
     { name: 'Figma', icon: <SiFigma /> },
-    { name: 'Adobe PS', icon: <SiAdobephotoshop /> },
 ];

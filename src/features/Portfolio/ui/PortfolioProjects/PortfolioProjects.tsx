@@ -61,22 +61,32 @@ export const PortfolioProjects = ({ className }: LatestProjectsProps) => {
                                     size="s"
                                 />
                                 <div className={cls.descriptionButtonContainer}>
-                                    <a
-                                        href={project.website}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    >
-                                        <Button variant="filled">
-                                            {t('Visit Website')}
-                                        </Button>
-                                    </a>
+                                    {project.website && (
+                                        <a
+                                            href={project.website}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            <Button
+                                                variant="filled"
+                                                color="link"
+                                                font="bold"
+                                            >
+                                                {t('Visit Website')}
+                                            </Button>
+                                        </a>
+                                    )}
                                     {project.github && (
                                         <a
                                             href={project.github}
                                             target="_blank"
                                             rel="noreferrer"
                                         >
-                                            <Button variant="filled">
+                                            <Button
+                                                variant="filled"
+                                                color="link"
+                                                font="bold"
+                                            >
                                                 {t('Show Git Repo')}
                                             </Button>
                                         </a>

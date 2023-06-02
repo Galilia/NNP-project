@@ -71,6 +71,7 @@ module.exports = {
                     'variant',
                     'size',
                     'name',
+                    'font',
                 ],
             },
         ],

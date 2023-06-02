@@ -50,7 +50,9 @@ export const PortfolioWorkTogether = ({ className }: WorkTogetherProps) => {
                         download="Ilia_Galperin_FullStack_Developer_CV.pdf"
                         className={cls.sectionHref}
                     >
-                        <Button variant="filled">{t('download_cv')}</Button>
+                        <Button variant="filled" color="link" font="bold">
+                            {t('download_cv')}
+                        </Button>
                     </a>
                 </div>
                 <div className={cls.linksWrapper}>

@@ -14,21 +14,9 @@
     flex-direction: column;
 }
 
-.latestProjectsHeader {
-    font-size: 1.6rem;
-    line-height: 2.1rem;
-    font-weight: 700;
-    margin-bottom: 1.7rem;
-}
-
 .projectCard {
     margin-bottom: 5rem;
     flex-flow: column nowrap;
-}
-
-.imageContainer {
-    flex: none;
-    max-width: 500px;
 }
 
 .image {
@@ -41,18 +29,6 @@
     display: flex;
     flex-direction: column;
     max-width: 480px;
-}
-
-.headerContainer {
-    font-size: 1rem;
-    line-height: 1.6rem;
-    font-weight: 500;
-    margin-bottom: 0.9rem;
-}
-
-.paragraphContainer {
-    font-size: 1rem;
-    margin-bottom: 1.7rem;
 }
 
 .descriptionButtonContainer {

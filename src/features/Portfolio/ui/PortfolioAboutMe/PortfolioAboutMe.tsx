@@ -34,7 +34,12 @@ export const PortfolioAboutMe = ({ className }: AboutMeProps) => {
                     size="l"
                 />
                 <HStack gap="16">
-                    <Button variant="filled" onClick={scrollToContactMe}>
+                    <Button
+                        variant="filled"
+                        color="link"
+                        font="bold"
+                        onClick={scrollToContactMe}
+                    >
                         {t('contact_me')}
                     </Button>
                     <a
@@ -42,7 +47,9 @@ export const PortfolioAboutMe = ({ className }: AboutMeProps) => {
                         target="_blank"
                         download="Ilia_Galperin_FullStack_Developer_CV.pdf"
                     >
-                        <Button variant="filled">{t('download_cv')}</Button>
+                        <Button variant="filled" color="link" font="bold">
+                            {t('download_cv')}
+                        </Button>
                     </a>
                 </HStack>
             </div>

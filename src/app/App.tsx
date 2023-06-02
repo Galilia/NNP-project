@@ -7,6 +7,7 @@ import { getUserInited, initAuthData } from '@/entities/User';
 import { MOBILE_TABLET_BREAKPOINT } from '@/shared/const/breakpoints';
 import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { MainLayout } from '@/shared/layouts/MainLayout';
+import { MainLayoutMobile } from '@/shared/layouts/MainLayoutMobile';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -55,6 +56,28 @@ const App = memo(() => {
     return (
         <ToggleFeatures
             feature="isAppRedesigned"
+            on={
+                <div
+                    id="app"
+                    className={classNames('app_redesigned', {}, [theme])}
+                >
+                    <Suspense fallback="">
+                        {isMobile ? (
+                            <MainLayoutMobile
+                                header={<Navbar />}
+                                content={<AppRouter />}
+                            />
+                        ) : (
+                            <MainLayout
+                                content={<AppRouter />}
+                                header={<Navbar />}
+                                sidebar={<Sidebar />}
+                                toolbar={toolbar}
+                            />
+                        )}
+                    </Suspense>
+                </div>
+            }
             off={
                 <div id="app" className={classNames('app', {}, [theme])}>
                     <Suspense fallback="">
@@ -63,21 +86,6 @@ const App = memo(() => {
                             <Sidebar />
                             {inited && <AppRouter />}
                         </div>
-                    </Suspense>
-                </div>
-            }
-            on={
-                <div
-                    id="app"
-                    className={classNames('app_redesigned', {}, [theme])}
-                >
-                    <Suspense fallback="">
-                        <MainLayout
-                            content={<AppRouter />}
-                            header={<Navbar />}
-                            sidebar={isMobile ? undefined : <Sidebar />}
-                            toolbar={toolbar}
-                        />
                     </Suspense>
                 </div>
             }

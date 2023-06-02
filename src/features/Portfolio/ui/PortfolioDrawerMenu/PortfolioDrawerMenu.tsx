@@ -27,7 +27,7 @@ export const PortfolioDrawerMenu = memo((props: PortfolioDrawerMenuProps) => {
                 <VStack justify="center" align="center" gap="32" max>
                     {LoginButton}
                     <div className={cls.breakLine} />
-                    <PortfolioScrollButtons />
+                    <PortfolioScrollButtons onCloseDrawer={onCloseDrawer} />
                     <HStack
                         gap="32"
                         max
