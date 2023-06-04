@@ -4,6 +4,7 @@ import React from '@/shared/assets/icons/portfolio/react.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppImage } from '@/shared/ui/redesigned/AppImage';
 import { Button } from '@/shared/ui/redesigned/Button';
+import { Card } from '@/shared/ui/redesigned/Card';
 import { HeaderDescription } from '@/shared/ui/redesigned/HeaderDescription';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 import { HStack } from '@/shared/ui/redesigned/Stack';
@@ -20,9 +21,10 @@ export const PortfolioProjects = ({ className }: LatestProjectsProps) => {
     const { t } = useTranslation('portfolio');
 
     return (
-        <div
+        <Card
             className={classNames(cls.LatestProjects, {}, [className])}
             id="projects"
+            variant="noBg"
         >
             <div className={cls.sectionContent}>
                 <HeaderDescription header={t('Latest projects')} size="m" />
@@ -40,14 +42,16 @@ export const PortfolioProjects = ({ className }: LatestProjectsProps) => {
                             className={cls.projectCard}
                             key={index}
                         >
-                            <AppImage
-                                fallback={
-                                    <Skeleton width="100%" height={250} />
-                                }
-                                src={project.img}
-                                className={cls.image}
-                                alt="Portfolio website view on different devices"
-                            />
+                            <div className={cls.imageWrapper}>
+                                <AppImage
+                                    fallback={
+                                        <Skeleton width="100%" height={250} />
+                                    }
+                                    src={project.img}
+                                    className={cls.image}
+                                    alt="Portfolio website view on different devices"
+                                />
+                            </div>
                             <div className={cls.descriptionContainer}>
                                 <HeaderDescription
                                     header={projectTitle}
@@ -97,6 +101,6 @@ export const PortfolioProjects = ({ className }: LatestProjectsProps) => {
                     );
                 })}
             </div>
-        </div>
+        </Card>
     );
 };

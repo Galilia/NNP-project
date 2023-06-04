@@ -66,7 +66,7 @@ export const PortfolioWorkTogether = ({ className }: WorkTogetherProps) => {
                         >
                             <HStack max gap="16">
                                 <div className={cls.icon}>{item.icon}</div>
-                                <h3>{item.name}</h3>
+                                <h3 style={{ fontWeight: 700 }}>{item.name}</h3>
                             </HStack>
                         </a>
                     ))}

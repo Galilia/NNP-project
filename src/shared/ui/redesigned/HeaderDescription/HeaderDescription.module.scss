@@ -29,17 +29,22 @@
     text-align: center;
 }
 
+.size_l,
+.size_m,
+.size_s {
+    font-family: var(--font-family-portfolio);
+}
+
 .size_l {
     .header {
         font-size: 2.6rem;
         line-height: 3.5rem;
-        font-weight: var(--font-weight-portfolio);
-        font-family: var(--font-family-portfolio);
+        font-weight: var(--font-weight-l-portfolio);
     }
 
     .description {
-        font: inherit;
         font-size: 1rem;
+        font-weight: var(--font-weight-l-portfolio);
     }
 }
 
@@ -47,13 +52,12 @@
     .header {
         font-size: 2.6rem;
         line-height: 3.5rem;
-        font-weight: var(--font-weight-portfolio);
-        font-family: var(--font-family-portfolio);
+        font-weight: var(--font-weight-l-portfolio);
     }
 
     .description {
-        font: inherit;
         font-size: 1rem;
+        font-weight: var(--font-weight-l-portfolio);
     }
 }
 
@@ -61,22 +65,24 @@
     .header {
         font-size: 1rem;
         line-height: 1.6rem;
-        font-weight: var(--font-weight-portfolio);
+        font-weight: var(--font-weight-l-portfolio);
         margin-bottom: 0.9rem;
-        font-family: var(--font-family-portfolio);
     }
 
     .description {
-        font: inherit;
         font-size: 1rem;
         margin-bottom: 1.7rem;
+        font-weight: var(--font-weight-l-portfolio);
     }
 }
 
 .bold {
-    .header,
+    .header {
+        font-weight: var(--font-weight-l-portfolio);
+    }
+
     .description {
-        font-weight: var(--font-weight-portfolio);
+        font-weight: var(--font-weight-m-portfolio);
     }
 }
 

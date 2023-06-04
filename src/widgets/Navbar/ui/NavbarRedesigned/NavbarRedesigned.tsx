@@ -54,7 +54,7 @@ export const NavbarRedesigned = (props: NavbarRedesignedProps) => {
 
     const LoginButton = useMemo(
         () => (
-            <Button onClick={onShowModal} variant="clear">
+            <Button onClick={onShowModal} variant="clear" font="bold">
                 {t('Login')}
             </Button>
         ),

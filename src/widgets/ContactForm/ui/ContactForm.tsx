@@ -88,7 +88,7 @@ export const ContactForm = (props: ContactFormProps) => {
     return (
         <div className={classNames(cls.contactFormContainer, {}, [className])}>
             <form className={cls.ContactForm} ref={form} onSubmit={sendEmail}>
-                <HeaderDescription header={t('form_name')} />
+                <HeaderDescription header={t('form_name')} size="s" />
                 <Input
                     value={formData.user_name}
                     onChange={handleInputChange}
@@ -98,7 +98,7 @@ export const ContactForm = (props: ContactFormProps) => {
                     placeholder={t('name_placeholder')}
                     required
                 />
-                <HeaderDescription header={t('form_email')} />
+                <HeaderDescription header={t('form_email')} size="s" />
                 <Input
                     value={formData.user_email}
                     onChange={handleInputChange}
@@ -108,7 +108,7 @@ export const ContactForm = (props: ContactFormProps) => {
                     placeholder="YourName@mail.com"
                     required
                 />
-                <HeaderDescription header={t('form_message')} />
+                <HeaderDescription header={t('form_message')} size="s" />
                 <Textarea
                     value={formData.message}
                     onChange={handleTextareaChange}
@@ -121,7 +121,8 @@ export const ContactForm = (props: ContactFormProps) => {
                 <Button
                     variant="filled"
                     type="submit"
-                    color="success"
+                    color="link"
+                    font="bold"
                     fullWidth
                     size="xl"
                     className={cls.buttonSent}

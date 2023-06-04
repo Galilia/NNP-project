@@ -3,6 +3,12 @@
     flex-flow: column nowrap;
     width: 100%;
     flex: 0 2 581px;
+    font-weight: var(--font-weight-l-portfolio);
+}
+
+.contactFormInput,
+.contactFormArea {
+    margin-bottom: 0.7rem;
 }
 
 .contactFormContainer {
